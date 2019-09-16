@@ -1,3 +1,4 @@
+
 <?php include '../header.php'; ?>
 <!-- Body main wrapper start -->
 <div class="wrapper fixed__footer">
@@ -9,7 +10,8 @@
 
 	<div class="body__overlay"></div>
 
-	<?php include 'desing.php'; ?>
+
+					<?php include 'desing.php'; ?>
 
 	<!-- Start Footer Area -->
 	<?php include '../footer_content.php'; ?>
