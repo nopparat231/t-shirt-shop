@@ -1,3 +1,4 @@
+<?php require_once('Connections/condb.php'); ?>
 <?php include 'header.php'; ?>
 <!-- Body main wrapper start -->
 <div class="wrapper fixed__footer">
@@ -16,6 +17,9 @@
 	}elseif (isset($_GET['product_all'])) {
 		//แสดงสินค้าทั้งหมด
 		include 'product_all.php';
+	}elseif (isset($_GET['desing'])) {
+		//ออกแบบเสื้อ
+		include 'Tee-Designer/desing.php';
 	}elseif (isset($_GET['desing'])) {
 		//ออกแบบเสื้อ
 		include 'Tee-Designer/desing.php';

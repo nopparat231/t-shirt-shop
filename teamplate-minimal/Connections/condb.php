@@ -1,0 +1,11 @@
+<?php
+error_reporting(0);
+error_reporting(E_ERROR | E_PARSE);
+$hostname_condb = "localhost";
+$database_condb = "book-shop";
+$username_condb = "root";
+$password_condb = "";
+$condb = mysql_connect($hostname_condb, $username_condb, $password_condb , $database_condb) or trigger_error(mysql_error(),E_USER_ERROR);
+mysql_query("SET NAMES UTF8");
+
+?>
