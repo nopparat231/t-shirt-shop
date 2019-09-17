@@ -27,43 +27,48 @@
                     <a href="#"><i class="zmdi zmdi-close"></i></a>
                 </div>
                 <div class="shp__cart__wrap">
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/1.jpg" alt="product images">
-                            </a>
+
+
+                    <?php 
+
+                    foreach($_SESSION["products"] as $product)
+                    {
+                        $p_id = $product["p_id"];
+                        $product_qty = $product["product_qty"];
+                        $product_price = $product["p_price"];
+
+                        mysql_select_db($database_condb);
+                        $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+                        $query = mysql_query($sql, $condb );
+                        $row = mysql_fetch_array($query);
+
+                        ?>
+
+                        <div class="shp__single__product">
+                            <div class="shp__pro__thumb">
+                                <a href="#">
+                                    <img src="pimg/<?php echo $row['p_img1'];?>" alt="product images">
+                                </a>
+                            </div>
+                            <div class="shp__pro__details">
+                                <h2><a href="product-details.html"><?php echo $row['p_name']; ?></a></h2>
+                                <span class="quantity">QTY: <?php echo $product_qty; ?></span>
+                                <span class="shp__price"><?php echo $product_price; ?></span>
+                            </div>
+                            <div class="remove__btn" id="shopping-cart-results">
+                                <a href="#" title="Remove this item" class="remove-item" data-code="<?php echo $p_id; ?>"><i class="zmdi zmdi-close"></i></a>
+                            </div>
                         </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$105.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="images/product/sm-img/2.jpg" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">Brone Candle</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$25.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
+
+                    <?php } ?>
+
                 </div>
                 <ul class="shoping__total">
                     <li class="subtotal">Subtotal:</li>
                     <li class="total__price">$130.00</li>
                 </ul>
                 <ul class="shopping__btn">
-                    <li><a href="cart.html">View Cart</a></li>
+                    <li><a href="index.php?cart">View Cart</a></li>
                     <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
                 </ul>
             </div>

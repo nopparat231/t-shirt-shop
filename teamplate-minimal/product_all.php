@@ -7,7 +7,7 @@
                             <div class="product__menu">
 
                                 <?php
-
+                                //print_r($_SESSION["products"]);
                                 mysql_select_db($database_condb);
                                 $query_type = "SELECT * FROM tbl_type";
                                 $type = mysql_query($query_type, $condb) or die(mysql_error());
@@ -17,9 +17,9 @@
                                 ?>
                                 <?php if ($totalRows_type > 0) {?>
 
-                                 <button data-filter="*"  class="is-checked">ทั้งหมด</button>
+                                   <button data-filter="*"  class="is-checked">ทั้งหมด</button>
 
-                                 <?php do { ?>
+                                   <?php do { ?>
 
 
                                     <button id="btn1" data-filter=".cat--<?php echo $row_type['t_id'];?>"><?php echo $row_type['t_name']; ?></button>
@@ -78,7 +78,7 @@
                                                </ul>
                                            </div>
                                            <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
-                                             <input type="hidden" name="product_qty" value="1" />
+                                           <input type="hidden" name="product_qty" value="1" />
 
                                        </div>
                                        <div class="product__details">

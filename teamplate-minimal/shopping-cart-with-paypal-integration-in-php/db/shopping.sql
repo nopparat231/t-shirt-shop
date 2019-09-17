@@ -7,7 +7,7 @@ CREATE TABLE `shop_products` (
   `product_code` varchar(60) NOT NULL,
   `product_image` varchar(60) NOT NULL,
   `product_price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
 INSERT INTO `shop_products` (`id`, `product_name`, `product_desc`, `product_code`, `product_image`, `product_price`) VALUES
 (1, 'Apple iPhone', 'The iPhone 7, with its amazing features and drool-worthy design, looks every bit as efficient as it is. With a powerful processor and ample internal storage, this smartphone offers you a seamless performance.', 'APPM01', 'apple-iphone-7.jpeg', 39999),
@@ -18,7 +18,7 @@ INSERT INTO `shop_products` (`id`, `product_name`, `product_desc`, `product_code
 ALTER TABLE `shop_products`
   ADD PRIMARY KEY (`id`);
   
-  shop_shipping
+
 ----------------------------shop_order------------------------------
 
 CREATE TABLE `shop_order` (
@@ -31,7 +31,7 @@ CREATE TABLE `shop_order` (
   `order_status` varchar(255) NOT NULL,
   `order_at` datetime NOT NULL,
   `payment_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
  
 ----------------------------shop_order_item------------------------------
@@ -42,7 +42,7 @@ CREATE TABLE `shop_order_item` (
   `product_id` int(11) NOT NULL,
   `item_price` double NOT NULL,
   `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
 ----------------------------shop_payment------------------------------
 
@@ -52,4 +52,4 @@ CREATE TABLE `shop_payment` (
   `payment_status` varchar(255) NOT NULL,
   `payment_response` text NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;

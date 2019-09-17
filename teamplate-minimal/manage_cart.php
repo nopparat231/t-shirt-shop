@@ -1,14 +1,14 @@
 <?php
 session_start();
-require_once('Connections/condb.php');
-//include_once("inc/config.inc.php");
-setlocale(LC_MONETARY,"th_TH");
+include_once("db_connect.php");
+include_once("inc/config.inc.php");
+setlocale(LC_MONETARY,"en_US");
 # add products in cart 
 if(isset($_POST["p_id"])) {
 	foreach($_POST as $key => $value){
 		$product[$key] = filter_var($value, FILTER_SANITIZE_STRING);
 	}	
-	$statement = $conn->prepare("SELECT p_name , p_price FROM tbl_product WHERE p_id =? LIMIT 1");
+	$statement = $conn->prepare("SELECT p_name , p_price FROM tbl_product WHERE p_id=? LIMIT 1");
 	$statement->bind_param('s', $product['p_id']);
 	$statement->execute();
 	$statement->bind_result($product_name, $product_price);

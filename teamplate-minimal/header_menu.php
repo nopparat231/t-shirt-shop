@@ -60,17 +60,20 @@
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
                                 <li><a href="login-register.html"><span class="ti-user"></span></a></li>
-                                <li class="cart__menu"><p class="badge badge-light">
-                                    <span class="ti-shopping-cart" id="cart-container">
-                                    <?php 
-                                    if(isset($_SESSION["products"])){
-                                        echo count($_SESSION["products"]); 
-                                    } else {
-                                        echo 0; 
-                                    }
-                                    ?>
-                                </span></p></li>
-                                
+                                <li class="cart__menu">
+                                    <p class="badge badge-light">
+                                        <span class="ti-shopping-cart" id="cart-container">
+                                            <?php 
+                                            if(isset($_SESSION["products"])){
+                                                echo count($_SESSION["products"]); 
+                                            } else {
+                                                echo 0; 
+                                            }
+                                            ?>
+                                        </span>
+                                    </p>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -80,4 +83,3 @@
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Style -->
-        
