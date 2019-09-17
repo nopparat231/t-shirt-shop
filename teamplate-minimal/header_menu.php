@@ -1,4 +1,5 @@
         <!-- Start Header Style -->
+        <?php  session_start(); ?>
         <header id="header" class="htc-header">
             <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
@@ -59,7 +60,16 @@
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
                                 <li><a href="login-register.html"><span class="ti-user"></span></a></li>
-                                <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
+                                <li class="cart__menu"><p class="badge badge-light">
+                                    <span class="ti-shopping-cart" id="cart-container">
+                                    <?php 
+                                    if(isset($_SESSION["products"])){
+                                        echo count($_SESSION["products"]); 
+                                    } else {
+                                        echo 0; 
+                                    }
+                                    ?>
+                                </span></p></li>
                                 
                             </ul>
                         </div>

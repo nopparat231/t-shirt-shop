@@ -7,6 +7,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="script/cart.js"></script>
 
 </body>
 

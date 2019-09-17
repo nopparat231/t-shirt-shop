@@ -17,11 +17,10 @@
                                 ?>
                                 <?php if ($totalRows_type > 0) {?>
 
-                                   <button data-filter="*"  class="is-checked">ทั้งหมด</button>
+                                 <button data-filter="*"  class="is-checked">ทั้งหมด</button>
 
-                                   <?php do { ?>
+                                 <?php do { ?>
 
-                                    <input type="hidden" name="type" id="type_id" value="<?php echo $row_type['t_id'];?>" />
 
                                     <button id="btn1" data-filter=".cat--<?php echo $row_type['t_id'];?>"><?php echo $row_type['t_name']; ?></button>
 
@@ -52,25 +51,37 @@
                         <?php do { ?>
 
                             <!-- Start Single Product -->
-                            <div class="col-md-3 single__pro col-lg-3 col-md-4 cat--<?php echo $row_prd['t_id'];?> col-sm-12">
-                                <div class="product foo" >
-                                    <div class="product__inner" >
-                                        <div class="pro__thumb"  >
-                                            <a href="#">
-                                                <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="product images" style="height: 300px">
-                                            </a>
-                                        </div>
-                                        <div class="product__hover__info">
-                                            <ul class="product__action">
-                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            </ul>
-                                        </div>
-<!--                                         <div class="add__to__wishlist">
-                                            <a data-toggle="tooltip" title="Add To Wishlist" class="add-to-cart" href="wishlist.html"><span class="ti-heart"></span></a>
-                                        </div> -->
-                                    </div>
-                                    <div class="product__details">
+                            <form class="product-form">
+                                <div class="col-md-3 single__pro col-lg-3 col-md-4 cat--<?php echo $row_prd['t_id'];?> col-sm-12">
+                                    <div class="product foo" >
+                                        <div class="product__inner" >
+                                            <div class="pro__thumb"  >
+                                                <a href="#">
+                                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="product images" style="height: 300px">
+                                                </a>
+                                            </div>
+
+                                            <div class="product__hover__info">
+                                                <ul class="product__action">
+                                                    <li>
+                                                        <a data-toggle="modal" data-target="#productModal" title="Quick View" class="btn btn-info quick-view modal-view detail-link" href="#">
+                                                            <span class="ti-plus"></span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <button type="submit" class="btn btn-info" title="Add TO Cart"  >
+                                                            <span class="ti-shopping-cart" ></span>
+                                                        </button>
+                                                       <!--  <a title="Add TO Cart" href=""><span class="ti-shopping-cart"></span>
+                                                       </a> -->
+                                                   </li>
+                                               </ul>
+                                           </div>
+                                           <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
+                                             <input type="hidden" name="product_qty" value="1" />
+
+                                       </div>
+                                       <div class="product__details">
                                         <h2><a href="product-details.html"><?php echo $row_prd['p_name']; ?></a></h2>
                                         <ul class="product__price">
                                             <!-- <li class="old__price">$16.00</li> -->
@@ -81,15 +92,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Product -->
+                        </form>
+                        <!-- End Single Product -->
 
-                        <?php } while ($row_prd = mysql_fetch_assoc($prd)); ?>
-                    <?php }
-                    mysql_free_result($prd);
-                    ?>
-
-                </div>
+                    <?php } while ($row_prd = mysql_fetch_assoc($prd)); ?>
+                <?php }
+                mysql_free_result($prd);
+                ?>
 
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
