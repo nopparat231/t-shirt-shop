@@ -20,9 +20,9 @@
 	}elseif (isset($_GET['desing'])) {
 		//ออกแบบเสื้อ
 		include 'Tee-Designer/desing.php';
-	}elseif (isset($_GET['desing'])) {
+	}elseif (isset($_GET['checkout'])) {
 		//ออกแบบเสื้อ
-		include 'Tee-Designer/desing.php';
+		include 'checkout.php';
 	}else{
 		//หน้าหลัก
 		include 'home.php';
