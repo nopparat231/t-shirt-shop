@@ -23,6 +23,9 @@
 	}elseif (isset($_GET['checkout'])) {
 		//สั่งซื้อสินค้า
 		include 'checkout.php';
+	}elseif (isset($_GET['contact'])) {
+		//ติดต่อ
+		include 'contact.php';
 	}elseif (isset($_GET['login'])) {
 		//เข้าสู่ระบบ
 		include 'login.php';

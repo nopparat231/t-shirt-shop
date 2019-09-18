@@ -19,11 +19,11 @@
                                     <li class="drop"><a href="index.php">Home</a>
                                     </li>
                                     <li><a href="Tee-Designer/desing.php">Desing</a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="#">About</a></li>
                                     
                                     <li class="drop"><a href="shop.html">Shop</a>
                                     </li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="index.php?contact">contact</a></li>
                                 </ul>
                             </nav>
                             

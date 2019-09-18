@@ -3,110 +3,107 @@
 
 if($_SESSION['MM_Username']!=''){
 
-   ?>
-   <!-- Start Checkout Area -->
-   <section class="our-checkout-area ptb--120 bg__white">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-lg-8">
-                <div class="ckeckout-left-sidebar">
-                    <!-- Start Checkbox Area -->
-                    <div class="checkout-form">
-                        <h2 class="section-title-3">Billing details</h2>
-                        <div class="checkout-form-inner">
-                            <div class="single-checkout-box">
-                                <input type="text" placeholder="First Name*">
-                                <input type="text" placeholder="Last Name*">
-                            </div>
-                            <div class="single-checkout-box">
-                                <input type="email" placeholder="Emil*">
-                                <input type="text" placeholder="Phone*">
-                            </div>
-                            <div class="single-checkout-box">
-                                <textarea name="message" placeholder="Message*"></textarea>
-                            </div>
-                            <div class="single-checkout-box select-option mt--40">
-                                <select>
-                                    <option>Country*</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                    <option>Bangladesh</option>
-                                </select>
-                                <input type="text" placeholder="Company Name*">
-                            </div>
-                            <div class="single-checkout-box">
-                                <input type="email" placeholder="State*">
-                                <input type="text" placeholder="Zip Code*">
-                            </div>
-                            <div class="single-checkout-box checkbox">
-                                <input id="remind-me" type="checkbox">
-                                <label for="remind-me"><span></span>Create a Account ?</label>
+    $mem_user = $_SESSION['MM_Username'];
+
+    mysql_select_db($database_condb);
+    $query_buyer = "SELECT * FROM tbl_member WHERE mem_username = '$mem_user' ";
+    $buyer = mysql_query($query_buyer, $condb) or die(mysql_error());
+    $row_buyer = mysql_fetch_assoc($buyer);
+    $totalRows_buyer = mysql_num_rows($buyer);
+
+
+
+    ?>
+    <!-- Start Checkout Area -->
+
+    <form  name="formlogin" action="saveorder.php" method="POST" id="login" class="form-horizontal">
+
+       <section class="our-checkout-area ptb--120 bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="ckeckout-left-sidebar">
+                        <!-- Start Checkbox Area -->
+                        <div class="checkout-form">
+                            <h2 class="section-title-3">ที่อยู่ในการจัดส่ง</h2>
+                            <div class="checkout-form-inner">
+                                <div class="single-checkout-box">
+                                    <input type="hidden" name="text">
+
+                                    <input type="text" name="name" value="<?php echo $row_buyer['mem_name']; ?>" placeholder="ชื่อ- นามสกุล*">
+                                    <input type="email" name="email" value="<?php echo $row_buyer['mem_email']; ?>" placeholder="Emil*">
+                                    <input type="text" name="phone" value="<?php echo $row_buyer['mem_tel'] ?>" placeholder="Phone*">
+
+                                    <textarea name="address" placeholder="Address*"><?php echo $row_buyer['mem_address']; ?></textarea>
+
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                    <!-- End Checkbox Area -->
-                    <!-- Start Payment Box -->
-                    <div class="payment-form">
-                        <h2 class="section-title-3">payment details</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p>
-                        <div class="payment-form-inner">
-                            <div class="single-checkout-box">
-                                <input type="text" placeholder="Name on Card*">
-                                <input type="text" placeholder="Card Number*">
-                            </div>
-                            <div class="single-checkout-box select-option">
-                                <select>
-                                    <option>Date*</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                    <option>Date</option>
-                                </select>
-                                <input type="text" placeholder="Security Code*">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Payment Box -->
-                    <!-- Start Payment Way -->
-                    <div class="our-payment-sestem">
-                        <h2 class="section-title-3">We  Accept :</h2>
-                        <ul class="payment-menu">
-                            <li><a href="#"><img src="images/payment/1.jpg" alt="payment-img"></a></li>
-                            <li><a href="#"><img src="images/payment/2.jpg" alt="payment-img"></a></li>
-                            <li><a href="#"><img src="images/payment/3.jpg" alt="payment-img"></a></li>
-                            <li><a href="#"><img src="images/payment/4.jpg" alt="payment-img"></a></li>
-                            <li><a href="#"><img src="images/payment/5.jpg" alt="payment-img"></a></li>
-                        </ul>
-                        <div class="checkout-btn">
-                            <a class="ts-btn btn-light btn-large hover-theme" href="#">CONFIRM & BUY NOW</a>
-                        </div>    
-                    </div>
-                    <!-- End Payment Way -->
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4">
-                <div class="checkout-right-sidebar">
-                    <div class="our-important-note">
-                        <h2 class="section-title-3">Note :</h2>
-                        <p class="note-desc">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut laborekf et dolore magna aliqua.</p>
-                        <ul class="important-note">
-                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
-                        </ul>
-                    </div>
-                    <div class="puick-contact-area mt--60">
-                        <h2 class="section-title-3">Quick Contract</h2>
-                        <a href="phone:+8801722889963">+88 01900 939 500</a>
+
                     </div>
                 </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="checkout-right-sidebar">
+                        <div class="our-important-note">
+                            <h2 class="section-title-3">รายการสั่งซื้อ</h2>
+                            
+                            <ul class="important-note">
+                             <?php 
+
+                             foreach($_SESSION["products"] as $product)
+                             {
+                                 $p_id = $product["p_id"];
+                                 $product_qty = $product["product_qty"];
+                                 $product_price = $product["p_price"];
+
+                                 mysql_select_db($database_condb);
+                                 $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+                                 $query = mysql_query($sql, $condb );
+                                 $row = mysql_fetch_array($query);
+
+                                 $subtotal = ($product_price * $product_qty);
+                                 $total = ($total + $subtotal);
+
+                                 ?>
+
+                                 <div class="shp__single__product">
+                                    <div class="shp__pro__thumb">
+                                        <a href="#">
+                                            <img src="pimg/<?php echo $row['p_img1'];?>" alt="product images">
+                                        </a>
+                                    </div>
+                                    <div class="shp__pro__details">
+                                        <h2><a href="product-details.html"><?php echo $row['p_name']; ?></a></h2>
+                                        <span class="quantity">QTY: <?php echo $product_qty; ?></span>
+                                        <span class="shp__price"><?php echo $product_price; ?></span>
+                                    </div>
+                                    <div class="remove__btn" id="shopping-cart-results">
+
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+                            <ul class="shoping__total">
+                                <li class="subtotal">Subtotal:</li>
+                                <li class="total__price"><strong style="font-size: 30px"><?php echo $total; ?> บาท</strong></li>
+                            </ul>
+                            <ul class="shopping__btn">
+                                <li><a href="index.php?cart">View Cart</a></li>
+                                <li class="shp__checkout"> <button type="submit" class="btn btn-warning btn-lg" style="width: 100%" >ยืนยันการสั่งซื้อ</button></li>
+                            </ul>
+
+                        </ul>
+
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</form>
 <!-- End Checkout Area -->
 <?php } else{
   include('logout3.php');
