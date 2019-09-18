@@ -36,22 +36,23 @@
                         $p_id = $product["p_id"];
                         $product_qty = $product["product_qty"];
                         $product_price = $product["p_price"];
+                        $p_name = $product["p_name"];
 
-                        mysql_select_db($database_condb);
-                        $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
-                        $query = mysql_query($sql, $condb );
-                        $row = mysql_fetch_array($query);
+                        // mysql_select_db($database_condb);
+                        // $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+                        // $query = mysql_query($sql, $condb );
+                        // $row = mysql_fetch_array($query);
 
                         ?>
 
                         <div class="shp__single__product">
                             <div class="shp__pro__thumb">
                                 <a href="#">
-                                    <img src="pimg/<?php echo $row['p_img1'];?>" alt="product images">
+                                    <img src="pimg/<?php //echo $row['p_img1'];?>" alt="product images">
                                 </a>
                             </div>
                             <div class="shp__pro__details">
-                                <h2><a href="product-details.html"><?php echo $row['p_name']; ?></a></h2>
+                                <h2><a href="product-details.html"><?php echo $p_name; ?></a></h2>
                                 <span class="quantity">QTY: <?php echo $product_qty; ?></span>
                                 <span class="shp__price"><?php echo $product_price; ?></span>
                             </div>
