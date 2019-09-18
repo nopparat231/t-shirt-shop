@@ -47,7 +47,7 @@
                                                 <li><a href="wishlist.html">wishlist</a></li>
                                                 <li><a href="checkout.html">checkout</a></li>
                                                 <li><a href="team.html">team</a></li>
-                                                <li><a href="login-register.html">login & register</a></li>
+                                                <li><a href="index.php?login">login & register</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">contact</a></li>
@@ -59,7 +59,7 @@
                         <div class="col-md-2 col-lg-2 col-6">  
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                <li><a href="index.php?login"><span class="ti-user"></span></a></li>
                                 <li class="cart__menu">
                                     <a href="index.php?cart">
                                         <p class="badge badge-light">

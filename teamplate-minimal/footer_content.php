@@ -1,4 +1,4 @@
-    <footer class="htc__foooter__area" style="background: rgba(0, 0, 0, 0) url(images/bg/1.jpg) no-repeat scroll center center / cover ;">
+    <footer class="htc__foooter__area" style="background: rgba(0, 0, 0, 0) url(images/bg/1920x299.jpg) no-repeat scroll center center / cover ;">
         <div class="container">
             <div class="row footer__container clearfix">
                 <!-- Start Single Footer Widget -->

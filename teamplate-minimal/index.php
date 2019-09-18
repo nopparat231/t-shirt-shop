@@ -21,8 +21,11 @@
 		//ออกแบบเสื้อ
 		include 'Tee-Designer/desing.php';
 	}elseif (isset($_GET['checkout'])) {
-		//ออกแบบเสื้อ
+		//สั่งซื้อสินค้า
 		include 'checkout.php';
+	}elseif (isset($_GET['login'])) {
+		//เข้าสู่ระบบ
+		include 'login.php';
 	}else{
 		//หน้าหลัก
 		include 'home.php';
