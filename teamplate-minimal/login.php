@@ -16,8 +16,8 @@
                     <!-- Start Single Content -->
                     <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
                         <form class="login" method="post" action="login_db.php">
-                            <input type="text" placeholder="User Name*" required="required">
-                            <input type="password" placeholder="Password*" required="required">
+                            <input type="text" name="mem_username" placeholder="User Name*" required="required">
+                            <input type="password" name="mem_password" placeholder="Password*" required="required">
                             <input type="hidden" name="login">
 
                             <div class="tabs__checkbox">
