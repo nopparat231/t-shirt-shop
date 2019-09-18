@@ -61,25 +61,27 @@
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
                                 <li><a href="login-register.html"><span class="ti-user"></span></a></li>
                                 <li class="cart__menu">
-                                    <p class="badge badge-light">
-                                        <span class="ti-shopping-cart" id="cart-container">
-                                            <?php 
-                                            if(isset($_SESSION["products"])){
-                                                echo count($_SESSION["products"]); 
-                                            } else {
-                                                echo 0; 
-                                            }
-                                            ?>
-                                        </span>
-                                    </p>
-                                </li>
+                                    <a href="index.php?cart">
+                                        <p class="badge badge-light">
+                                            <span class="ti-shopping-cart" id="cart-container">
+                                                <?php 
+                                                if(isset($_SESSION["products"])){
+                                                    echo count($_SESSION["products"]); 
+                                                } else {
+                                                    echo 0; 
+                                                }
+                                                ?>
+                                            </span>
+                                        </p></a>
+                                        
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="mobile-menu-area"></div>
                     </div>
-                    <div class="mobile-menu-area"></div>
                 </div>
-            </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Style -->
+                <!-- End Mainmenu Area -->
+            </header>
+            <!-- End Header Style -->

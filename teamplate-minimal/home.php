@@ -1,5 +1,5 @@
     <!-- แสดงสินค้าในตะกร้า -->
-    <?php include 'model_cart_view.php'; ?>
+    <?php //include 'model_cart_view.php'; ?>
     <!-- QUICKVIEW PRODUCT แสดงข้อมูลสินค้า -->
     <?php include 'model_product_view.php'; ?>
     <!-- END QUICKVIEW PRODUCT -->
