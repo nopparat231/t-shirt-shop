@@ -24,10 +24,13 @@
     <!-- User style -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script> <!-- jquery latest version -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="script/cart.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
 
 </head>
 

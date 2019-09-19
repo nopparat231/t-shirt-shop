@@ -6,6 +6,7 @@
 
 	<!-- Start Header Style -->
 	<?php include 'header_menu.php'; ?>
+	
 	<!-- End Header Style -->
 
 	<div class="body__overlay"></div>
@@ -26,6 +27,12 @@
 	}elseif (isset($_GET['contact'])) {
 		//ติดต่อ
 		include 'contact.php';
+	}elseif (isset($_GET['my_order'])) {
+		//รายการสั่งซื้อ
+		include 'my_order.php';
+	}elseif (isset($_GET['about'])) {
+		//เกี่ยวกับ
+		include 'about.php';
 	}elseif (isset($_GET['login'])) {
 		//เข้าสู่ระบบ
 		include 'login.php';

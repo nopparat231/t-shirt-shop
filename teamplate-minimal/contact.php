@@ -2,7 +2,7 @@
         <section class="htc__contact__area ptb--120 bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="htc__contact__container">
                             <div class="htc__contact__address">
                                 <h2 class="contact__title">contact info</h2>
