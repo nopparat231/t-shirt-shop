@@ -19,105 +19,260 @@ if (isset($_GET['order_id'])) {
   $row_cartdone = mysql_fetch_assoc($cartdone);
   $totalRows_cartdone = mysql_num_rows($cartdone);
 
+
+  $query_rb = "SELECT * FROM tbl_bank WHERE b_status = 0";
+  $rb = mysql_query($query_rb, $condb) or die(mysql_error());
+  $row_rb = mysql_fetch_assoc($rb);
+  $totalRows_rb = mysql_num_rows($rb);
+
   ?>
+  <style type="text/css">
+    /* The container */
+    .container-re {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+
+  /* Hide the browser's default radio button */
+  .container-re input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container-re:hover input ~ .checkmark {
+      background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .container-re input:checked ~ .checkmark {
+      background-color: #2196F3;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .container-re input:checked ~ .checkmark:after {
+      display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .container-re .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+</style>
+
+<form  action="add_payslip_db.php" method="post" enctype="multipart/form-data" name="formpay" class="form-horizontal">
+
+   <section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="ckeckout-left-sidebar">
+                    <!-- Start Checkbox Area -->
+                    <div class="checkout-form">
+                        <h2 class="section-title-3">แจ้งชำระเงิน</h2>
+                        <div class="checkout-form-inner">
+
+                           <table border="0" align="center" cellpadding="0" cellspacing="0">
+
+                            <tr>
+                                <td colspan="4">เลขที่ใบสั่งซื้อ</td>
+                                <td colspan="5" align="left"><label for="pay_date"></label>
+                                    TS<?php echo str_pad($row_cartdone['order_id'], 6, "0", STR_PAD_LEFT);?>
+                                </tr>
+                                <tr>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+
+                              <tr>
+                                <td colspan="4">วันที่ชำระเงิน</td>
+                                <td colspan="5" align="left"><label for="pay_date"></label>
+                                  <input type="date" name="pay_date" id="pay_date" value="<?php echo date('Y-m-d');?>"/></td>
+                              </tr>
+                              <tr>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                  <td colspan="4">เวลาชำระเงิน</td>
+                                  <td colspan="5" align="left"><label for="time_date"></label>
+                                    <input type="time" name="time_date" id="time_date" value="<?php echo date("H:i"); ?>"/></td>
+                                </tr>
+                                <tr>
+                                    <td >&nbsp;</td>
+                                    <td >&nbsp;</td>
+                                    <td >&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4">จำนวนเงิน</td>
+                                    <td colspan="5" align="left"><label for="pay_amount"></label>
+                                      <input type="number" step="0.01" name="pay_amount" pattern="([0-9]{1,3}).([0-9]{1,3})" value="<?php echo $row_cartdone['total'] ?>" required="required" value="" /></td>
+                                  </tr>
 
 
-  <form  name="formlogin" action="checkout_db.php" method="POST" class="form-horizontal">
 
-     <section class="our-checkout-area ptb--120 bg__white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-6">
-                    <div class="ckeckout-left-sidebar">
-                        <!-- Start Checkbox Area -->
-                        <div class="checkout-form">
-                            <h2 class="section-title-3">ที่อยู่ในการจัดส่ง</h2>
-                            <div class="checkout-form-inner">
-                              <div class="review__box">
-                                <div id="review-form">
-                                    <div class="single-review-form">
-                                        <div class="review-box name">
+                                  <tr>
+                                      <td >&nbsp;</td>
+                                      <td >&nbsp;</td>
+                                      <td >&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                  </tr>
 
-                                            <input type="hidden" name="text">
-                                            <input type="hidden" name="mem_id" value="<?php echo $row_buyer['mem_id']; ?>">
-                                            <input type="text" name="name" value="<?php echo $row_buyer['mem_name']; ?>" placeholder="ชื่อ- นามสกุล*" >
-                                        </div>
+                                  <tr>
+                                      <td colspan="4">หลักฐานการโอน </td>
+                                      <td colspan="5" align="left">
+                                        <input name="pay_slip" id="pay_slip" type="file"  required="required" accept="image/jpeg"/>
 
-                                        <div class="review-box name">
-                                          <input type="email" name="email" value="<?php echo $row_buyer['mem_email']; ?>" placeholder="Emil*">
-                                          <input type="text" name="phone" value="<?php echo $row_buyer['mem_tel'] ?>" placeholder="Phone*">
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td >&nbsp;</td>
+                                  <td><input name="order_id" type="hidden" id="order_id" value="<?php echo $colname_cartdone;?>" /></td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                    <strong>
+                                        <font color="red">*</font>โอนไปยังบัญชี<br><p>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <?php do { ?>
+                                    <tr>
 
-                                      </div>
+                                      <td colspan="5">
+                                        <br>
+                                        <label class="container-re">
+                                         <input <?php if (!(strcmp($row_rb['b_name'],"b_bank"))) {echo "checked=\"checked\"";} ?> type="radio" name="bank"  value="<?php echo $row_rb['b_name'].'_'.$row_rb['b_number'];?>" required="required" />
 
-                                  </div>
-                                  <div class="single-review-form">
-                                    <div class="review-box message">
-                                        <textarea name="address" placeholder="Address*"><?php echo $row_buyer['mem_address']; ?></textarea>
-                                    </div>
-                                </div>
+                                         <img src="bimg/<?php echo $row_rb['b_logo']; ?>" width="50" />
+                                         <span class="checkmark"></span>
+                                     </label>
+                                 </td>
+
+                                 <td></td>
+                                 <td><?php echo $row_rb['b_name']; ?>&nbsp;&nbsp;&nbsp;</td>
+                                 <td> <?php echo $row_rb['b_number']; ?>&nbsp;&nbsp;&nbsp;</td>
+                                 <td><strong></strong><?php echo $row_rb['b_owner']; ?></td>
+                             </tr>
+                         <?php } while ($row_rb = mysql_fetch_assoc($rb)); ?>
+
+                     </table>
+
+
+                 </div>
+
+             </div>
+         </div>
+     </div>
+
+     <div class="col-md-6 col-lg-6">
+        <div class="checkout-right-sidebar">
+            <div class="our-important-note">
+                <h2 class="section-title-3">รายการสั่งซื้อ</h2>
+
+                <ul class="important-note">
+                 <?php
+                 do {
+                     $subtotal = ($row_cartdone['p_price'] * $row_cartdone['p_c_qty']);
+                     $total = ($total + $subtotal);
+                     ?>
+
+                     <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="pimg/<?php echo $row_cartdone['p_img1'];?>" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">
+                                <?php echo $row_cartdone['p_name']; ?></a></h2>
+                                <span class="quantity">QTY: 
+                                    <?php echo $row_cartdone['p_c_qty']; ?>
+                                </span>
+                                <input type="hidden" name="p_qty" value="<?php echo $product_qty; ?>">
+                                <span class="shp__price">
+                                    <?php echo $row_cartdone['p_price']; ?>
+                                </span>
+                            </div>
+                            <div class="remove__btn" id="shopping-cart-results">
+
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
+                    <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); ?>
 
-        <div class="col-md-6 col-lg-6">
-            <div class="checkout-right-sidebar">
-                <div class="our-important-note">
-                    <h2 class="section-title-3">รายการสั่งซื้อ</h2>
+                    <ul class="shoping__total">
+                        <li class="subtotal">Subtotal:</li>
+                        <li class="total__price">
+                            <strong style="font-size: 30px">
+                                <?php echo $total; ?> บาท
+                            </strong>
+                        </li>
+                        <input type="hidden" name="total" value="<?php echo $total; ?>">
+                    </ul>
+                    <ul class="shopping__btn">
+                        <li><a href="index.php?cart">View Cart</a></li>
+                        <li class="shp__checkout"> <button type="submit" class="btn btn-warning btn-lg" style="width: 100%" >ยืนยันการสั่งซื้อ</button></li>
+                    </ul>
 
-                    <ul class="important-note">
-                       <?php
-                       do {
-                          ?>
-
-                          <div class="shp__single__product">
-                            <div class="shp__pro__thumb">
-                                <a href="#">
-                                    <img src="pimg/<?php echo $row_cartdone['p_img1'];?>" alt="product images">
-                                </a>
-                            </div>
-                            <div class="shp__pro__details">
-                                <h2><a href="product-details.html">
-                                    <?php echo $row_cartdone['p_name']; ?></a></h2>
-                                    <span class="quantity">QTY: 
-                                        <?php echo $row_cartdone['p_c_qty']; ?>
-                                    </span>
-                                    <input type="hidden" name="p_qty" value="<?php echo $product_qty; ?>">
-                                    <span class="shp__price">
-                                        <?php echo $row_cartdone['p_price']; ?>
-                                    </span>
-                                </div>
-                                <div class="remove__btn" id="shopping-cart-results">
-
-                                </div>
-                            </div>
-
-                        <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); ?>
-
-                        <ul class="shoping__total">
-                            <li class="subtotal">Subtotal:</li>
-                            <li class="total__price">
-                                <strong style="font-size: 30px">
-                                    <?php echo $row_cartdone['total']; ?> บาท</strong>
-                                </li>
-                                <input type="hidden" name="total" value="<?php echo $total; ?>">
-                            </ul>
-                            <ul class="shopping__btn">
-                                <li><a href="index.php?cart">View Cart</a></li>
-                                <li class="shp__checkout"> <button type="submit" class="btn btn-warning btn-lg" style="width: 100%" >ยืนยันการสั่งซื้อ</button></li>
-                            </ul>
-
-                        </ul>
-
-                    </div>
-                </div>
+                </ul>
 
             </div>
         </div>
-    </section>
+
+    </div>
+</div>
+</section>
 
 </form>
 
@@ -161,7 +316,7 @@ if (isset($_GET['order_id'])) {
                                     <td><?php echo $i; ?></td>
                                     <td>TS<?php echo str_pad($row_cartdone['order_id'], 6, "0", STR_PAD_LEFT);?></td>
                                     <td><?php echo $row_cartdone['coid']; ?></td>
-                                    <td><?php echo $row_cartdone['ctotal']; ?></td>
+                                    <td><?php echo number_format($row_cartdone['ctotal']); ?></td>
                                     <td><?php $status = $row_cartdone['order_status']; ?>
                                     <?php include 'status.php'; ?>
                                 </td>
@@ -174,7 +329,7 @@ if (isset($_GET['order_id'])) {
                                     </span>
                                 </td>
                                 <td><center>
-                                    <?php if ($status == 4): ?>
+                                    <?php if ($status == 4 || $status == 3): ?>
                                         <button class="btn btn-danger btn-sm" disabled>
                                         ยกเลิก </button></center>
                                         <?php else: ?>
