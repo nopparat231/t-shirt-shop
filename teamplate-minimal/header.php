@@ -1,4 +1,5 @@
 <!doctype html>
+<?php date_default_timezone_set("Asia/Bangkok"); ?>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -23,6 +24,9 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="css/custom.css">
+
+    <!-- เรดิโอ CSS  -->
+    <link rel="stylesheet" href="my_radio.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
