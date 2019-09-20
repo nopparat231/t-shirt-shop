@@ -31,6 +31,12 @@ if (!function_exists("GetSQLValueString")) {
   }
 }
 
+mysql_select_db($database_condb);
+$query_ptype = "SELECT * FROM tbl_type";
+$ptype = mysql_query($query_ptype, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($ptype);
+$totalRows_ptype = mysql_num_rows($ptype);
+
 $colname_eprd = "-1";
 if (isset($_GET['p_id'])) {
   $colname_eprd = $_GET['p_id'];
@@ -42,7 +48,6 @@ $row_eprd = mysql_fetch_assoc($eprd);
 $totalRows_eprd = mysql_num_rows($eprd);
 
 $t_id=$_GET['t_id'];
-$t1_id=$_GET['t1_id'];
 
 mysql_select_db($database_condb);
 $query_prd = "
@@ -51,27 +56,6 @@ WHERE t.t_id=$t_id";
 $prd = mysql_query($query_prd, $condb) or die(mysql_error());
 $row_prd = mysql_fetch_assoc($prd);
 $totalRows_prd = mysql_num_rows($prd);
-
-$query_prd1 = "
-SELECT * FROM  tbl_type1 as t1
-WHERE t1.t1_id=$t1_id";
-$prd1 = mysql_query($query_prd1, $condb) or die(mysql_error());
-$row_prd1 = mysql_fetch_assoc($prd1);
-$totalRows_prd1 = mysql_num_rows($prd1);
-
-$query_sell1 = "
-SELECT * FROM tbl_sell as s , tbl_product as p WHERE s.s_id = p.s_id AND p.p_id='$colname_eprd' ";
-$sell1 = mysql_query($query_sell1, $condb) or die(mysql_error());
-$row_sell1 = mysql_fetch_assoc($sell1);
-$totalRows_sell1 = mysql_num_rows($sell1);
-
-
-mysql_select_db($database_condb);
-$query_ptype = "SELECT * FROM tbl_type WHERE t_id !=".$t_id;
-$ptype = mysql_query($query_ptype, $condb) or die(mysql_error());
-$row_ptype = mysql_fetch_assoc($ptype);
-$totalRows_ptype = mysql_num_rows($ptype);
-
 ?>
 <?php include('access.php');?>
 <!DOCTYPE html>
@@ -85,72 +69,156 @@ $totalRows_ptype = mysql_num_rows($ptype);
   <!-- ckeditor-->
   <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
-</head>
-<body>
+  </head> <?php include('navbar.php');?>
+  <body>   <?php //include('menu.php');?>
   <div class="container">
-    <div class="row">
-     <?php include('navbar.php');?>
-   </div>
 
+   <div class="row">
+    
 
-
-      <?php include('m.php');?>
-    <div class="row">
-    <div class="col-md-12">
-      <h3 align="center"> แก้ไขข้อมูลหนังสือ
+     
+     
+     <div class="col-md-3">
+      
+     </div>
+     <div class="col-md-9">
+      <h3 align="center"> แก้ไขข้อมูลสินค้า
        <?php include('edit-ok.php');?>
      </h3>
      <div class="table-responsive">
       <form action="edit_product_db.php"  method="post" enctype="multipart/form-data" name="Add_Product" id="Add_Product" >
-        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 
+
+        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="129" align="right" valign="middle">ชื่อหนังสือ :</td>
+            <td colspan="3" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="129" align="right" valign="middle">ชื่อสินค้า :</td>
             <td colspan="2"><label for="pro_name2"></label>
               <input name="p_name" type="text" required id="pro_name2" value="<?php echo $row_eprd['p_name']; ?>" size="50"/></td>
             </tr>
-           <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <?php include 'in.php'; ?>
-              <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-        <tr>
-          <td width="129" align="right" valign="middle">ผู้เขียน :</td>
-          <td colspan="2"><label for="p_at"></label>
-            <input name="p_at" type="text" required size="50" value="<?php echo $row_eprd['p_at']; ?>"/></td>
-          </tr>
-
-          <tr>
-            <td align="right" valign="middle">&nbsp;</td>
-            <td colspan="2">&nbsp;</td>
-          </tr>
-          <tr>
-            <td width="129" align="right" valign="middle">สำนักพิมพ์ :</td>
-            <td colspan="2"><label for="p_pu"></label>
-              <input name="p_pu" type="text" required size="50" value="<?php echo $row_eprd['p_pu']; ?>"/></td>
-            </tr>
-
             <tr>
               <td align="right" valign="middle">&nbsp;</td>
               <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-              <td width="129" align="right" valign="middle">ISBN :</td>
-              <td colspan="2"><label for="p_br"></label>
-                <input name="p_br" type="number" required size="50" value="<?php echo $row_eprd['p_br']; ?>" /></td>
+              <td width="129" align="right" valign="middle">จำนวนสินค้า :</td>
+              <td colspan="2"><label for="p_qty"></label>
+                <input name="p_qty" value="<?php echo $row_eprd['p_qty']; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "4" required  size="5"  onkeydown="javascript: return event.keyCode == 69 ? false : true" /></td>
               </tr>
-
-
               <tr>
                 <td align="right" valign="middle">&nbsp;</td>
                 <td colspan="2">&nbsp;</td>
               </tr>
               <tr>
-                <td align="right" valign="top">รายละเอียดหนังสือ :&nbsp;</td>
+                <td align="right" valign="middle">ราคาก่อนลด :</td>
+                <td width="2"><label for="promo"></label>
+                 <input name="promo" value="<?php echo $row_eprd['promo']; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                 type = "number"
+                 maxlength = "5" required id="promo" onkeydown="javascript: return event.keyCode == 69 ? false : true"/></td>
+               </tr>
+
+               <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">ราคาหลังลด :</td>
+                <td width="2"><label for="p_price"></label>
+                 <input name="p_price" value="<?php echo $row_eprd['p_price']; ?>"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                 type = "number"
+                 maxlength = "5" required id="p_price" value="" size="5" onkeydown="javascript: return event.keyCode == 69 ? false : true"/></td>
+               </tr>
+
+               <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="129" align="right" valign="middle">ไซส์ :</td>
+                <td colspan="2"><label for="p_size"></label>
+                  <input name="p_size" value="<?php echo $row_eprd['p_size']; ?>"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  type = "text"
+                  maxlength = "3"  required id="p_size" /></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="middle">&nbsp;</td>
+                  <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td width="129" align="right" valign="middle">ค่าจัดส่ง :</td>
+                  <td colspan="2"><label for="p_ems"></label>
+                    <input name="p_ems" value="<?php echo $row_eprd['p_ems']; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "3" required id="p_ems" size="5"  onkeydown="javascript: return event.keyCode == 69 ? false : true"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="middle">&nbsp;</td>
+                    <td colspan="2">&nbsp;</td>
+                  </tr>
+
+                  <tr>
+                    <td align="right" valign="middle">ตัวแทนจำหน่าย :</td>
+                    <td colspan="2">
+                      <label for=""></label>
+
+                      <?php
+                      $n = "";
+                      $ng = "";
+                      $ns = "";
+                      if ($row_eprd['p_sell'] == 'koramex'){
+                        $n = "selected='selected'";
+                      }elseif ($row_eprd['p_sell'] == 'fashion shoes') {
+                        $ng = "selected='selected'";
+                      }    
+                     //  elseif ($row_eprd['p_sell'] == 'บ.3') {
+                     //   $ns = "selected='selected'";
+                     // } 
+                     ?>
+
+                     <select class="form-control" id="sel1" name="p_sell">
+                      <option value="koramex" <?php echo $n; ?>>koramex</option>
+                      <option value="fashion shoes" <?php echo $ng; ?>>fashion shoes</option>
+                     <!--  <option value="บ.3" <?php echo $ns; ?>>บ.3</option> -->
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="right" valign="middle">&nbsp;</td>
+                  <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="right" valign="middle">ประเภทสินค้า :</td>
+                  <td colspan="2">
+                    <label for=""></label>
+                    <select name="t_id" id="t_id" required="required">
+                     <option value="<?php echo $row_prd['t_id'];?>"><?php echo $row_prd['t_name'];?></option>
+                     <option value="">กรุณาเลือกประเภท</option>
+                     <?php
+                     do {
+                      ?>
+                      <option value="<?php echo $row_ptype['t_id']?>"><?php echo $row_ptype['t_name']?></option>
+                      <?php
+                    } while ($row_ptype = mysql_fetch_assoc($ptype));
+                    $rows = mysql_num_rows($ptype);
+                    if($rows > 0) {
+                      mysql_data_seek($ptype, 0);
+                      $row_ptype = mysql_fetch_assoc($ptype);
+                    }
+                    ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">รายละเอียดสินค้า :</td>
                 <td colspan="2">
                   <textarea name="p_detial" id="p_detial" class="ckeditor" cols="80" rows="5"><?php echo $row_eprd['p_detial']; ?></textarea>
                 </td>
@@ -164,7 +232,27 @@ $totalRows_ptype = mysql_num_rows($ptype);
                 <td colspan="2">&nbsp;</td>
               </tr>
 
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">หน่วยสินค้า</td>
+                <td colspan="2"><label for="pro_qty"></label>
+                 :
+                 <select name="p_unit" id="p_unit" required>
+                  <option value="<?php echo $row_eprd['p_unit'];?>"><?php echo $row_eprd['p_unit'];?></option>
+                  <option value="ชิ้น">ชิ้น</option>
+                  <option value="ใบ">ใบ</option>
+                  <option value="คู่">คู่</option>
+                  <option value="ตัว">ตัว</option>
 
+                </select></td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
               <tr>
                 <td align="right" valign="middle">&nbsp;</td>
                 <td colspan="2">รูปที่&nbsp;1</td>
@@ -174,7 +262,7 @@ $totalRows_ptype = mysql_num_rows($ptype);
                 <td colspan="2"><img src="../pimg/<?php echo $row_eprd['p_img1']; ?>" width="100"></td>
               </tr>
               <tr>
-                <td align="right" valign="middle"><br>แก้รูปที่1 :&nbsp;</td>
+                <td align="right" valign="middle">แก้รูปที่1 :</td>
                 <td colspan="2"><label for="p_img1"></label>
                   <input name="p_img1" type="file"  class="bg-warning" id="p_img1" size="40" />
                   <input name="p_img11" type="hidden" id="p_img11" value="<?php echo $row_eprd['p_img1']; ?>">
@@ -193,7 +281,7 @@ $totalRows_ptype = mysql_num_rows($ptype);
                   <td colspan="2"><img src="../pimg/<?php echo $row_eprd['p_img2']; ?>" width="100"></td>
                 </tr>
                 <tr>
-                  <td align="right" valign="middle"><br>แก้รูปที่2 :&nbsp;</td>
+                  <td align="right" valign="middle">แก้รูปที่2 :</td>
                   <td colspan="2"><label for="p_img2"></label>
                     <input name="p_img2" type="file"  class="bg-warning" id="p_img2" size="40" />
                     <input name="p_img22" type="hidden" id="p_img22" value="<?php echo $row_eprd['p_img2']; ?>"></td>
@@ -204,156 +292,83 @@ $totalRows_ptype = mysql_num_rows($ptype);
                       <td colspan="2">&nbsp;</td>
                     </tr>
                     <tr>
-                      <tr>
-                        <td align="right" valign="middle">&nbsp;</td>
-                        <td colspan="2">&nbsp;__________________________________</td>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2">รูปที่&nbsp;3</td>
+                    </tr>
+                    <tr>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2"><img src="../pimg/<?php echo $row_eprd['p_img3']; ?>" width="100"></td>
+                    </tr>
+                    <tr>
+                      <td align="right" valign="middle">แก้รูปที่3 :</td>
+                      <td colspan="2"><label for="p_img3"></label>
+                        <input name="p_img3" type="file"  class="bg-warning" id="p_img3" size="40" />
+                        <input name="p_img33" type="hidden" id="p_img33" value="<?php echo $row_eprd['p_img3']; ?>"></td>
                       </tr>
                       <tr>
                         <tr>
                           <td align="right" valign="middle">&nbsp;</td>
                           <td colspan="2">&nbsp;</td>
                         </tr>
+                        <tr>
+                          <td align="right" valign="middle">&nbsp;</td>
+                          <td colspan="2">รูปที่&nbsp;4</td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="middle">&nbsp;</td>
+                          <td colspan="2"><img src="../pimg/<?php echo $row_eprd['p_img4']; ?>" width="100"></td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="middle">แก้รูปที่3 :</td>
+                          <td colspan="2"><label for="p_img4"></label>
+                            <input name="p_img4" type="file"  class="bg-warning" id="p_img4" size="40" />
+                            <input name="p_img44" type="hidden" id="p_img44" value="<?php echo $row_eprd['p_img4']; ?>"></td>
+                          </tr>
+                          <tr>
+                            <tr>
+                              <td align="right" valign="middle">&nbsp;</td>
+                              <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td align="right" valign="middle">&nbsp;</td>
+                              <td colspan="2">รูปที่&nbsp;5</td>
+                            </tr>
+                            <tr>
+                              <td align="right" valign="middle">&nbsp;</td>
+                              <td colspan="2"><img src="../pimg/<?php echo $row_eprd['p_img5']; ?>" width="100"></td>
+                            </tr>
+                            <tr>
+                              <td align="right" valign="middle">แก้รูปที่5 :</td>
+                              <td colspan="2"><label for="p_img5"></label>
+                                <input name="p_img5" type="file"  class="bg-warning" id="p_img5" size="40" />
+                                <input name="p_img55" type="hidden" id="p_img55" value="<?php echo $row_eprd['p_img5']; ?>"></td>
+                              </tr>
+                              <tr>
+                                <td align="right" valign="middle">&nbsp;</td>
+                                <td colspan="2">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td align="right" valign="middle">&nbsp;</td>
+                                <td colspan="2">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="2"><button type="submit" name="button" id="button" value="ตกลง" class="btn btn-primary">บันทึก</button></td>
+                              </tr>
+                            </table>
+                          </form>
+                        </div>
 
+                      </div>
+                    </div>
+                  </div>
+                </body>
+                </html>
+                <?php
+                mysql_free_result($ptype);
 
-            <tr>
-              <td width="129" align="right" valign="middle">จำนวนหนังสือ :</td>
-              <td colspan="2"><label for="p_qty"></label>
-                <input name="p_qty" min="0"type="number" required id="p_qty" value="<?php echo $row_eprd['p_qty']; ?>" size="5"/></td>
-              </tr>
+                mysql_free_result($eprd);
 
-              <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <tr>
-                <td align="right" valign="middle">หน่วยนับ</td>
-                <td colspan="2"><label for="pro_qty"></label>
-                 :
-                 <select name="p_unit" id="p_unit" required>
-                  <option value="<?php echo $row_eprd['p_unit'];?>"><?php echo $row_eprd['p_unit'];?></option>
-                  <option value="เล่ม">เล่ม</option>
-                  <option value="แผ่น">ชุด</option>
-
-                </select></td>
-              </tr>
-
-              <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <tr>
-                <td width="129" align="right" valign="middle">น้ำหนัก :</td>
-                <td colspan="2"><label for="p_ems"></label>
-                  <input name="p_ems" min="0" type="number" required id="p_ems" value="<?php echo $row_eprd['p_ems']; ?>" size="5"/> กรัม</td>
-                </tr>
-                <tr>
-                  <td align="right" valign="middle">&nbsp;</td>
-                  <td colspan="2">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td align="right" valign="middle">ราคาขาย :</td>
-                  <td width="2"><label for="p_price"></label>
-                   <input name="p_price"min="0" type="number" required id="p_price" value="<?php echo $row_eprd['p_price']; ?>" size="5"/></td>
-                 </tr>
-
-
-                 <tr>
-                  <td align="right" valign="middle">&nbsp;</td>
-                  <td colspan="2">&nbsp;</td>
-                </tr>
-              <tr>
-                <td align="right" valign="middle">ราคาก่อนลด :</td>
-                <td width="2"><label for="promo"></label>
-                 <input name="promo" min="0"type="number" required id="promo" value="<?php echo $row_eprd['promo']; ?>" size="5"/></td>
-               </tr>
-               <?php $dd = date('Y-m-d'); ?>
-               <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <tr>
-                <td align="right" valign="middle">เริ่มลดราคา :</td>
-                <td width="2"><label for="promo_start"></label>
-                  <input type="date" name="promo_start" min="<?php echo $dd; ?>" value="<?php echo $row_eprd['promo_start']; ?>">
-                </td>
-              </tr>
-
-              <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <tr>
-                <td align="right" valign="middle">สิ้นสุดการลดราคา :</td>
-                <td width="2"><label for="promo_done"></label>
-                  <input type="date" name="promo_done" min="<?php echo $dd; ?>" value="<?php echo $row_eprd['promo_done']; ?>">
-                </td>
-              </tr>
-
-
-              <tr>
-                <td align="right" valign="middle">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-
-
-
-            <tr>
-              <td align="right" valign="middle">เลขที่ใบตรวจรับ :</td>
-              <td colspan="2">
-
-               <?php
-
-               $query_sell = "SELECT * FROM tbl_sell WHERE s_id !=".$row_sell1['s_id'];
-               $sell = mysql_query($query_sell, $condb) or die(mysql_error());
-               $row_sell = mysql_fetch_assoc($sell);
-               $totalRows_sell = mysql_num_rows($sell);
-
-               ?>
-
-               <label for=""></label>
-               <select name="s_id" required="required">
-
-                <option value="<?php echo $row_sell1['s_id'];?>"><?php echo $row_sell1['s_number'];?></option>
-
-                 <?php
-                 do {
-                  ?>
-                  <option value="<?php echo $row_sell['s_id']?>"><?php echo $row_sell['s_number']?></option>
-                  <?php
-                } while ($row_sell = mysql_fetch_assoc($sell));
-
+                mysql_free_result($prd);
                 ?>
-              </select>
-            </td>
-          </tr>
-
-          <tr>
-            <td align="right" valign="middle">&nbsp;</td>
-            <td colspan="2">&nbsp;</td>
-          </tr>
-
-                      <tr>
-                        <td align="right" valign="middle">&nbsp;</td>
-                        <td colspan="2">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td>&nbsp;</td>
-                        <td colspan="2"><button type="submit" name="button" id="button" value="ตกลง" class="btn btn-primary">บันทึก</button></td>
-                      </tr>
-                    </table>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </body>
-        </html>
-        <?php
-        mysql_free_result($ptype);
-
-        mysql_free_result($eprd);
-
-        mysql_free_result($prd);
-        ?>
-        <?php include('f.php');?>
+                <?php include('f.php');?>

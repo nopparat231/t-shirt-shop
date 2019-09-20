@@ -8,21 +8,33 @@ $admin_user = $_POST['admin_user'];
 $admin_pass = $_POST['admin_pass'];
 $admin_name = $_POST['admin_name'];
 $admin_tel = $_POST['admin_tel'];
-$admin_address = $_POST['a']." แขวง/ตำบล".$_POST['t']." เขต/อำเภอ".$_POST['o']." จังหวัด".$_POST['j']." รหัสไปรษณีย์ ".$_POST['p'];
+$admin_address = $_POST['admin_address'];
 $admin_email = $_POST['admin_email'];
 $status = $_POST['status'];
 
-
+mysql_select_db($database_condb);
 $check ="SELECT * FROM tbl_admin  WHERE admin_user='$admin_user'";
 $result1=mysql_query( $check,$condb);
 $num=mysql_num_rows($result1);
 
-if($num > 0)
-{
-			echo "<script>";
-			echo "alert('user นีมีผู้ใช้แล้ว กรุณาสมัครใหม่อีกครั้ง');";
-			echo "window.location ='add_admin.php'; ";
-			echo "</script>";
+
+$checkemail = "SELECT * FROM tbl_admin WHERE admin_email = '$admin_email' ";
+$resultemail = mysql_query($checkemail,$condb);
+$numemail = mysql_num_rows($resultemail);
+
+
+if ($num > 0 ){
+	echo"<script>";
+	echo"alert('ชื่อผู้ใช้ นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
+	echo"window.location = 'adduser_admin.php';";
+	echo"</script>";
+
+
+}elseif ($numemail > 0 ){
+	echo"<script>";
+	echo"alert('Email นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
+	echo"window.location = 'adduser_admin.php';";
+	echo"</script>";
 
 } else {
 
@@ -42,7 +54,7 @@ $sql ="INSERT INTO tbl_admin
 
 		if($result){
 			echo "<script>";
-			echo "alert('เพิ่มผู้ใช้งานระบบ เรียบร้อยแล้ว');";
+			echo "alert('เพิ่ม ผู้ดูแลระบบ เรียบร้อยแล้ว');";
 			echo "window.location ='list_admin.php'; ";
 			echo "</script>";
 		} else {

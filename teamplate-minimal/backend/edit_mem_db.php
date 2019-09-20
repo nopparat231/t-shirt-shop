@@ -6,16 +6,20 @@ include('../Connections/condb.php');
 $mem_id = $_POST['mem_id'];
 $mem_username = $_POST['mem_username'];
 $mem_password = $_POST['mem_password'];
-$mem_name = $_POST['mem_name'];
+$numna = $_POST['numna'];
+$mem_fname = $_POST['mem_fname'];
+$mem_lname = $_POST['mem_lname'];
 $mem_email = $_POST['mem_email'];
 $mem_tel = $_POST['mem_tel'];
 $mem_address = $_POST['mem_address'];
 
-
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_member SET
 			mem_username='$mem_username',
 		  	mem_password='$mem_password',
-		  	mem_name='$mem_name',
+		  	numna='$numna',
+		  	mem_fname='$mem_fname',
+		  	mem_lname='$mem_lname',
 		  	mem_email='$mem_email',
 		  	mem_tel='$mem_tel',
 		  	mem_address='$mem_address'

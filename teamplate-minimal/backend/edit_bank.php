@@ -1,34 +1,34 @@
 <?php require_once('../Connections/condb.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
+  function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+  {
+    if (PHP_VERSION < 6) {
+      $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+    }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+    $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
-  switch ($theType) {
-    case "text":
+    switch ($theType) {
+      case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
       break;
-    case "long":
-    case "int":
+      case "long":
+      case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
       break;
-    case "double":
+      case "double":
       $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
       break;
-    case "date":
+      case "date":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
       break;
-    case "defined":
+      case "defined":
       $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
       break;
+    }
+    return $theValue;
   }
-  return $theValue;
-}
 }
 
 $colname_editbank = "-1";
@@ -44,103 +44,119 @@ $totalRows_editbank = mysql_num_rows($editbank);
 <?php include('access.php');?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php include('h.php');?>
-    <?php include('datatable.php');?>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php include('h.php');?>
+  <?php include('datatable.php');?>
+  </head> <?php include('navbar.php');?>
+  <body><?php //include('menu.php');?>
   <div class="container">
-  <div class="row">
-         <?php include('navbar.php');?>
-   </div>
+
+  	<div class="row">
 
 
 
-        <?php include('m.php');?>
-      <div class="row">
-        <div class="col-md-12">
-        <h3 align="center">  แก้ไขข้อมูลธนาคาร  <?php include('edit-ok.php');?> </h3>
-<div class="table-responsive">
-   <form action="edit_bank_db.php?bank_id=<?php echo $row_editbank['b_id']; ?> "  method="post" enctype="multipart/form-data" name="Add_Product" id="Add_Product" >
+
+     <div class="col-md-3">
+
+     </div>
+     <div class="col-md-9">
+      <h3 align="center">  แก้ไข  ข้อมูลธนาคาร  <?php include('edit-ok.php');?> </h3>
+      <div class="table-responsive">
+       <form action="edit_bank_db.php?bank_id=<?php echo $row_editbank['b_id']; ?> "  method="post" enctype="multipart/form-data" name="Add_Product" id="Add_Product" >
 
 
-  <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-      <td colspan="3" align="center">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="129" align="right" valign="middle">ธนาคาร :</td>
-      <td width="471" colspan="2"><label for="b_type"></label>
-        <input name="b_name" type="text" required id="pro_name2" size="60" value="<?php echo $row_editbank['b_name']; ?>"/></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">เลขบัญชี :</td>
-      <td colspan="2"><input name="b_number" type="text" required id="b_number" size="60" value="<?php echo $row_editbank['b_number']; ?>"/></td>
-    </tr>
-    <tr>
-      <td align="right" valign="top">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">ประเภท :</td>
-      <td colspan="2"><input name="b_type" type="text" required id="pro_name3" size="40" value="<?php echo $row_editbank['b_type']; ?>"/></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">สาขา :</td>
-      <td colspan="2"><input name="bn_name" type="text" required id="pro_name4" size="60" value="<?php echo $row_editbank['bn_name']; ?>"/></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">ชื่อเจ้าของ บ/ช :</td>
-      <td colspan="2"><input name="b_owner" type="text" required id="pro_name5" size="60" value="<?php echo $row_editbank['b_owner']; ?>"/></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
+        <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td colspan="3" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="129" align="right" valign="middle">ธนาคาร :</td>
+            <td width="471" colspan="2"><label for="b_type"></label>
+              <input name="b_name" type="text" required id="pro_name2" size="60" value="<?php echo $row_editbank['b_name']; ?>"/></td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">เลขบัญชี :</td>
+              <td colspan="2"><input name="b_number" id="input-num" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type="tel"
+                maxlength = "10" onkeyup="num();" size="60" value="<?php echo $row_editbank['b_number']; ?>"/></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">ประเภท :</td>
+                <td colspan="2"><input name="b_type" type="text" required id="pro_name3" size="40" value="<?php echo $row_editbank['b_type']; ?>"/></td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">สาขา :</td>
+                <td colspan="2"><input name="bn_name" type="text" required id="pro_name4" size="60" value="<?php echo $row_editbank['bn_name']; ?>"/></td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">ชื่อบัญชี :</td>
+                <td colspan="2"><input name="b_owner" type="text" required id="pro_name5" size="60" value="<?php echo $row_editbank['b_owner']; ?>"/></td>
+              </tr>
+              <tr>
+                <td align="right" valign="middle">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
 
-    <tr>
-      <td align="left" valign="middle">โลโก้</td>
+              <tr>
+                <td align="left" valign="middle">ตราธนาคาร</td>
 
-        <td align="left"  colspan="2"><img src="../bimg/<?php echo $row_editbank['b_logo']; ?>" width="100">
+                <td align="left"  colspan="2"><img src="../bimg/<?php echo $row_editbank['b_logo']; ?>" width="100">
 
-        <input type="file" name="b_logo" id="b_logo" required value="<?php echo $row_editbank['b_logo']; ?>"></td>
-    </tr>
-    <tr>
-      <td align="left" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td colspan="2">
-      <button type="submit" name="button" id="button" value="ตกลง" class="btn btn-primary">เพิ่มข้อมูล</button></td>
-    </tr>
-  </table>
-</form>
-</div>
-</div>
-</div>
-</div>
+                  <input type="file" name="b_logo" id="b_logo" required value="<?php echo $row_editbank['b_logo']; ?>"></td>
+                </tr>
+                <tr>
+                  <td align="left" valign="middle">&nbsp;</td>
+                  <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td colspan="2">
+                    <button type="submit" name="button" id="button" value="ตกลง" class="btn btn-primary">เพิ่มข้อมูล</button></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
- </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>
 <?php
 mysql_free_result($editbank);
 
- include('f.php');?>
+include('f.php');?>
+
+<script type="text/javascript">
+
+  function validate() {
+  var element = document.getElementById('input-field');
+  element.value = element.value.replace(/[^a-zA-Zก-๙. @]+/, '');
+};
+
+function num() {
+  var element = document.getElementById('input-num');
+  element.value = element.value.replace(/[^0-9]+/, '');
+};
+</script>

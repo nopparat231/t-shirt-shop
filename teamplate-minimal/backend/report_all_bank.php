@@ -45,19 +45,19 @@ $totalRows_lbk = mysql_num_rows($lbk);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
-  <?php include('./datatable2.php');?>
+  <?php include('datatable.php');?>
 
 </head>  <?php include('navbar.php');?>
 <body> <?php //include('menu.php');?>
   <div class="container">
 
 
+  <div class="col-md-3">
 
-  <?php include('m.php');?>
-  <div class="row">
-<div class="col-md-12">
-      <h3 align="center"> รายการ ข้อมูลธนาคาร   </h3>
-      <table id="example" class="display" cellspacing="0" border="1">
+</div>
+    <div class="col-md-9">
+      <h3 align="center"> รายงานข้อมูลธนาคาร   </h3>
+      <table id="example4" class="display" cellspacing="0" border="1">
         <thead>
           <tr align="center">
             <th>ลำดับที่</th>
@@ -99,4 +99,4 @@ $totalRows_lbk = mysql_num_rows($lbk);
 <?php
 mysql_free_result($lbk);
 ?>
-<?php  //include('f.php');?>
+<?php  include('f.php');?>

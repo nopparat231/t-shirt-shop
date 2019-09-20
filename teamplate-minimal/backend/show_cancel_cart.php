@@ -1,16 +1,12 @@
 <?php require_once('../Connections/condb.php'); ?>
 <?php
-
-
 if (!function_exists("GetSQLValueString")) {
 	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 	{
 		if (PHP_VERSION < 6) {
 			$theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
 		}
-
 		$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
 		switch ($theType) {
 			case "text":
 			$theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
@@ -32,7 +28,6 @@ if (!function_exists("GetSQLValueString")) {
 		return $theValue;
 	}
 }
-
 $colname_mm = "-1";
 if (isset($_SESSION['MM_Username'])) {
 	$colname_mm = $_SESSION['MM_Username'];
@@ -43,18 +38,15 @@ $query_mm = sprintf("SELECT * FROM tbl_member WHERE mem_username = %s", GetSQLVa
 $mm = mysql_query($query_mm, $condb) or die(mysql_error());
 $row_mm = mysql_fetch_assoc($mm);
 $totalRows_mm = mysql_num_rows($mm);
-
 $mem_id = $row_mm['mem_id'];
-
 mysql_select_db($database_condb);
-$query_mycart = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, o.name , d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_id = d.order_id AND o.order_status = 4 GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
+$query_mycart = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, o.name , d.order_id , count(d.order_id) as coid , SUM(d.total) as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_id = d.order_id AND o.order_status = 4 GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
 $mycart = mysql_query($query_mycart , $condb) or die(mysql_error());
 $row_mycart = mysql_fetch_assoc($mycart);
 $totalRows_mycart = mysql_num_rows($mycart);
-
 ?>
 
-<h3 align="center">ยกเลิกคำสั่งซื้อ</h3>
+<h3 align="center">ชำระเงินแล้ว</h3>
 <table id="example" class="display" cellspacing="0" border="1">
 	<thead>
 		<tr>
@@ -71,7 +63,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
 		<?php do { ?>
 			<tr>
 				<td>
-					BK<?php echo $row_mycart['oid'];?>
+					JN<?php echo $row_mycart['oid'];?>
 					<span id="hp">
 						<a href="index.php?order_id=<?php echo $row_mycart['oid'];?>&act=show-order">
 							<span class="glyphicon glyphicon-zoom-in"></span>

@@ -1,5 +1,4 @@
 <?php require_once('../Connections/condb.php'); ?>
-
 <?php
 if (!function_exists("GetSQLValueString")) {
   function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
@@ -52,18 +51,20 @@ if (isset($_POST['admin_user'])) {
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_condb);
 
-  $LoginRS__query=sprintf("SELECT admin_user, admin_pass FROM tbl_admin WHERE admin_user=%s AND admin_pass=%s",
+  $LoginRS__query=sprintf("SELECT admin_user, admin_pass , status FROM tbl_admin WHERE admin_user=%s AND admin_pass=%s",
     GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
 
   $LoginRS = mysql_query($LoginRS__query, $condb) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
+
+
   if ($loginFoundUser) {
    $loginStrGroup = "";
 
    if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
     //declare two session variables and assign them
    $_SESSION['MM_admin'] = $loginUsername;
-   $_SESSION['MM_UserGroup'] = $loginStrGroup;
+   $_SESSION['MM_AdminGroup'] = $loginStrGroup;
 
    if (isset($_SESSION['PrevUrl']) && false) {
     $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
@@ -74,21 +75,21 @@ if (isset($_POST['admin_user'])) {
 }
 else {
   echo "<script>";
-  echo "alert('Username หรือ Password ผิด กรุณาLoginอีกครั้ง !');";
+  echo "alert('ชื่อผู้ใช้ หรือ รหัสผ่าน ผิด กรุณาเข้าสู่ระบบอีกครั้ง !');";
   echo "window.location ='index.php'; ";
   echo "</script>";
 }
 }
+
 ?>
 
-<?php include('navbar.php'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BOOKSHOP | Back office | Log in</title>
+  <title>AdminLTE 2 | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -104,29 +105,14 @@ else {
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-
-
-<div class="container">
-
-
-
- <div class="row">
-<br><br><br>
-
-   <?php include('m.php');?>
-
-
- </div>
-</div>
-
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href=""><b>เข้าสู่ระบบ </b></a>
+      <a href="">ลงชื่อเข้าใช้งาน</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">เข้าสู่ระบบ เพื่อทำรายการต่าง ๆ </p>
+      <p class="login-box-msg">กรุณาเข้าสู่ระบบเพื่อเข้าใช้งานระบบ</p>
 
       <form action="<?php echo $loginFormAction; ?>"  method="post">
         <div class="form-group has-feedback">
@@ -141,12 +127,12 @@ else {
           <div class="col-xs-8">
             <div class="checkbox icheck">
               <label>
-                &nbsp;&nbsp;<a href="../" class="glyphicon"><font color = "#3366FF"><u> BOOKSHOP</u></font></a>
+                <a href="../" type="btn btn-info" class="glyphicon glyphicon-home"></a>
               </label>
             </div>
           </div>
-
           <!-- /.col -->
+
           <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat">เข้าสู่ระบบ</button>
           </div>

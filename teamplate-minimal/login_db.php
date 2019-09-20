@@ -37,11 +37,11 @@ if (isset($_POST['login'])) {
 	if ($loginFoundUser > 0) {
 
 
-		$loginStrGroup = "";
+		//$loginStrGroup = "";
 
 	    //declare two session variables and assign them
 		$_SESSION['MM_Username'] = $loginUsername;
-		$_SESSION['MM_UserGroup'] = $loginStrGroup;
+		//$_SESSION['MM_UserGroup'] = $loginStrGroup;
 		$_SESSION['User_id'] = $objResult_user['mem_id'];
 		$_SESSION['User'] = $objResult_user['mem_name'];
 

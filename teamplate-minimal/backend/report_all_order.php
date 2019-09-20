@@ -1,7 +1,7 @@
 <?php require_once('../Connections/condb.php'); ?>
 <?php
 
-
+date_default_timezone_set('Asia/Bangkok');
 if (!function_exists("GetSQLValueString")) {
   function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
   {
@@ -34,17 +34,15 @@ if (!function_exists("GetSQLValueString")) {
 }
 
 
-$start_date = $_POST['start_date'];
-$end_date = $_POST['end_date'];
+$start_date = isset($_POST['start_date']);
+$end_date = isset($_POST['end_date']);
 if ($start_date != '') {
   $start_date = $_POST['start_date'];
   $end_date = $_POST['end_date'];
 }elseif ($start_date == '') {
   $start_date = '2012-01-01';
-  $end_date = date('Y/m/d');
-}else {
-  $start_date = '2012-01-01';
-  $end_date = date('Y/m/d');
+  $end_dateo = date('Y/m/d');
+  $end_date = date("Y/m/d", strtotime("+1 day", strtotime($end_dateo)));
 }
 
 $colname_mm = "-1";
@@ -76,7 +74,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
-<?php include('./datatable2.php');?>
+  <?php include('datatable.php');?>
   <?php include 'date.php'; ?>
 
   </head> <?php include('navbar.php');?>
@@ -85,12 +83,14 @@ $totalRows_mycart = mysql_num_rows($mycart);
     <div class="row">
 
     </div>
-
-<?php include('m.php');?>
-<div class="row">
+    <div class="row">
 
 
-  <div class="col-md-12">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-9">
+
 
         <style type="text/css">
 
@@ -100,23 +100,24 @@ $totalRows_mycart = mysql_num_rows($mycart);
 
 
 
-      <h3 align="center">รายการ การสั่งซื้อ</h3>
+      <h3 align="center">รายงานข้อมูลการสั่งซื้อ<?php echo $strNewDate; ?></h3>
 
 
       <form action="report_all_order.php" method="post">
+        <?php include 'thaidate.php'; ?>
        <div class="row">
 
          <div class="col-md-1">
           <label><font size="2">จากวัน</font></label>
         </div>
         <div class="col-md-4">
-          <input id="inputdatepicker" class="datepicker" name="start_date" type="text"  autocomplete="off"  />
+          <input id="from" name="start_date" type="text"  autocomplete="off"  />
         </div>
         <div class="col-md-1">
           <label><font size="2">ถึงวันที่</font></label>
         </div>
         <div class="col-md-4">
-         <input  id="inputdatepicker" class="datepicker" name="end_date" type="text"  autocomplete="off"  />
+          <input  id="to" name="end_date" type="text"  autocomplete="off"  />
        </div>
 
        <div class="col-md-2">
@@ -125,10 +126,10 @@ $totalRows_mycart = mysql_num_rows($mycart);
     </div>
   </form>
   <br />
-  <table id="example" class="display"  border="1">
+  <table id="example7" class="display"  border="1">
     <thead>
       <tr>
-        <th>ลำดับ</th>
+        <th>ลำดับที่</th>
         <th>รหัสสั่งซื้อ</th>
         <th>ลูกค้า</th>
         <th>รายการ</th>
@@ -147,7 +148,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
           <tr>
             <td align="center" valign="top"><?php echo $i; ?></td>
             <td align="center">
-              BK<?php echo $row_mycart['oid'];?>
+              JN<?php echo $row_mycart['oid'];?>
             </td>
             <td align="center" >
               <?php echo $row_mycart['name'];?>
@@ -174,7 +175,19 @@ $totalRows_mycart = mysql_num_rows($mycart);
           $i += 1;
         } while ($row_mycart = mysql_fetch_assoc($mycart)); ?>
       </tbody>
-     
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+
+
+          <th style="text-align:right">Total:</th>
+          <th></th>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </div>
@@ -186,4 +199,3 @@ $totalRows_mycart = mysql_num_rows($mycart);
 mysql_free_result($mycart);
 
 ?>
-<?php// include('f.php');?>

@@ -5,9 +5,10 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 error_reporting( error_reporting() & ~E_NOTICE );
 
 $p_id = $_GET['p_id'];
-$p_status = '1';
+
+
 mysql_select_db($database_condb);
-$sql ="UPDATE tbl_product SET p_status ='$p_status' WHERE p_id=$p_id";
+$sql ="DELETE FROM tbl_product WHERE p_id=$p_id";
 
 		$result = mysql_query($sql, $condb) or die("Error in query : $sql" .mysql_error());
 

@@ -6,7 +6,9 @@ error_reporting( error_reporting() & ~E_NOTICE );
 
 $mem_username = $_POST['mem_username'];
 $mem_password = $_POST['mem_password'];
-$mem_name = $_POST['mem_name'];
+$numna= $_POST['numna'];
+$mem_fname = $_POST['mem_fname'];
+$mem_lname = $_POST['mem_lname'];
 $mem_tel = $_POST['mem_tel'];
 $mem_address = $_POST['mem_address'];
 $mem_email = $_POST['mem_email'];
@@ -15,28 +17,38 @@ $sid = $_POST['sid'];
 $active = $_POST['active'];
 
 
-
+mysql_select_db($database_condb);
 $check ="SELECT * FROM tbl_member  WHERE mem_username='$mem_username'";
 $result1=mysql_query($check, $condb);
 $num=mysql_num_rows($result1);
 
-if($num > 0)
-{
-			echo "<script>";
-			echo "alert('user นีมีผู้ใช้แล้ว กรุณาสมัครใหม่อีกครั้ง');";
-			echo "window.location ='add_mem.php'; ";
-			echo "</script>";
+$checkemail = "SELECT * FROM tbl_member WHERE mem_email = '$mem_email' ";
+$resultemail = mysql_query($checkemail,$condb);
+$numemail = mysql_num_rows($resultemail);
+
+if ($num > 0 ){
+	echo"<script>";
+	echo"alert('ชื่อผู้ใช้ นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
+	echo"window.location = 'adduser_admin.php';";
+	echo"</script>";
+
+
+}elseif ($numemail > 0 ){
+	echo"<script>";
+	echo"alert('Email นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
+	echo"window.location = 'adduser_admin.php';";
+	echo"</script>";
 
 } else {
 
 
 $sql ="INSERT INTO tbl_member
 
-		(mem_username,  mem_password, mem_name , mem_tel ,mem_address ,mem_email ,status ,sid ,active)
+		(mem_username,  mem_password, mem_fname , mem_fname , mem_tel ,mem_address ,mem_email ,status ,sid ,active)
 
 		VALUES
 
-		('$mem_username', '$mem_password', '$mem_name' , '$mem_tel' ,'$mem_address' ,'$mem_email' ,'$status' , '$sid','$active')";
+		('$mem_username', '$mem_password', '$mem_fname' , '$mem_lname' , '$mem_tel' ,'$mem_address' ,'$mem_email' ,'$status' , '$sid','$active')";
 
 		$result = mysql_query($sql, $condb) or die("Error in query : $sql" .mysql_error());
 }

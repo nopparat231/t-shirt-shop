@@ -54,27 +54,26 @@ $totalRows_editbank = mysql_num_rows($editbank);
   <body><?php //include('menu.php');?>
   <div class="container">
 
+  	<div class="row">
+    	
+      
+        
 
-
-
-
-
-
-
-        <?php include('m.php');?>
-      <div class="row">
-    <div class="col-md-12">
+       <div class="col-md-3">
+  
+</div>
+    <div class="col-md-9">
         <h3 align="center">  แก้ไขการตรวจรับสินค้า  <?php include('edit-ok.php');?> </h3>
 <div class="table-responsive">
    <form action="edit_sell_db.php?bank_id=<?php echo $row_editbank['s_id']; ?> "  method="post" enctype="multipart/form-data" name="Add_Product" id="Add_Product" >
 
-
+  
   <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td colspan="3" align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td width="129" align="right" valign="middle">เลขที่ใบตรวจรับ :</td>
+      <td width="129" align="right" valign="middle">รหัสสินค้า:</td>
       <td width="471" colspan="2"><label for="b_type"></label>
         <input name="s_number" type="text" required id="pro_name2" size="20" value="<?php echo $row_editbank['s_number']; ?>" /></td>
     </tr>
@@ -82,7 +81,6 @@ $totalRows_editbank = mysql_num_rows($editbank);
       <td align="right" valign="middle">&nbsp;</td>
       <td colspan="2">&nbsp;</td>
     </tr>
-
     <tr>
       <td align="right" valign="middle">จำนวน :</td>
       <td colspan="2">
@@ -105,43 +103,6 @@ $totalRows_editbank = mysql_num_rows($editbank);
 
       </td>
     </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="129" align="right" valign="middle">สำนักพิมพ์ :</td>
-      <td width="471" colspan="2"><label for="b_type"></label>
-        <input name="s_name" type="text" required id="pro_name2" size="20" value="<?php echo $row_editbank['s_name']; ?>" /></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="129" align="right" valign="middle">ที่อยู่ :</td>
-      <td width="471" colspan="2"><label for="b_type"></label>
-        <input name="s_address" type="text" required id="pro_name2" size="20" value="<?php echo $row_editbank['s_address']; ?>" /></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="129" align="right" valign="middle">เบอร์โทร :</td>
-      <td width="471" colspan="2"><label for="b_type"></label>
-        <input name="s_phone" type="text" required id="pro_name2" size="20" value="<?php echo $row_editbank['s_phone']; ?>" /></td>
-    </tr>
-    <tr>
-      <td align="right" valign="middle">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="129" align="right" valign="middle">อีเมลล์ :</td>
-      <td width="471" colspan="2"><label for="b_type"></label>
-        <input name="s_email" type="text" required id="pro_name2" size="20" value="<?php echo $row_editbank['s_email']; ?>" /></td>
-    </tr>
-
     <tr>
       <td align="right" valign="middle">&nbsp;</td>
       <td colspan="2">&nbsp;</td>
@@ -178,7 +139,7 @@ $totalRows_editbank = mysql_num_rows($editbank);
       <td colspan="2">
       <button type="submit" name="button" id="button" value="ตกลง" class="btn btn-primary">แก้ไข</button></td>
     </tr>
-  </table>
+  </table> 
 </form>
 </div>
 </div>

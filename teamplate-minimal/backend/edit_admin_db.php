@@ -11,14 +11,14 @@ $admin_tel = $_POST['admin_tel'];
 $admin_address = $_POST['admin_address'];
 $status = $_POST['status'];
 
-
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_admin SET
 			admin_name='$admin_name',
 		  	admin_pass='$admin_pass',
 		  	admin_email='$admin_email',
 		  	admin_tel='$admin_tel',
-		  	admin_address='$admin_address',
-		  	status='$status'
+		  	status='$status',
+		  	admin_address='$admin_address'
 			WHERE admin_id=$admin_id
 			";
 
@@ -31,6 +31,7 @@ $sql ="UPDATE tbl_admin SET
 			echo "<script>";
 			echo "window.location ='edit_admin.php?admin_id=$admin_id&act=edit-ok'; ";
 			echo "</script>";
+
 		} else {
 
 			echo "<script>";

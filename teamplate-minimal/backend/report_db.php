@@ -31,45 +31,47 @@ if (!function_exists("GetSQLValueString")) {
   }
 }
 
+mysql_select_db($database_condb);
+$query_mem = "SELECT count(mem_id) as SumMem FROM tbl_member ";
+$mem = mysql_query($query_mem, $condb) or die(mysql_error());
+$row_mem = mysql_fetch_assoc($mem);
+$totalRows_mem = mysql_num_rows($mem);
+
+
+
+mysql_select_db($database_condb);
+$query_view = "SELECT p_qty , p_name , SUM(p_view) as SumView , count(p_id) as Sumprd FROM tbl_product ";
+$view = mysql_query($query_view, $condb) or die(mysql_error());
+$row_view = mysql_fetch_assoc($view);
+$totalRows_view = mysql_num_rows($view);
+
+mysql_select_db($database_condb);
+$query_order = "SELECT order_status ,  count(order_id) as Sumorder  FROM tbl_order ";
+$order = mysql_query($query_order, $condb) or die(mysql_error());
+$row_order = mysql_fetch_assoc($order);
+$totalRows_order = mysql_num_rows($order);
 
 // โชว์จำนวน ออเดอร์
+$query_order1 = "SELECT order_status FROM tbl_order where order_status=1 ";
+$order1 = mysql_query($query_order1, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($order1);
+$totalRows_ptype1 = mysql_num_rows($order1);
 
-mysql_select_db($database_condb);
-$query_mycart = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart = mysql_query($query_mycart , $condb) or die(mysql_error());
-$row_mycart = mysql_fetch_assoc($mycart);
-$totalRows_mycart = mysql_num_rows($mycart);
+$query_order2 = "SELECT order_status FROM tbl_order where order_status=2 ";
+$order2 = mysql_query($query_order2, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($order2);
+$totalRows_ptype2 = mysql_num_rows($order2);
 
-mysql_select_db($database_condb);
-$query_mycart1 = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_status = 1 AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart1 = mysql_query($query_mycart1 , $condb) or die(mysql_error());
-$row_mycart1 = mysql_fetch_assoc($mycart1);
-$totalRows_mycart1 = mysql_num_rows($mycart1);
+$query_order3 = "SELECT order_status FROM tbl_order where order_status=3 ";
+$order3 = mysql_query($query_order3, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($order3);
+$totalRows_ptype3 = mysql_num_rows($order3);
 
-mysql_select_db($database_condb);
-$query_mycart2 = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.b_name, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_status = 2 AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart2 = mysql_query($query_mycart2 , $condb) or die(mysql_error());
-$row_mycart2 = mysql_fetch_assoc($mycart2);
-$totalRows_mycart2 = mysql_num_rows($mycart2);
 
-mysql_select_db($database_condb);
-$query_mycart3 = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_status = 3 AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart3 = mysql_query($query_mycart3 , $condb) or die(mysql_error());
-$row_mycart3 = mysql_fetch_assoc($mycart3);
-$totalRows_mycart3 = mysql_num_rows($mycart3);
-
-mysql_select_db($database_condb);
-$query_mycart4 = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_status = 4 AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart4 = mysql_query($query_mycart4 , $condb) or die(mysql_error());
-$row_mycart4 = mysql_fetch_assoc($mycart4);
-$totalRows_mycart4 = mysql_num_rows($mycart4);
-
-mysql_select_db($database_condb);
-$query_mycart5 = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.emss, o.order_date, d.order_id , count(d.order_id) as coid , d.total as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_status = 5 AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
-$mycart5 = mysql_query($query_mycart5 , $condb) or die(mysql_error());
-$row_mycart5 = mysql_fetch_assoc($mycart5);
-$totalRows_mycart5 = mysql_num_rows($mycart5);
-
+$query_order4 = "SELECT order_status FROM tbl_order where order_status=4 ";
+$order4 = mysql_query($query_order4, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($order4);
+$totalRows_ptype4 = mysql_num_rows($order4);
 
 // โชว์จำนวน ออเดอร์
 

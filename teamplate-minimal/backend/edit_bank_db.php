@@ -37,7 +37,7 @@ $upload=$_FILES['b_logo'];
 
 	}else{}
 
-
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_bank SET
 			b_name='$b_name',
 		  	b_number='$b_number',

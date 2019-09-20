@@ -8,15 +8,19 @@
 	<?php include('h.php');?>
 
 
-  </head>
+  </head><?php include('navbar.php');?>
   <body>
+
+        <?php //include('menu.php');?>
+
   <div class="container">
- <?php include('navbar.php');?>
 
+  	<div class="row">
 
-        <?php include('m.php');?>
-      <div class="row">
-      <div class="col-md-12">
+       <div class="col-md-3">
+
+</div>
+    <div class="col-md-9">
         <h3 align="center"> เพิ่มรายการธนาคาร</h3>
         <div class="table-responsive">
         		<form action="add_bank_db.php"  method="post" enctype="multipart/form-data" name="Add_Product" id="Add_Product" >
@@ -27,7 +31,7 @@
       <td colspan="3" align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td width="129" align="right" valign="middle">ธนาคาร : &nbsp;</td>
+      <td width="129" align="right" valign="middle">ธนาคาร :</td>
       <td width="471" colspan="2"><label for="b_type"></label>
         <input name="b_name" type="text" required id="pro_name2" size="60"/></td>
     </tr>
@@ -36,15 +40,17 @@
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">เลขบัญชี : &nbsp;</td>
-      <td colspan="2"><input name="b_number" type="text" required id="b_number" size="60"/></td>
+      <td align="right" valign="middle">เลขบัญชี :</td>
+      <td colspan="2"><input name="b_number"id="input-num" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      type="tel"
+                      maxlength = "10" onkeyup="num();" size="60"/></td>
     </tr>
     <tr>
       <td align="right" valign="top">&nbsp;</td>
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">ประเภท : &nbsp;</td>
+      <td align="right" valign="middle">ประเภท :</td>
       <td colspan="2"><input name="b_type" type="text" required id="pro_name3" size="40"/></td>
     </tr>
     <tr>
@@ -52,7 +58,7 @@
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">สาขา : &nbsp;</td>
+      <td align="right" valign="middle">สาขา :</td>
       <td colspan="2"><input name="bn_name" type="text" required id="pro_name4" size="60"/></td>
     </tr>
     <tr>
@@ -60,7 +66,7 @@
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">ชื่อเจ้าของบัญชี : &nbsp;</td>
+      <td align="right" valign="middle">ชื่อบัญชี :</td>
       <td colspan="2"><input name="b_owner" type="text" required id="pro_name5" size="60"/></td>
     </tr>
     <tr>
@@ -69,7 +75,7 @@
     </tr>
 
     <tr>
-      <td align="right" valign="middle">โลโก้ธนาคาร : &nbsp;</td>
+      <td align="right" valign="middle">ตราธนาคาร : </td>
       <td colspan="2"><label for="b_logo"></label>
         <input type="file" name="b_logo" id="b_logo" required></td>
     </tr>
@@ -92,3 +98,16 @@
 </html>
 
 <?php include('f.php');?>
+
+<script type="text/javascript">
+
+  function validate() {
+  var element = document.getElementById('input-field');
+  element.value = element.value.replace(/[^a-zA-Zก-๙ @]+/, '');
+};
+
+function num() {
+  var element = document.getElementById('input-num');
+  element.value = element.value.replace(/[^0-9]+/, '');
+};
+</script>

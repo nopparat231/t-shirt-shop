@@ -7,6 +7,7 @@ error_reporting( error_reporting() & ~E_NOTICE );
 $admin_id = $_GET['admin_id'];
 $admin_status = 'ex';
 
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_admin SET status='$admin_status' WHERE admin_id='$admin_id'";
 
 		$result = mysql_query( $sql,$condb) or die("Error in query : $sql" .mysql_error());

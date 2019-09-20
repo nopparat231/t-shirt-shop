@@ -15,10 +15,6 @@ $bank_id = $_GET['bank_id'];
 $s_number = $_POST['s_number'];
 $sn_number = $_POST['sn_number'];
 $s_price = $_POST['s_price'];
-$s_name = $_POST['s_name'];
-$s_address = $_POST['s_address'];
-$s_phone = $_POST['s_phone'];
-$s_email = $_POST['s_email'];
 $s_date = $_POST['s_date'];
 $sn_date = $_POST['sn_date'];
 
@@ -41,15 +37,11 @@ $upload=$_FILES['s_bill'];
 
 	}else{}
 
-
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_sell SET
 			s_number='$s_number',
 		  	sn_number='$sn_number',
 		  	s_price='$s_price',
-        s_name='$s_name',
-        s_address='$s_address',
-        s_phone='$s_phone',
-        s_email='$s_email',
 		  	s_date='$s_date',
 		  	sn_date='$sn_date',
 		  	s_bill='$newname'

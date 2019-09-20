@@ -31,26 +31,13 @@ if (!function_exists("GetSQLValueString")) {
   }
 }
 
-
-$start_date = $_POST['start_date'];
-$end_date = $_POST['end_date'];
-if ($start_date != '') {
-  $start_date = $_POST['start_date'];
-  $end_date = $_POST['end_date'];
-}elseif ($start_date == '') {
-  $start_date = '2012-01-01';
-  $end_date = date('Y/m/d');
-}else {
-  $start_date = '2012-01-01';
-  $end_date = date('Y/m/d');
-}
-
-
 mysql_select_db($database_condb);
-$query_lbk = "SELECT * FROM tbl_sell where s_date >= '$start_date' and s_date <= '$end_date'";
-$lbk = mysql_query($query_lbk, $condb) or die(mysql_error());
-$row_lbk = mysql_fetch_assoc($lbk);
-$totalRows_lbk = mysql_num_rows($lbk);
+$query_prd = "
+SELECT * FROM tbl_product as p, tbl_type as t,tbl_sell as s
+WHERE p.t_id = t.t_id AND s.s_pid = p.p_id ORDER BY p.p_id ASC";
+$prd = mysql_query($query_prd, $condb) or die(mysql_error());
+$row_prd = mysql_fetch_assoc($prd);
+$totalRows_prd = mysql_num_rows($prd);
 ?>
 <?php include('access.php');?>
 <!DOCTYPE html>
@@ -60,105 +47,100 @@ $totalRows_lbk = mysql_num_rows($lbk);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
-  <?php include('./datatable2.php');?>
-  <?php include 'date.php'; ?>
+  <?php include('datatable.php');?>
+
   </head>  <?php include('navbar.php');?>
-  <body>
+  <body>  <?php //include('menu.php');?>
+  <div class="container">
 
-    <?php //include('menu.php');?>
-    <div class="container">
-
-
+   <div class="row">
 
 
+    <div class="col-md-3">
 
-          <?php include('m.php');?>
-          <div class="row">
-
-            <div class="col-md-12">
-          <h3 align="center"> รายงานการตรวจรับหนังสือ  </h3>
-
-          <form action="report_all_sell.php" method="post">
-            <?php include 'thaidate.php'; ?>
-            <div class="row">
-
-             <div class="col-md-1">
-              <label><font size="2">จากวัน</font></label>
-            </div>
-            <div class="col-md-4">
-              <input id="from" name="start_date" type="text"  autocomplete="off"  />
-            </div>
-            <div class="col-md-1">
-              <label><font size="2">ถึงวันที่</font></label>
-            </div>
-            <div class="col-md-4">
-              <input  id="to" name="end_date" type="text"  autocomplete="off"  />
-            </div>
-
-            <div class="col-md-2">
-              <input type="submit" name="search" id="search" value="ค้นหา" class="btn btn-info" />
-            </div>
-          </div>
-        </form>
-        <br />
-
-        <div class="table">
-          <table id="example" class="display" cellspacing="0" border="1">
-            <thead>
-              <tr align="center">
-                <th>ลำดับ</th>
-                <th width = "12%">เลขที่ใบตรวจรับ</th>
-                <th>จำนวน</th>
-                <th>ราคา</th>
-                <th>วันที่สั่งซื้อสินค้า</th>
-                <th>วันที่รับสินค้า</th>
-                <th width = "12%">ใบเสร็จ</th>
-                <th>สินค้า</th>
-                <th width = "15%">ผู้ตรวจรับ</th>
-
-
-              </tr>
-            </thead>
-            <?php if($totalRows_lbk > 0){?>
-              <?php
-              $i = 1;
-              do { ?>
-               <tr align="center">
-
-                <td><?php echo $i; ?></td>
-                <td><?php echo $row_lbk['s_number']; ?></td>
-                <td><?php echo $row_lbk['sn_number']; ?></td>
-                <td><?php echo number_format($row_lbk['s_price'],2); ?></td>
-                <td><?php echo date("d-m-Y",strtotime($row_lbk['s_date'])); ?></td>
-                <td><?php echo date("d-m-Y",strtotime($row_lbk['sn_date'])); ?></td>
-
-                <td><center><a href="../bimg/<?php echo $row_lbk['s_bill'];?>" target="_blank"><img src="../bimg/<?php echo $row_lbk['s_bill'];?>" height="50px" ></a></center>
-                </td>
-                <td><center><a href="report_all_sell_prd.php?sell_prd=<?php echo $row_lbk['s_id'];?>" class="btn btn-warning btn-xs">ดูสินค้า</a></center>
-                </td>
-
-                <td><center><?php
-
-                $query_add = "SELECT * FROM tbl_admin WHERE admin_id =".$row_lbk['add_id'];
-                $add = mysql_query($query_add, $condb) or die(mysql_error());
-                $row_add = mysql_fetch_assoc($add);
-                $totalRows_add = mysql_num_rows($add);
-                echo $row_add['admin_name'];  ?></center></td>
-
-              </tr>
-              <?php
-              $i += 1;
-            }while ($row_lbk = mysql_fetch_assoc($lbk)); ?>
-          <?php }?>
-
-        </table>
-      </div>
     </div>
+    <div class="col-md-9">
+
+      <?php
+      mysql_select_db($database_condb);
+      $query_view = "SELECT p_qty , p_name FROM tbl_product";
+      $view = mysql_query($query_view, $condb) or die(mysql_error());
+      $row_view = mysql_fetch_assoc($view);
+      $totalRows_view = mysql_num_rows($view);
+
+
+      ?>
+
+      <style type="text/css">
+
+        th { white-space: nowrap; }
+      </style>
+
+      <h3 align="center"> รายงานตรวจรับสินค้า  </h3>
+
+      <table width="100%" border="1" cellspacing="0" class="display" id="example">
+        <?php $r = '<h3 align="center">รายการสินค้า</h3>' ?>
+        <thead>
+          <tr>
+
+            <th width="5%">ลำดับที่</th>
+            <th width="15%">ประเภท</th>
+            <th width="25%">ชื่อสินค้า</th>
+
+            <th width="5%">จากเดิม</th>
+            <th width="5%">เพิ่ม</th>
+            <th width="5%">รวม</th>
+            <th width="15%">วันที่</th>
+            <th width="15%">ใบเสร็จ</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <?php if($totalRows_prd>0){?>
+
+            <?php
+            $i = 1;
+
+            do { ?>
+              <tr>
+                <td align="center" valign="top"><?php echo $i; ?></td>
+                <td valign="top"><?php echo $row_prd['t_name']; ?></td>
+                <td valign="top"><b> <?php echo $row_prd['p_name']; ?></b> </td>
+
+                <td align="center" valign="top">
+                 <?php echo $row_prd['s_old']; ?>
+
+
+               </td>
+               <td align="center" valign="top">
+                 <?php echo $row_prd['s_add'];?>
+               </td>
+               <td align="center" valign="top">
+                <?php echo $row_prd['s_old']+$row_prd['s_add'];?>
+              </td>
+               <td align="center" valign="top">
+                 <?php echo $row_prd['s_time'];?>
+               </td>
+              <td align="center" valign="top">
+                <a href="../bimg/<?php echo $row_prd['s_bill'];?>" target="_blank">
+                  <img src='../bimg/<?php echo $row_prd['s_bill'];?>' width='50'></a>
+              </td>
+
+            </tr>
+            <?php
+            $i += 1;
+          } while ($row_prd = mysql_fetch_assoc($prd)); ?>
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
+</div>
 </div>
 </body>
 </html>
 <?php
-mysql_free_result($lbk);
+mysql_free_result($prd);
+mysql_free_result($view);
+
 ?>
-<?php  //include('f.php');?>
+<?php include('f.php');?>

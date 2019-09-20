@@ -1,34 +1,34 @@
 <?php require_once('../Connections/condb.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-  function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-  {
-    if (PHP_VERSION < 6) {
-      $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-    }
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
 
-    $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
-    switch ($theType) {
-      case "text":
+  switch ($theType) {
+    case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
       break;
-      case "long":
-      case "int":
+    case "long":
+    case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
       break;
-      case "double":
+    case "double":
       $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
       break;
-      case "date":
+    case "date":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
       break;
-      case "defined":
+    case "defined":
       $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
       break;
-    }
-    return $theValue;
   }
+  return $theValue;
+}
 }
 
 mysql_select_db($database_condb);
@@ -40,71 +40,65 @@ $totalRows_lbk = mysql_num_rows($lbk);
 <?php include('access.php');?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
-  <?php include('datatable.php');?>
-</head>
-<body>
-  <?php include('navbar.php');?>
+    <?php include('datatable.php');?>
+  </head>  <?php include('navbar.php');?>
+  <body>
+
+  <?php //include('menu.php');?>
   <div class="container">
 
 
 
+    <div class="row">
 
+      <div class="col-md-3">
 
-
-        <?php include('m.php');?>
-      <div class="row">
-      <div class="col-md-12">
-        <h3 align="center"> รายการข้อมูลธนาคาร   </h3>
-        <div class="table">
+</div>
+    <div class="col-md-9">
+        <h3 align="center"> รายการธนาคาร  <a href="add_bank.php" class="btn btn-primary"> + เพิ่ม </a> </h3>
+        <div class="table-responsive">
           <table id="example" class="display" cellspacing="0" border="1">
-            <thead>
-              <tr align="center">
+    <thead>
+            <tr align="center">
 
-                <th width="15%">ข้อมูล</th>
-                <th width="10%">โลโก้</th>
-                <th width="5%">สถานะ</th>
+              <th width="15%">ข้อมูล</th>
+              <th width="10%">ตราธนาคาร</th>
 
-                <th width="5%">ลบ</th>
-              </tr>
-            </thead>
+              <th width="5%">แก้ไข </th>
+              <th width="5%">ลบ</th>
+            </tr>
+        </thead>
             <?php do { ?>
               <tr>
 
                 <td>
-                  <?php echo "ชื่อบัญชี : ",$row_lbk['b_name']; ?><br />
-                  <?php echo "เลขบัญชี : ",$row_lbk['b_number']; ?><br />
-                  <?php echo "ประเภท : ",$row_lbk['b_type']; ?><br />
-                  <?php echo "เชื่อบัญชี : ",$row_lbk['b_owner']; ?></br>
-                  <?php echo "สาขา : ",$row_lbk['bn_name']; ?></td>
+                <?php echo "ชื่อธนาคาร : ",$row_lbk['b_name']; ?><br />
+                <?php echo "เลขบัญชี : ",$row_lbk['b_number']; ?><br />
+                <?php echo "ประเภท : ",$row_lbk['b_type']; ?><br />
+                <?php echo "ชื่อบัญชี : ",$row_lbk['b_owner']; ?></br>
+                <?php echo "สาขา : ",$row_lbk['bn_name']; ?></td>
 
-                  <td><center><img src="../bimg/<?php echo $row_lbk['b_logo'];?>" width="100px"></center>
+                <td><center><img src="../bimg/<?php echo $row_lbk['b_logo'];?>" width="100px"></center>
 
-                  </td>
+                </td>
 
-                  <?php if ($row_lbk['b_status'] == '0'): ?>
-                    <td><center>ปกติ</center></td>
-                  <?php endif ?>
-                  <?php if ($row_lbk['b_status'] == '1'): ?>
-                    <td><center><font color ="red">ปิดบัญชี</center></font></td>
-                  <?php endif ?>
-
-                  
-                  <td><center> <a href="del_bank.php?bank_id=<?php echo $row_lbk['b_id'];?>" onClick="return confirm('ยืนยันการปิดบัญชี');" class="btn btn-danger btn-xs"> ปิดบัญชี </a> </center> </td>
-                </tr>
+                <td><center> <a href="edit_bank.php?bank_id=<?php echo $row_lbk['b_id'];?>" class="btn btn-warning btn-xs"> แก้ไข </a> </center> </td>
+                <td><center> <a href="del_bank.php?bank_id=<?php echo $row_lbk['b_id'];?>" onClick="return confirm('ยืนยันการลบ');" class="btn btn-danger btn-xs"> ลบ </a> </center> </td>
+              </tr>
               <?php } while ($row_lbk = mysql_fetch_assoc($lbk)); ?>
-            </table>
-          </div>
+          </table>
         </div>
-      </div>
+        </div>
     </div>
+ </div>
   </body>
-  </html>
-  <?php
-  mysql_free_result($lbk);
-  ?>
-  <?php  //include('f.php');?>
+</html>
+<?php
+mysql_free_result($lbk);
+?>
+<?php  include('f.php');?>

@@ -14,27 +14,19 @@ $numrand = (mt_rand());
 $p_id = $_POST['p_id'];
 $p_name = $_POST['p_name'];
 $t_id = $_POST['t_id'];
-$t1_id = $_POST['t1_id'];
 $p_detial = $_POST['p_detial'];
 $p_price = $_POST['p_price'];
-$p_at = $_POST['p_at'];
-$p_pu = $_POST['p_pu'];
-$p_br = $_POST['p_br'];
 $promo = $_POST['promo'];
-$promo_start = $_POST['promo_start'];
-$promo_done = $_POST['promo_done'];
 $p_qty = $_POST['p_qty'];
 $p_size = $_POST['p_size'];
 $p_ems = $_POST['p_ems'];
 $p_unit = $_POST['p_unit'];
-$s_id = $_POST['s_id'];
-
 $p_img11 = $_POST['p_img11'];
 $p_img22 = $_POST['p_img22'];
 $p_img33 = $_POST['p_img33'];
 $p_img44 = $_POST['p_img44'];
 $p_img55 = $_POST['p_img55'];
-
+$p_sell = $_POST['p_sell'];
 $p_img1 = (isset($_POST['p_img1']) ? $_POST['p_img1'] : '');
 $p_img2 = (isset($_POST['p_img2']) ? $_POST['p_img2'] : '');
 $p_img3 = (isset($_POST['p_img3']) ? $_POST['p_img3'] : '');
@@ -156,38 +148,35 @@ if($upload5 <> '') {
 // $discount = $p_price*$promo/100;
 
 // $p_price = $discount - $p_price;
-
+mysql_select_db($database_condb);
 $sql ="UPDATE tbl_product SET
 p_name='$p_name',
 t_id='$t_id',
-t1_id='$t1_id',
 p_detial='$p_detial',
-p_at='$p_at',
-p_pu='$p_pu',
-p_br='$p_br',
 p_price='$p_price',
 promo='$promo',
-promo_start='$promo_start',
-promo_done='$promo_done',
 p_qty='$p_qty',
+p_size='$p_size',
 p_ems='$p_ems',
 p_unit='$p_unit',
-s_id='$s_id',
+p_sell='$p_sell',
 p_img1='$newname',
-p_img2='$newname2'
+p_img2='$newname2',
+p_img3='$newname3',
+p_img4='$newname4',
+p_img5='$newname5'
+
 WHERE p_id=$p_id
 ";
 
 $result = mysql_query($sql, $condb) or die("Error in query : $sql" .mysql_error());
-
-
 //  echo $sql;
 // exit();
 mysql_close();
 
 if($result){
 	echo "<script>";
-	echo "window.location ='edit_product.php?p_id=$p_id&t_id=$t_id&t1_id=$t1_id&act=edit-ok'; ";
+	echo "window.location ='edit_product.php?p_id=$p_id&t_id=$t_id&act=edit-ok'; ";
 	echo "</script>";
 } else {
 

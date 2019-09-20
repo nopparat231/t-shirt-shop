@@ -32,14 +32,23 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
 }
 
 $MM_restrictGoTo = "../logout_admin.php";
-if (!((isset($_SESSION['MM_admin'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_admin'], $_SESSION['MM_UserGroup'])))) {   
+if (!((isset($_SESSION['MM_admin'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_admin'], $_SESSION['MM_AdminGroup'])))) {   
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
   if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
-  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+    $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
 }
+include('mm.php');
+if ($row_mm['status'] == 'ex') {
+ echo "<script>";
+ echo "alert('ชื่อผู้ใช้นี้ถูกยกเลิกแล้ว !');";
+ echo "window.location ='../logout_admin.php'; ";
+ echo "</script>";
+
+}
+
 ?>

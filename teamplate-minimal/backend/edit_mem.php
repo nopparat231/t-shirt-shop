@@ -50,19 +50,19 @@ $totalRows_editmem = mysql_num_rows($editmem);
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
     <?php include('datatable.php');?>
-  </head>
+  </head>  <?php include('navbar.php');?>
   <body>
   <div class="container">
-  <div class="row">
-         <?php include('navbar.php');?>
-   </div>
 
 
-        <br>
-        <?php include('m.php');?>
-        <div class="row">
-          <div class="col-md-12">
-        <h3 align="center">  แก้ไข  MEMBER  <?php include('edit-ok.php');?> </h3>
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+</div>
+    <div class="col-md-9">
+        <h3 align="center">  แก้ไข  ข้อมูลผู้ใช้  <?php include('edit-ok.php');?> </h3>
 <div class="table-responsive">
     <form  name="register" action="edit_mem_db.php" method="POST" id="register" class="form-horizontal">
        <div class="form-group">
@@ -84,18 +84,50 @@ $totalRows_editmem = mysql_num_rows($editmem);
             <input  name="mem_password" type="password" required class="form-control" id="mem_password" placeholder="password" pattern="^[a-zA-Z0-9]+$" value="<?php echo $row_editmem['mem_password']; ?>" minlength="2" />
           </div>
         </div>
-        <div class="form-group">
-        <div class="col-sm-2" align="right"> ชื่อ-สกุล : </div>
-          <div class="col-sm-5" align="left">
-            <input  name="mem_name" type="text" required class="form-control" id="mem_name" placeholder="ชื่อ-สกุล" value="<?php echo $row_editmem['mem_name']; ?>"  value="<?php echo $row_editmem['mem_pass']; ?>" minlength="2"/>
-          </div>
-        </div>
+        
+
+        <?php
+    $n = "";
+    $ng = "";
+    $ns = "";
+    if ($row_mlogin['numna'] == 'นาย'){
+      $n = "selected='selected'";
+    }elseif ($row_mlogin['numna'] == 'นาง') {
+      $ng = "selected='selected'";
+    }elseif ($row_mlogin['numna'] == 'นางสาว') {
+     $ns = "selected='selected'";
+   } ?>
+
+   <div class="form-group">
+    <div class="col-sm-2" align="right"> คำนำหน้า : </div>
+    <div class="col-sm-10" align="left">
+      <select class="form-control" id="sel1" name="numna">
+        <option value="นาย" <?php echo $n; ?>>นาย</option>
+        <option value="นาง" <?php echo $ng; ?>>นาง</option>
+        <option value="นางสาว" <?php echo $ns; ?>>นางสาว</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-2" align="right"> ชื่อ-สกุล : </div>
+    <div class="col-sm-5" align="left">
+      <input  name="mem_fname" type="text" pattern="^[a-zA-Zก-๙ ]+$" required class="form-control" id="input-field" placeholder="ชื่อ" onkeyup="validate();"  title="ใส่ ก-ฮ หรือ a-z เท่านั้น"  value="<?php echo $row_editmem['mem_fname']; ?>"  value="<?php echo $row_editmem['mem_pass']; ?>" />
+
+    </div>
+    <div class="col-sm-5" align="left">
+      <input  name="mem_lname" type="text" pattern="^[a-zA-Zก-๙ ]+$" required class="form-control" id="input-field" placeholder="สกุล" onkeyup="validate();"  title="ใส่ ก-ฮ หรือ a-z เท่านั้น"  value="<?php echo $row_editmem['mem_lname']; ?>"  value="<?php echo $row_editmem['mem_pass']; ?>" />
+
+    </div>
+  </div>
+
 
 
 
         <div class="form-group">
         <div class="col-sm-2" align="right"> ที่อยู่ : </div>
-          <div class="col-sm-9" align="left">
+          <div class="col-sm-10" align="left">
             <input name="mem_address" type="text" required class="form-control" id="mem_address" placeholder="ที่อยู่"  value="<?php echo $row_editmem['mem_address']; ?>" minlength="2"></input>
           </div>
         </div>
@@ -103,12 +135,14 @@ $totalRows_editmem = mysql_num_rows($editmem);
         <div class="form-group">
         <div class="col-sm-2" align="right"> เบอร์โทร : </div>
           <div class="col-sm-5" align="left">
-            <input  name="mem_tel" type="text" required class="form-control" id="mem_tel" placeholder="0912345678" pattern="[0-9]{10}" minlength="2" title="เบอร์โทร 0-9"  value="<?php echo $row_editmem['mem_tel']; ?>" minlength="2"/>
+            <input  name="mem_tel" required class="form-control" id="input-num" placeholder="0912345678" pattern="[0-9]{10}" title="เบอร์โทร 0-9"  value="<?php echo $row_editmem['mem_tel']; ?>"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          type="tel"
+          maxlength = "10" onkeyup="num();"/>
           </div>
         </div>
 
         <div class="form-group">
-        <div class="col-sm-2" align="right"> อีเมลล์ : </div>
+        <div class="col-sm-2" align="right"> อีเมล : </div>
           <div class="col-sm-5" align="left">
             <input  name="mem_email" type="E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required class="form-control" id="mem_email" placeholder="E-mail" title="กรุณากรอก Email ให้ถูกต้อง" value="<?php echo $row_editmem['mem_email']; ?>" minlength="2"/>
           </div>
@@ -137,3 +171,15 @@ $totalRows_editmem = mysql_num_rows($editmem);
 mysql_free_result($editmem);
 
 // include('f.php');?>
+<script type="text/javascript">
+
+  function validate() {
+    var element = document.getElementById('input-field');
+    element.value = element.value.replace(/[^a-zA-Zก-๙ @]+/, '');
+  };
+
+  function num() {
+    var element = document.getElementById('input-num');
+    element.value = element.value.replace(/[^0-9]+/, '');
+  };
+</script>

@@ -35,7 +35,7 @@ $upload=$_FILES['b_logo'];
 	move_uploaded_file($_FILES['b_logo']['tmp_name'],$path_copy);
 
 	}else{}
-
+mysql_select_db($database_condb);
 $sql ="INSERT INTO tbl_bank
 
 		(b_name,  b_number,b_type, bn_name,b_owner, b_logo)

@@ -13,23 +13,19 @@ $numrand = (mt_rand());
 
 $p_name = $_POST['p_name'];
 $t_id = $_POST['t_id'];
-$t1_id = $_POST['t1_id'];
 $p_detial = $_POST['p_detial'];
-$p_at = $_POST['p_at'];
-$p_pu = $_POST['p_pu'];
-$p_br = $_POST['p_br'];
 $p_price = $_POST['p_price'];
 $promo = $_POST['promo'];
-$promo_start = $_POST['promo_start'];
-$promo_done = $_POST['promo_done'];
 $p_qty = $_POST['p_qty'];
 $p_size = $_POST['p_size'];
 $p_ems = $_POST['p_ems'];
 $p_unit = $_POST['p_unit'];
-$s_id = $_POST['s_id'];
+$p_sell = $_POST['p_sell'];
 $p_img1 = (isset($_POST['p_img1']) ? $_POST['p_img1'] : '');
 $p_img2 = (isset($_POST['p_img2']) ? $_POST['p_img2'] : '');
-
+$p_img3 = (isset($_POST['p_img3']) ? $_POST['p_img3'] : '');
+$p_img4 = (isset($_POST['p_img4']) ? $_POST['p_img4'] : '');
+$p_img5 = (isset($_POST['p_img5']) ? $_POST['p_img5'] : '');
 
 
 
@@ -138,27 +134,25 @@ if($upload5 <> '') {
 	$newname5='';
 }
 
-
+mysql_select_db($database_condb);
 $sql ="INSERT INTO tbl_product
 
 (
 	p_name,
 	t_id,
-	t1_id,
 	p_detial,
-	p_at,
-	p_pu,
-	p_br,
 	p_price,
 	promo,
-	promo_start,
-	promo_done,
 	p_qty,
-	s_id,
+	p_size,
 	p_ems,
 	p_unit,
+	p_sell,
 	p_img1,
-	p_img2
+	p_img2,
+	p_img3,
+	p_img4,
+	p_img5
 	)
 
 	VALUES
@@ -166,21 +160,19 @@ $sql ="INSERT INTO tbl_product
 	(
 	'$p_name',
 	'$t_id',
-	'$t1_id',
 	'$p_detial',
-	'$p_at',
-	'$p_pu',
-	'$p_br',
 	'$p_price',
 	'$promo',
-	'$promo_start',
-	'$promo_done',
 	'$p_qty',
-	'$s_id',
+	'$p_size',
 	'$p_ems',
 	'$p_unit',
+	'$p_sell',
 	'$newname',
-	'$newname2'
+	'$newname2',
+	'$newname3',
+	'$newname4',
+	'$newname5'
 	
 )";
 
@@ -199,7 +191,7 @@ if($result){
 } else {
 
 	echo "<script>";
-	echo "alert('เพิ่มสินค้า ไม่สำเร็จ!');";
+	echo "alert('ERROR!');";
 	echo "window.location ='list_product.php'; ";
 	echo "</script>";
 }

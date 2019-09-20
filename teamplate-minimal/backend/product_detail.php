@@ -69,18 +69,16 @@ $totalRows_prd = mysql_num_rows($prd);
     <!-- ckeditor-->
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
-  </head>
-  <body>
+  </head> <?php include('navbar.php');?>
+  <body> <?php //include('menu.php');?>
   <div class="container">
-  <div class="row">
-       <?php include('navbar.php');?>
-          </div>
-
-
-
-        <?php include('m.php');?>
-      <div class="row">
-      <div class="col-md-12">
+ 
+  	<div class="row">
+  
+   <div class="col-md-3">
+  
+</div>
+    <div class="col-md-9">
         <h3 align="center">
         <a href="list_product.php" class="btn btn-default"> < ย้อนกลับ</a>
         ข้อมูลสินค้า
@@ -95,7 +93,7 @@ $totalRows_prd = mysql_num_rows($prd);
       <td colspan="3" align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td width="129" align="right" valign="middle">ชื่อหนังสือ :</td>
+      <td width="129" align="right" valign="middle">ชื่อสินค้า :</td>
       <td colspan="2"><label for="pro_name2"></label>
         <input name="p_name" type="text" disabled required id="pro_name2" value="<?php echo $row_eprd['p_name']; ?>" size="50"/></td>
     </tr>
@@ -104,12 +102,12 @@ $totalRows_prd = mysql_num_rows($prd);
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">ประเภทหลัก :</td>
+      <td align="right" valign="middle">ประเภทสินค้า :</td>
       <td colspan="2">
       <label for=""></label>
         <select name="t_id" id="t_id" required="required">
          <option value="<?php echo $row_prd['t_id'];?>"><?php echo $row_prd['t_name'];?></option>
-
+          <option value="">กรุณาเลือกประเภท</option>
           <?php
 do {
 ?>
@@ -130,7 +128,7 @@ do {
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="top">รายละเอียดหนังสือ :&nbsp;</td>
+      <td align="right" valign="top">รายละเอียดสินค้า :</td>
       <td colspan="2">
       <textarea name="p_detial" cols="80" rows="5" disabled class="ckeditor" id="p_detial"><?php echo $row_eprd['p_detial']; ?></textarea>
       </td>
@@ -154,13 +152,17 @@ do {
       <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-      <td align="right" valign="middle">หน่วยนับ</td>
+      <td align="right" valign="middle">หน่วยสินค้า</td>
       <td colspan="2"><label for="pro_qty"></label>
          :
   <select name="p_unit" id="p_unit" required>
   <option value="<?php echo $row_eprd['p_unit'];?>"><?php echo $row_eprd['p_unit'];?></option>
-    <option value="ตัว">เล่ม</option>
-    <option value="รายการ">ชุด</option>
+    <option value="">เลือกใหม่</option>
+    <option value="ชิ้น">ชิ้น</option>
+    <option value="กล่อง">กล่อง</option>
+    <option value="แผง">แผง</option>
+    <option value="ตัว">ตัว</option>
+    <option value="รายการ">รายการ</option>
   </select></td>
       </tr>
     <tr>
@@ -172,6 +174,9 @@ do {
       <td colspan="2">
       <img src="../pimg/<?php echo $row_eprd['p_img1']; ?>" width="100">
        <img src="../pimg/<?php echo $row_eprd['p_img2']; ?>" width="100">
+       <img src="../pimg/<?php echo $row_eprd['p_img3']; ?>" width="100">
+       <img src="../pimg/<?php echo $row_eprd['p_img4']; ?>" width="100">
+       <img src="../pimg/<?php echo $row_eprd['p_img5']; ?>" width="100">
       </td>
     </tr>
     <tr>

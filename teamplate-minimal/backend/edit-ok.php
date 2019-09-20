@@ -3,5 +3,6 @@
 		    echo "<font color='red'>"; 	
 			echo "แก้ไขเรียบร้อยแล้ว !";
 			echo "</font>";
+	
 			}
 		?>
