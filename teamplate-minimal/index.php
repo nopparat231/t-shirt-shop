@@ -15,7 +15,7 @@
 	<?php if (isset($_GET['cart'])) {
 		//แสดงสินค้า
 		include 'cart.php';
-	}elseif (isset($_GET['product_all'])) {
+	}elseif (isset($_GET['Shop'])) {
 		//แสดงสินค้าทั้งหมด
 		include 'product_all.php';
 	}elseif (isset($_GET['desing'])) {
@@ -36,6 +36,9 @@
 	}elseif (isset($_GET['login'])) {
 		//เข้าสู่ระบบ
 		include 'login.php';
+	}elseif (isset($_GET['my_profile'])) {
+		//ข้อมูลผู้ใช้
+		include 'my_profile.php';
 	}else{
 		//หน้าหลัก
 		include 'home.php';

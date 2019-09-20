@@ -21,7 +21,7 @@
                                     <li><a href="Tee-Designer/desing.php">Desing</a></li>
                                     <li><a href="index.php?about">About</a></li>
                                     
-                                    <li class="drop"><a href="shop.html">Shop</a>
+                                    <li class="drop"><a href="index.php?Shop">Shop</a>
                                     </li>
                                     <li><a href="index.php?contact">contact</a></li>
                                 </ul>
@@ -40,7 +40,8 @@
 
                                         <li class="drop"><a href="#"><?php echo $_SESSION['User']; ?></a>
                                             <ul class="dropdown">
-                                              <li><a href="index.php?my_order">Myorder</a></li>
+                                              <li><a href="index.php?my_order">My order</a></li>
+                                              <li><a href="index.php?my_profile">My Profile</a></li>
                                               <li><a href="logout.php">Logout</a></li>
                                           </ul>
                                       </li>
