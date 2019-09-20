@@ -1,5 +1,6 @@
 <?php require_once('Connections/condb.php'); ?>
 <?php include 'header.php'; ?>
+
 <!-- Body main wrapper start -->
 <div class="wrapper fixed__footer">
 

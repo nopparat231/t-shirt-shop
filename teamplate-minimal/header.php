@@ -1,5 +1,4 @@
-<!doctype html>
-<?php date_default_timezone_set("Asia/Bangkok"); ?>
+
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">

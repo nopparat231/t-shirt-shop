@@ -3,7 +3,7 @@ require_once('Connections/condb.php');
 @session_start();
 date_default_timezone_set('Asia/Bangkok');
 $mem_id = $_POST['mem_id'];
-$name = $_POST["name"];
+$mem_name = $_POST["mem_name"];
 $address = $_POST["address"];
 $address2 = $_POST["address2"];
 $email = $_POST["email"];
@@ -28,7 +28,7 @@ $sent_id = '';
 $st = $_POST['st'];
 mysql_select_db($database_condb);
 mysql_query("BEGIN" ,$condb );
-$sql1 = "INSERT INTO tbl_order VALUES (NULL,'$mem_id','$name','$address','$email','$phone','$status','$pay_slip','$b_name','$b_number','$pay_date','$time_date','$total','$postcode','$pos_ems','$order_date')";
+$sql1 = "INSERT INTO tbl_order VALUES (NULL,'$mem_id','$mem_name','$address','$email','$phone','$status','$pay_slip','$b_name','$b_number','$pay_date','$time_date','$total','$postcode','$pos_ems','$order_date')";
 
 $query1 = mysql_query($sql1,$condb ) or die ("Error in query : sql1 " . mysql_error());
 

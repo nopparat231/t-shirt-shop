@@ -4,6 +4,8 @@ if (!isset($_SESSION)) {
 
 }
 ?>
+<?php include 'class.php'; ?>
+<?php $class_action = new class_action;?>
 <meta charset="UTF-8" />
 <?php
 
@@ -36,6 +38,8 @@ if (isset($_POST['login'])) {
 
 	if ($loginFoundUser > 0) {
 
+		echo $class_action->show_message('เข้าสู่ระบบสำเร็จ');
+		
 
 		//$loginStrGroup = "";
 
@@ -49,47 +53,18 @@ if (isset($_POST['login'])) {
 		if (isset($_SESSION['PrevUrl']) && false) {
 			$MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
 		}
-  header("Location: " . $MM_redirectLoginSuccess ); //. $MM_redirectLoginSuccess
 
+		echo $class_action->goto_page(1,'index.php');
 
-}else {
+	}else {
 
-	echo"<script>";
-	echo"alert('Username หรือ Password ไม่ถูกต้อง');";
-	echo"window.location = 'index.php?login';";
-	echo"</script>";
+		echo"<script>";
+		echo"alert('Username หรือ Password ไม่ถูกต้อง');";
+		echo"window.location = 'index.php?login';";
+		echo"</script>";
 
-}
+	}
 
-// if ($objResult_admin['status'] == 'admin') {
-
-
-// 		$loginFoundUser = mysql_num_rows($LoginRS);
-
-
-// 		if ($loginFoundUser) {
-// 			$loginStrGroup = "";
-
-// 		    //declare two session variables and assign them
-// 			$_SESSION['MM_admin'] = $loginUsername;
-// 			$_SESSION['MM_UserGroup'] = $loginStrGroup;
-// 			$_SESSION['Admin'] = $objResult_admin['admin_name'];
-
-
-// 			if (isset($_SESSION['PrevUrl']) && false) {
-// 				$MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
-// 			}
-//   header("Location: " . $MM_redirectLoginAdmin ); //. $MM_redirectLoginSuccess
-// }else {
-
-// 	echo"<script>";
-// 	echo"alert('Username หรือ Password ไม่ถูกต้อง');";
-// 	echo"window.location = 'index.php?login';";
-// 	echo"</script>";
-
-// }
-
-// }
 
 }
 

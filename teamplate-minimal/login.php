@@ -15,10 +15,11 @@
                 <div class="htc__login__register__wrap">
                     <!-- Start Single Content -->
                     <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
+                    
                         <form class="login" method="post" action="login_db.php">
                             <input type="text" name="mem_username" placeholder="User Name*" required="required">
                             <input type="password" name="mem_password" placeholder="Password*" required="required">
-                            <input type="hidden" name="login">
+                            <input type="hidden" name="login" value="login">
 
                             <div class="tabs__checkbox">
 
@@ -35,13 +36,13 @@
                     <!-- End Single Content -->
                     <!-- Start Single Content -->
                     <div id="register" role="tabpanel" class="single__tabs__panel tab-pane">
-                        <form class="login" method="post" action="login_db.php">
+                        <form class="login" method="get" action="login_db.php">
                             <input type="text" placeholder="Name*" required="required">
                             <input type="email" placeholder="Email*" required="required">
                             <input type="password" placeholder="Password*" required="required">
 
                             
-                            <input type="hidden" name="register">
+                            <input type="hidden" name="register" value="register">
 
 
                             <div class="htc__login__btn">

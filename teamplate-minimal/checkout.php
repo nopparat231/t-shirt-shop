@@ -31,7 +31,7 @@ if($_SESSION['MM_Username']!=''){
 
                                             <input type="hidden" name="text">
                                             <input type="hidden" name="mem_id" value="<?php echo $row_buyer['mem_id']; ?>">
-                                            <input type="text" name="name" value="<?php echo $row_buyer['mem_name']; ?>" placeholder="ชื่อ- นามสกุล*" >
+                                            <input type="text" name="mem_name" value="<?php echo $row_buyer['mem_name']; ?>" placeholder="ชื่อ - นามสกุล*" >
                                         </div>
 
                                         <div class="review-box name">
