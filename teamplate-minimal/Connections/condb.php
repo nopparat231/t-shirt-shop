@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $hostname_condb = "localhost";
 $database_condb = "book-shop";
 $username_condb = "root";

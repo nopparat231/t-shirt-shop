@@ -1,7 +1,7 @@
 
 <?php 
 
-if($_SESSION['MM_Username']!=''){
+if($_SESSION['MM_Username'] <> ""){
 
     $mem_user = $_SESSION['MM_Username'];
 
