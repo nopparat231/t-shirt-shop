@@ -255,7 +255,7 @@ if (isset($_GET['order_id'])) {
                             <td colspan="8" align="left"><label for="order_status"></label>
                              <?php
                              $status =  $row_cartdone['order_status'];
-                             include('backend/status.php');
+                             include('status.php');
                              ?>
 
                            </td>
@@ -305,7 +305,9 @@ if (isset($_GET['order_id'])) {
                       <td>เลขที่ใบส่งของ : </td>
                       <td colspan="8" align="left"><label for="postcode"></label>
 
-                        <?php echo $row_cartdone['postcode'];?>
+                        <b style="color: #4E70EB;">
+                          <?php echo $row_cartdone['postcode'];?>
+                        </b>
 
                       </td>
                     </tr>
