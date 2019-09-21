@@ -62,14 +62,14 @@
                                             </div>
 
                                             <div class="product__hover__info">
-                                                <ul class="product__action">
-                                                    <li>
+                                                <ul >
+                                                   <!--  <li>
                                                         <a data-toggle="modal" data-target="#productModal" title="Quick View" class="btn btn-info quick-view modal-view detail-link" href="#">
                                                             <span class="ti-plus"></span>
                                                         </a>
-                                                    </li>
+                                                    </li> -->
                                                     <li>
-                                                        <button type="submit" class="btn btn-info" title="Add TO Cart"  >
+                                                        <button type="submit" class="btn btn-info btn-lg" title="เพิ่มสินค้า" style="width: 50%" >
                                                             <span class="ti-shopping-cart" ></span>
                                                         </button>
                                                        <!--  <a title="Add TO Cart" href=""><span class="ti-shopping-cart"></span>

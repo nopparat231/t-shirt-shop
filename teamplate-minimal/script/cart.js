@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$(".product-form").submit(function(e){
 		var form_data = $(this).serialize();
 		var button_content = $(this).find('button[type=submit]');
-		button_content.html('Adding...'); 
+		button_content.html('Error'); 
 		$.ajax({
 			url: "manage_cart.php",
 			type: "POST",
@@ -11,7 +11,7 @@ $(document).ready(function(){
 			data: form_data
 		}).done(function(data){		    
 			$("#cart-container").html(data.products);
-			button_content.html('Add to Cart'); 			
+			button_content.html('เพิ่มสินค้า'); 			
 		})
 		e.preventDefault();
 	});	
