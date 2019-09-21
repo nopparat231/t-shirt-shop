@@ -77,7 +77,7 @@ if (isset($_POST['register'])) {
 	$mem_name = $_POST['mem_name'];
 	$mem_email = $_POST['mem_email'];
 	$mem_tel = $_POST['mem_tel'];
-	$mem_address = $_POST['a']." ตำบล".$_POST['t']." อำเภอ".$_POST['o']." จังหวัด".$_POST['j']." รหัสไปรษณีย์ ".$_POST['p'];
+	$mem_address = $_POST['mem_address'];
 	$user = "user";
 	$session_id = session_id();
 	$no = "no";
@@ -120,7 +120,7 @@ if (isset($_POST['register'])) {
 		$strMessage .= "ยินดีต้อนรับ : คุณ".$mem_name."<br>";
 		$strMessage .= "________________________________________<br>";
 		$strMessage .= "ยืนยันการสมัครสมาชิกโดยการคลิกที่ลิ้งค์ด้านล่าง<br>";
-		$strMessage .= "http://localhost/book/activate.php?sid=".$session_id."&mem_id=".$mem_id."<br>";
+		$strMessage .= "http://localhost/t-shirt-shop/activate.php?sid=".$session_id."&mem_id=".$mem_id."<br>";
 		$strMessage .= "________________________________________<br>";
 		$strMessage .= "<br>";
 
