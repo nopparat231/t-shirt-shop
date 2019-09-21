@@ -19,6 +19,9 @@
 	}elseif (isset($_GET['Shop'])) {
 		//แสดงสินค้าทั้งหมด
 		include 'product_all.php';
+	}elseif (isset($_GET['product_detail'])) {
+		//แสดงข้อมูลสินค้า
+		include 'product_detail.php';
 	}elseif (isset($_GET['desing'])) {
 		//ออกแบบเสื้อ
 		include 'Tee-Designer/desing.php';

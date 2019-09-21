@@ -60,6 +60,7 @@ if (!isset($_SESSION)) {
                                 <a href="index.php?cart">
                                     <p class="badge badge-light">
                                         <span class="ti-shopping-cart" id="cart-container">
+                                            
                                             <?php 
                                             if(isset($_SESSION["products"])){
                                                 echo count($_SESSION["products"]); 

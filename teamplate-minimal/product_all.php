@@ -82,7 +82,7 @@
 
                                        </div>
                                        <div class="product__details">
-                                        <h2><a href="product-details.html"><?php echo $row_prd['p_name']; ?></a></h2>
+                                        <h2><a href="index.php?product=<?php echo $row_prd['p_id']; ?>&product_detail"><?php echo $row_prd['p_name']; ?></a></h2>
                                         <ul class="product__price">
                                             <!-- <li class="old__price">$16.00</li> -->
                                             <li class="new__price">
