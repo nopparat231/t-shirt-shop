@@ -55,6 +55,7 @@ if($_SESSION['MM_Username']!=''){
 
                 </div>
             </div>
+            <br>
             <button type="submit" class="btn btn-warning btn-lg" style="align-items: center;" >ยืนยัน</button>
             <a href="index.php" class="btn btn-danger btn-lg">ยกเลิก</a>
         </div>

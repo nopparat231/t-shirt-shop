@@ -56,9 +56,9 @@ if (!isset($_SESSION)) {
                               <?php endif ?>
 
 
-                              <li >
+                              <li id="shopping-cart-item" >
                                 <a href="index.php?cart">
-                                    <p class="badge badge-light">
+                                    
                                         <span class="ti-shopping-cart" id="cart-container">
                                             
                                             <?php 
@@ -69,7 +69,7 @@ if (!isset($_SESSION)) {
                                             }
                                             ?>
                                         </span>
-                                    </p>
+                                    
                                 </a>
 
                             </li>

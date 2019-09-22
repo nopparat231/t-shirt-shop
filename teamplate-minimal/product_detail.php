@@ -1,85 +1,99 @@
-                     <?php 
+<style type="text/css">
+    button {
+        border: 1px solid #722A1B;
+        padding: 15px 30px;
+        background-color: #fff;
+        color: #722A1B;
+        text-transform: uppercase;
+        float: center;
+        margin: 5px 0;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-                     if (isset($_GET['product'])) {
+</style>
+<?php 
+
+if (isset($_GET['product'])) {
 
 
-                         $p_id = $_GET['product'];
+   $p_id = $_GET['product'];
 
-                         mysql_select_db($database_condb);
-                         $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
-                         $prd = mysql_query($query_prd,$condb) or die(mysql_error());
-                         $row_prd = mysql_fetch_assoc($prd);
-                         $totalRows_prd = mysql_num_rows($prd);
-                         ?>
+   mysql_select_db($database_condb);
+   $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+   $prd = mysql_query($query_prd,$condb) or die(mysql_error());
+   $row_prd = mysql_fetch_assoc($prd);
+   $totalRows_prd = mysql_num_rows($prd);
+   ?>
 
-                         <!-- Start Product Details -->
-                         <form class="product-form">
+   <!-- Start Product Details -->
+   <form class="product-form">
 
-                             <section class="htc__product__details pt--120 pb--100 bg__white">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12 col-lg-6 col-sm-12">
-                                            <div class="product__details__container">
-                                                <!-- Start Small images -->
-                                                <ul class="nav product__small__images" role="tablist">
-                                                    <li role="presentation" class="pot-small-img active">
-                                                        <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px" >
-                                                        </a>
-                                                    </li>
-                                                    <li role="presentation" class="pot-small-img">
-                                                        <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
-                                                        </a>
-                                                    </li>
-                                                    <li role="presentation" class="pot-small-img hidden-xs">
-                                                        <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
-                                                        </a>
-                                                    </li>
-                                                    <li role="presentation" class="pot-small-img d-no">
-                                                        <a href="#img-tab-4" role="tab" data-toggle="tab">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <!-- End Small images -->
-                                                <div class="product__big__images">
-                                                    <div class="portfolio-full-image tab-content">
-                                                        <div role="tabpanel" class="tab-pane active" id="img-tab-1">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-                                                        </div>
-                                                        <div role="tabpanel" class="tab-pane" id="img-tab-2">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-                                                        </div>
-                                                        <div role="tabpanel" class="tab-pane" id="img-tab-3">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-                                                        </div>
-                                                        <div role="tabpanel" class="tab-pane" id="img-tab-4">
-                                                            <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30">
-                                            <div class="htc__product__details__inner">
-                                                <div class="pro__detl__title">
-                                                    <h2><?php echo $row_prd['p_name']; ?></h2>
-                                                </div>
+       <section class="htc__product__details pt--120 pb--100 bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="product__details__container">
+                        <!-- Start Small images -->
+                        <ul class="nav product__small__images" role="tablist">
+                            <li role="presentation" class="pot-small-img active">
+                                <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px" >
+                                </a>
+                            </li>
+                            <li role="presentation" class="pot-small-img">
+                                <a href="#img-tab-2" role="tab" data-toggle="tab">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
+                                </a>
+                            </li>
+                            <li role="presentation" class="pot-small-img hidden-xs">
+                                <a href="#img-tab-3" role="tab" data-toggle="tab">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
+                                </a>
+                            </li>
+                            <li role="presentation" class="pot-small-img d-no">
+                                <a href="#img-tab-4" role="tab" data-toggle="tab">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px">
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Small images -->
+                        <div class="product__big__images">
+                            <div class="portfolio-full-image tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="img-tab-1">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="img-tab-2">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="img-tab-3">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="img-tab-4">
+                                    <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30">
+                    <div class="htc__product__details__inner">
+                        <div class="pro__detl__title">
+                            <h2><?php echo $row_prd['p_name']; ?></h2>
+                        </div>
 
-                                                <div class="pro__details">
-                                                    <p><?php echo $row_prd['p_detial']; ?></p>
-                                                </div>
-                                                <ul class="pro__dtl__prize">
-                                                    <!-- <li class="old__prize">$15.21</li> -->
-                                                    <li><?php echo $row_prd['p_price']; ?></li>
-                                                </ul>
+                        <div class="pro__details">
+                            <p><?php echo $row_prd['p_detial']; ?></p>
+                        </div>
+                        <ul class="pro__dtl__prize">
+                            <!-- <li class="old__prize">$15.21</li> -->
+                            <li><?php echo $row_prd['p_price']; ?></li>
+                        </ul>
 
-                                                <div class="pro__dtl__size">
-                                                    <h2 class="title__5">Size</h2>
-                                                    <ul class="pro__choose__size">
-                                                        <li><a href="#">xl</a></li>
+                        <div class="pro__dtl__size">
+                            <h2 class="title__5">Size</h2>
+                            <ul class="pro__choose__size">
+                                <li><a href="#">xl</a></li>
                                                         <!-- <li><a href="#">m</a></li>
                                                         <li><a href="#">ml</a></li>
                                                         <li><a href="#">lm</a></li>
@@ -100,7 +114,7 @@
                                                 </div>
                                                 <ul class="pro__dtl__btn">
                                                     <li class="buy__now__btn">
-                                                        <button type="submit" class="btn btn-info btn-lg" style="width: 350%"  title="Add TO Cart"  >
+                                                        <button type="submit" class="shoping-cart"  title="Add TO Cart"  >
                                                             <span class="ti-shopping-cart" ></span>
                                                         </button>
                                                     </li>
