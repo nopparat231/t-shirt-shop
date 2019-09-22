@@ -37,14 +37,14 @@ if (isset($_GET['product'])) {
                         <!-- Start Small images -->
                         <ul class="nav product__small__images" role="tablist">
                             <li role="presentation" class="pot-small-img active">
-                                <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                <a href="pimg/<?php echo $row_prd['p_img1'];?>" target="_blank">
                                     <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px" >
                                 </a>
                             </li>
 
                             <?php if ($row_prd['p_img2'] <> ""): ?>
                             <li role="presentation" class="pot-small-img">
-                                <a href="#img-tab-2" role="tab" data-toggle="tab">
+                                <a href="pimg/<?php echo $row_prd['p_img2'];?>" target="_blank" >
                                     <img src="pimg/<?php echo $row_prd['p_img2'];?>" alt="small-image" style="height: 131px;width: 100px">
                                 </a>
                             </li>
@@ -52,7 +52,7 @@ if (isset($_GET['product'])) {
 
                             <?php if ($row_prd['p_img3'] <> ""): ?>
                                <li role="presentation" class="pot-small-img hidden-xs">
-                                <a href="#img-tab-3" role="tab" data-toggle="tab">
+                                <a href="pimg/<?php echo $row_prd['p_img3'];?>" target="_blank">
                                     <img src="pimg/<?php echo $row_prd['p_img3'];?>" alt="small-image" style="height: 131px;width: 100px">
                                 </a>
                             </li>
