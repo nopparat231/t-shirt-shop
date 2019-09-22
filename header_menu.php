@@ -18,7 +18,7 @@
                                 <ul class="main__menu">
                                     <li class="drop"><a href="index.php">Home</a>
                                     </li>
-                                    <li><a href="Tee-Designer/desing.php">Desing</a></li>
+                                    <!-- <li><a href="Tee-Designer/desing.php">Desing</a></li> -->
                                     <li><a href="index.php?about">About</a></li>
                                     
                                     <li class="drop"><a href="index.php?Shop">Shop</a>
