@@ -46,7 +46,7 @@ if ($start_date != '') {
 
 mysql_select_db($database_condb);
 $query_prd = "
-SELECT o.order_id,o.name,d.p_name,d.p_c_qty,o.order_status,o.order_date,d.total 
+SELECT o.order_id,o.mem_fname,d.p_name,d.p_c_qty,o.order_status,o.order_date,d.total 
 FROM tbl_order as o ,tbl_order_detail as d 
 WHERE o.order_id = d.order_id and o.order_date >= '$start_date' and o.order_date <= '$end_date'";
 $prd = mysql_query($query_prd, $condb) or die(mysql_error());
@@ -82,28 +82,7 @@ $totalRows_prd = mysql_num_rows($prd);
     </style>
 
     <h3 align="center"> รายการสินค้า  </h3>
-    <form action="report_order.php" method="post">
-      <?php include 'thaidate.php'; ?>
-      <div class="row">
 
-       <div class="col-md-1">
-        <label><font size="2">จากวัน</font></label> 
-      </div>
-      <div class="col-md-4">
-        <input id="from" name="start_date" type="text"  autocomplete="off"  />
-      </div>
-      <div class="col-md-1">
-        <label><font size="2">ถึงวันที่</font></label>  
-      </div>
-      <div class="col-md-4">
-        <input  id="to" name="end_date" type="text"  autocomplete="off"  />
-      </div>      
-
-      <div class="col-md-2">
-        <input type="submit" name="search" id="search" value="ค้นหา" class="btn btn-info" />
-      </div>
-    </div>
-  </form>
   <br />
   <table width="100%" border="1" cellspacing="0" class="display" id="example3">
 
@@ -132,7 +111,7 @@ $totalRows_prd = mysql_num_rows($prd);
           <tr>
             <td align="center" valign="top"><?php echo $i; ?></td>
             <td valign="top"><?php echo $row_prd['o.order_id']; ?></td>
-            <td valign="top"> <?php echo $row_prd['o.name']; ?></td>
+            <td valign="top"> <?php echo $row_prd['o.mem_fname']; ?></td>
             <td valign="top"> <?php echo $row_prd['d.p_name']; ?></td>
             <td valign="top"> <?php echo $row_prd['d.p_c_qty']; ?></td>
             <td valign="top"> <?php echo $row_prd['o.order_status']; ?></td>

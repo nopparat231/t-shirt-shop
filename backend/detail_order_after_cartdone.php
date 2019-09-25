@@ -112,8 +112,8 @@ if ($row_cartdone['postcode'] == 0 && $row_cartdone['order_status'] != 3  ) {?>
 <input type="text" hidden name="mem_lname" value="<?php echo $row_cartdone['mem_lname'];?>" />
 <input type="text" hidden name="mem_email" value="<?php echo $row_cartdone['mem_email'];?>" />
 <input type="text" name="postcode" />
-<input type="number" name="status" value="3" hidden />
-<button type="submit" name="submit" value="เพิ่มเลขพัสดุ" class="glyphicon glyphicon-floppy-saved btn-lm "  />
+<input type="number" name="status" value="3" hidden /> 
+<button type="submit" name="submit" value="เพิ่มเลขพัสดุ" >ยืนยัน</button>
 </form>
 
 <?php
@@ -161,10 +161,10 @@ if ($row_cartdone['postcode'] == 0 && $row_cartdone['order_status'] != 3  ) {?>
       $sum  = $row_cartdone['p_price']*$row_cartdone['p_c_qty'];
       $total  += $sum;
 
-      $ems = $row_cartdone['p_ems'] * $row_cartdone['p_c_qty'];
-      $total += $ems;
+      // $ems = $row_cartdone['p_ems'] * $row_cartdone['p_c_qty'];
+      // $total += $ems;
 
-      $sumems +=$ems;
+      // $sumems +=$ems;
       ?>
       <tr>
         <td align="center">JN<?php echo str_pad($row_cartdone['order_id'], 6, "0", STR_PAD_LEFT);?></td>
@@ -173,14 +173,14 @@ if ($row_cartdone['postcode'] == 0 && $row_cartdone['order_status'] != 3  ) {?>
         <td align="center"><?php echo number_format($row_cartdone['p_price'],2);?></td>
         <td align="center"><?php echo $row_cartdone['p_c_qty'];?></td>
         <td align='center'><?php echo number_format($ems,2); ?></td>
-        <td align="center"><?php echo number_format($total,2);?></td>
+        <td align="center"><?php echo number_format($sum,2);?></td>
       </tr> 
 
     <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); 
 
-    $tax = $total*0.09;
-    $total += $tax;
-
+    // $tax = $total*0.09;
+    // $total += $tax;
+//$total = $row_cartdone['o.total'];
 
     echo "<tr>";
     echo "<td  align='left' colspan='6'><b>จัดส่ง</b></td>";

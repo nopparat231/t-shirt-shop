@@ -73,28 +73,7 @@ $totalRows_mem = mysql_num_rows($mem);
       </div>
       <div class="col-md-9">
         <h3 align="center"> รายงานข้อมูลสมาชิก </h3>
-        <form action="list_member.php" method="post">
-          <?php include 'thaidate.php'; ?>
-          <div class="row">
 
-           <div class="col-md-1">
-            <label><font size="2">จากวัน</font></label>
-          </div>
-          <div class="col-md-4">
-            <input id="from" name="start_date" type="text"  autocomplete="off"  />
-          </div>
-          <div class="col-md-1">
-            <label><font size="2">ถึงวันที่</font></label>
-          </div>
-          <div class="col-md-4">
-            <input  id="to" name="end_date" type="text"  autocomplete="off"  />
-          </div>
-
-          <div class="col-md-2">
-            <input type="submit" name="search" id="search" value="ค้นหา" class="btn btn-info" />
-          </div>
-        </div>
-      </form>
       <br>
       <table id="example5" class="display" cellspacing="0" border="1">
         <thead>

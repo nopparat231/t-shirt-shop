@@ -59,7 +59,7 @@ $totalRows_mm = mysql_num_rows($mm);
 $mem_id = $row_mm['mem_id'];
 
 mysql_select_db($database_condb);
-$query_mycart = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, o.name , d.order_id , count(d.order_id) as coid , SUM(d.total) as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_id = d.order_id and o.order_date >= '$start_date' and o.order_date <= '$end_date' GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
+$query_mycart = sprintf("SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, o.mem_fname , d.order_id , count(d.order_id) as coid , SUM(d.total) as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.order_id = d.order_id and o.order_date >= '$start_date' and o.order_date <= '$end_date' GROUP BY o.order_id ORDER BY o.order_id DESC " , GetSQLValueString($colname_mycart , "int"));
 $mycart = mysql_query($query_mycart , $condb) or die(mysql_error());
 $row_mycart = mysql_fetch_assoc($mycart);
 $totalRows_mycart = mysql_num_rows($mycart);
@@ -103,28 +103,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
       <h3 align="center">รายงานข้อมูลการสั่งซื้อ<?php echo $strNewDate; ?></h3>
 
 
-      <form action="report_all_order.php" method="post">
-        <?php include 'thaidate.php'; ?>
-       <div class="row">
 
-         <div class="col-md-1">
-          <label><font size="2">จากวัน</font></label>
-        </div>
-        <div class="col-md-4">
-          <input id="from" name="start_date" type="text"  autocomplete="off"  />
-        </div>
-        <div class="col-md-1">
-          <label><font size="2">ถึงวันที่</font></label>
-        </div>
-        <div class="col-md-4">
-          <input  id="to" name="end_date" type="text"  autocomplete="off"  />
-       </div>
-
-       <div class="col-md-2">
-        <input type="submit" name="search" id="search" value="ค้นหา" class="btn btn-info" />
-      </div>
-    </div>
-  </form>
   <br />
   <table id="example7" class="display"  border="1">
     <thead>
@@ -175,19 +154,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
           $i += 1;
         } while ($row_mycart = mysql_fetch_assoc($mycart)); ?>
       </tbody>
-      <tfoot>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-
-
-          <th style="text-align:right">Total:</th>
-          <th></th>
-        </tr>
-      </tfoot>
+  
     </table>
   </div>
 </div>

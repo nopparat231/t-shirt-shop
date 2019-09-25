@@ -90,10 +90,7 @@ $totalRows_prd = mysql_num_rows($prd);
               <br>
               <a href="product_detail.php?p_id=<?php echo $row_prd['p_id'];?>&t_id=<?php echo $row_prd['t_id'];?>&act=edit" class="btn btn-info btn-xs" target="_blank"> รายละเอียด </a>
               </b>
-              <br>
-              <?php echo $row_prd['p_sell']; ?>
-              <br>
-              <?php // echo $row_prd['p_detial']; ?>
+   
                </td>
               <td align="right" valign="top"><?php echo number_format($row_prd['p_price'],2); ?></td>
               <td align="center" valign="top">

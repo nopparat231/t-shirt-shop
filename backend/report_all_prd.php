@@ -86,7 +86,7 @@ $totalRows_prd = mysql_num_rows($prd);
       <th>ลำดับที่</th>
       <th>ประเภท</th>
       <th>ชื่อสินค้า</th>
-      <th>ชื่อตัวแทนจำหน่าย</th>
+<!--       <th>ชื่อตัวแทนจำหน่าย</th> -->
       <th>จำนวน</th>
       <th>ไซส์</th>
       <th>ค่าจัดส่ง</th>
@@ -107,8 +107,7 @@ $totalRows_prd = mysql_num_rows($prd);
           <td valign="top"><?php echo $row_prd['t_name']; ?></td>
           <td valign="top"><b> <?php echo $row_prd['p_name']; ?></b>
           </td>
-          <td valign="top"><b> <?php echo $row_prd['p_sell']; ?></b>
-          </td>
+       
           <td align="center" valign="top">
            <?php echo $row_prd['p_qty']; ?>
 
@@ -131,19 +130,7 @@ $totalRows_prd = mysql_num_rows($prd);
     } while ($row_prd = mysql_fetch_assoc($prd)); ?>
   <?php } ?>
 </tbody>
-<tfoot>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th style="text-align:right">Total:</th>
-    <th></th>
-  </tr>
-</tfoot>
+
 </table>
 </div>
 </div>

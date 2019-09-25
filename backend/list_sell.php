@@ -39,31 +39,6 @@ $totalRows_prd = mysql_num_rows($prd);
         <h3 align="center"> <a href="add_product.php" class="btn btn-primary"> เพิ่มสินค้า </a> จัดการตรวจรับสินค้า </h3>
         <br>
 
-        <form action="add_sell_db.php" method="post" enctype="multipart/form-data">
-          <h4 style="width: 360px; text-align: center;">
-
-            <select class="js-example-basic-single form-control" name="s_pid" required="required" id="btn1">
-              <option value="0">กรุณาเลือกสินค้า</option>
-
-              <?php while ( $row_prd = mysql_fetch_assoc($prd)) { ?>
-
-                <option value="<?php echo $row_prd['p_id']; ?>"><?php echo $row_prd['p_name']; ?></option>
-
-              <?php } ?>
-            </select>
-            <br>
-            <br>
-
-            <div id="div1"></div>
-
-
-            <br>
-            <br>
-
-          </h4>
-          <button type="submit" class="btn btn-success btn-lg" id="button">ยืนยัน</button>
-
-        </form>
 
       </div>
     </body>
