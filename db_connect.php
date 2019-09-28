@@ -1,3 +1,5 @@
+<?php include 'class.php'; ?>
+<?php $class_action = new class_action;?>
 <?php
 error_reporting(0);
 $servername = "localhost";

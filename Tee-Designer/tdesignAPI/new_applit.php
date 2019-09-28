@@ -304,7 +304,7 @@
 					<button type="submit" class="btn btn-primary">Proceed</button>
 					</form>-->
 					<div class="row">
-						<form method="GET" enctype="multipart/form-data" id="imageFileForm" action="checkout/checkout.php">
+						<form method="post" enctype="multipart/form-data" id="imageFileForm" action="checkout/checkout.php">
 							<div class="col-md-1">
 								<button type="button" class="btn btn-default close_img" data-dismiss="modal">
 									Close
