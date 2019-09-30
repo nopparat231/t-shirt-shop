@@ -26,6 +26,20 @@
                                     </li>
                                     <li class="drop"><a href="shop.html">Shop</a>
                                     </li>
+
+                                    <li class="drop"><a href="#">pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="about.html">about</a></li>
+                                            <li><a href="shop.html">shop</a></li>
+                                            <li><a href="product-details.html">product details</a></li>
+                                            <li><a href="cart.html">cart</a></li>
+                                            <li><a href="wishlist.html">wishlist</a></li>
+                                            <li><a href="checkout.html">checkout</a></li>
+                                            <li><a href="team.html">team</a></li>
+                                            <li><a href="login-register.html">login & register</a></li>
+                                        </ul>
+                                    </li>
+                                    
                                     <li class="drop"><a href="#">pages</a>
                                         <ul class="dropdown">
                                             <li><a href="about.html">about</a></li>
