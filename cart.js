@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$(".product-form").submit(function(e){
 		var form_data = $(this).serialize();
 		var button_content = $(this).find('button[type=submit]');
-		button_content.html('Error'); 
+		//button_content.html('Error'); 
 		$.ajax({
 			url: "manage_cart.php",
 			type: "POST",
