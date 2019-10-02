@@ -113,7 +113,7 @@ $totalRows_prd = mysql_num_rows($prd);
                 <td align="right" valign="middle">&nbsp;</td>
                 <td colspan="2">&nbsp;</td>
               </tr>
-              <tr>
+             <!--  <tr>
                 <td align="right" valign="middle">ราคาก่อนลด :</td>
                 <td width="2"><label for="promo"></label>
                  <input name="promo" value="<?php echo $row_eprd['promo']; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -124,7 +124,7 @@ $totalRows_prd = mysql_num_rows($prd);
                <tr>
                 <td align="right" valign="middle">&nbsp;</td>
                 <td colspan="2">&nbsp;</td>
-              </tr>
+              </tr> -->
               <tr>
                 <td align="right" valign="middle">ราคาหลังลด :</td>
                 <td width="2"><label for="p_price"></label>

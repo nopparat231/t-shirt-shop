@@ -36,7 +36,7 @@
                                             <?php if ($totalRows_typedrop > 0) {?>
                                              <?php do { ?>
 
-                                                <li><a href="index.php?Shop" data-filter=".cat--<?php echo $row_typedrop['t_id'];?>" ><?php echo $row_typedrop['t_name']; ?></a></li>
+                                                <li><a href="index.php?Shop&t_id=<?php echo $row_typedrop['t_id'];?>" ><?php echo $row_typedrop['t_name']; ?></a></li>
 
                                             <?php } while ($row_typedrop = mysql_fetch_assoc($typedrop)); ?>
                                         <?php }
