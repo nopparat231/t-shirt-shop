@@ -60,7 +60,7 @@ $totalRows_ptype = mysql_num_rows($ptype);
         <table id="example1" class="display" cellspacing="0" border="1">
 		<thead>
           <tr>
-             <th align="center">ลำดับที่</th>
+             <th align="center" width="5%">ลำดับที่</th>
            
             <th align="center">ชื่อประเภท</th>
 

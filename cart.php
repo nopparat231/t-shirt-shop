@@ -16,6 +16,7 @@ if (!isset($_SESSION)) {
                                 <tr>
                                     <th class="product-thumbnail">Image</th>
                                     <th class="product-name">Product</th>
+                                    <th class="product-size">ไซส์</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-subtotal">Total</th>
@@ -33,6 +34,20 @@ if (!isset($_SESSION)) {
                                     $product_qty = $product["product_qty"];
                                     $product_price = $product["p_price"];
 
+                                    if ($product_size == $product["p_size_s"]) {
+                                         $product_size = "S";
+                                    }elseif ($product_size == $product["p_size_m"]) {
+                                         $product_size = "M";
+                                    }elseif ($product_size == $product["p_size_l"]) {
+                                         $product_size = "L";
+                                    }elseif ($product_size == $product["p_size_xl"]) {
+                                         $product_size = "XL";
+                                    }elseif ($product_size == $product["p_size_xxl"]) {
+                                         $product_size = "XXL";
+                                    }
+                                    $product_size = "XXL";
+                                   
+
                                     mysql_select_db($database_condb);
                                     $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
                                     $query = mysql_query($sql, $condb );
@@ -46,9 +61,10 @@ if (!isset($_SESSION)) {
                                         <td class="product-thumbnail"><a href="#">
                                             <img src="pimg/<?php echo $row['p_img1'];?>" alt="product img" /></a></td>
                                             <td class="product-name"><a href="index.php?product=<?php echo $row['p_id']; ?>&product_detail"><?php echo $row['p_name']; ?></a></td>
+                                             <td class="product-price"><span class="amount"><?php echo $product_size; ?></span></td>
                                             <td class="product-price"><span class="amount"><?php echo $product_price; ?></span></td>
                                             <td class="product-quantity">
-                                                <input type="number" value="<?php echo $product_qty; ?>" class="text-center quantity" data-code="<?php echo $p_id; ?>" value="<?php echo $product_qty; ?>" /></td>
+                                                <input type="number" value="<?php echo $product_qty; ?>" class="text-center quantity" data-code="<?php echo $p_id; ?>" value="<?php echo $product_qty; ?>" min='1' max='5' /></td>
                                                 <td class="product-subtotal"><?php echo $subtotal; ?></td>
                                                 <td class="product-remove">
 
@@ -65,8 +81,8 @@ if (!isset($_SESSION)) {
                             <div class="row">
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
-                                        <input type="submit" value="Update Cart" />
-                                        <a href="#">Continue Shopping</a>
+                                        
+                                        <a href="index.php">สั่งซื้อสินค้าเพิ่ม</a>
                                     </div>
 
                                 </div>
@@ -111,7 +127,7 @@ if (!isset($_SESSION)) {
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="index.php?checkout">Proceed to Checkout</a>
+                                            <a href="index.php?checkout">ยืนยันการสั่งซื้อ</a>
                                         </div>
                                     </div>
                                 </div>

@@ -2639,8 +2639,8 @@ select.select-color {
 .pro__choose__size li + li {
     padding-left: 20px;
 }
-.pro__choose__size li input {
-    width: 3500px;
+.pro__choose__size li a {
+    text-transform: uppercase;
 }
 .prodict-statas span {
   color: #666666;

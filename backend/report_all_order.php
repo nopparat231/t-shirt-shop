@@ -130,7 +130,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
               JN<?php echo $row_mycart['oid'];?>
             </td>
             <td align="center" >
-              <?php echo $row_mycart['name'];?>
+              <?php echo $row_mycart['mem_fname'];?>
             </td>
 
             <td align="center" >

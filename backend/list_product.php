@@ -84,7 +84,7 @@ $totalRows_prd = mysql_num_rows($prd);
           <?php if($totalRows_prd>0){?>
           <?php do { ?>
             <tr>
-              <td align="center" valign="top"><?php echo $row_prd['p_id']; ?></td>
+              <td align="center" valign="top">TS00<?php echo $row_prd['p_id']; ?></td>
               <td valign="top"><?php echo $row_prd['t_name']; ?></td>
               <td valign="top"><b> <?php echo $row_prd['p_name']; ?>
               <br>

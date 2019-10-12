@@ -59,9 +59,10 @@ $totalRows_listadmin = mysql_num_rows($listadmin);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include('h.php');?>
-  <?php include('datatable.php');?>
+ 
   <?php include 'date.php'; ?>
   </head><?php include('navbar.php');?>
+   <?php include('datatable.php');?>
   <body>  <?php //include('menu.php');?>
   <div class="container">
 
@@ -153,4 +154,4 @@ $totalRows_listadmin = mysql_num_rows($listadmin);
 <?php
 mysql_free_result($listadmin);
 ?>
-<?php  include('f.php');?>
+<?php  //include('f.php');?>

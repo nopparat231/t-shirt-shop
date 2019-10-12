@@ -87,32 +87,10 @@ $totalRows_prd = mysql_num_rows($prd);
                     <td align="right" valign="middle">&nbsp;</td>
                     <td colspan="2">&nbsp;</td>
                   </tr>
-                  <tr>
-                    <td width="129" align="right" valign="middle">จำนวนสินค้า :</td>
-                    <td colspan="2"><label for="p_qty"></label>
-                      <input name="p_qty" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                      type = "number"
-                      maxlength = "8" required id="p_qty" size="5"  onkeydown="javascript: return event.keyCode == 69 ? false : true" /></td>
-                    </tr>
+          
+     
                     <tr>
-                     <td align="right" valign="middle">&nbsp;</td>
-                     <td colspan="2">&nbsp;</td>
-                   </tr>
-                 <!--   <tr>
-                    <td align="right" valign="middle">ราคาก่อนลด :</td>
-                    <td width="2"><label for="promo"></label>
-                      <input name="promo" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                      type = "number"
-                      maxlength = "8" required id="promo" value="0"  onkeydown="javascript: return event.keyCode == 69 ? false : true" /></td>
-
-                    </tr>
-
-                    <tr>
-                      <td align="right" valign="middle">&nbsp;</td>
-                      <td colspan="2">&nbsp;</td>
-                    </tr> -->
-                    <tr>
-                      <td align="right" valign="middle">ราคาหลังลด :</td>
+                      <td align="right" valign="middle">ราคาสินค้า :</td>
                       <td width="2"><label for="p_price"></label>
                        <input name="p_price" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                        type = "number"
@@ -123,12 +101,62 @@ $totalRows_prd = mysql_num_rows($prd);
                       <td colspan="2">&nbsp;</td>
                     </tr>
                     <tr>
-                      <td width="129" align="right" valign="middle">ไซส์ :</td>
-                      <td colspan="2"><label for="p_size"></label>
-                        <input name="p_size" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        type = "text"
-                        maxlength = "3"  required id="p_size" /></td>
+                      <td width="129" align="right" valign="middle">ไซส์ S :</td>
+                      <td colspan="2"><label for="p_size_s"></label>
+                        <input name="p_size_s" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "3"  required id="p_size_s" value="0" />
+                      </td>
                       </tr>
+                          <tr>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="129" align="right" valign="middle">ไซส์ M :</td>
+                      <td colspan="2"><label for="p_size_m"></label>
+                        <input name="p_size_m" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "3"  required id="p_size_m" value="0" />
+                      </td>
+                      </tr>
+                          <tr>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="129" align="right" valign="middle">ไซส์ L :</td>
+                      <td colspan="2"><label for="p_size_l"></label>
+                        <input name="p_size_l" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "3"  required id="p_size_l" value="0" />
+                      </td>
+                      </tr>
+                          <tr>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="129" align="right" valign="middle">ไซส์ XL:</td>
+                      <td colspan="2"><label for="p_size_xl"></label>
+                        <input name="p_size_xl" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "3"  required id="p_size_xl" value="0" />
+                      </td>
+                      </tr>
+                          <tr>
+                      <td align="right" valign="middle">&nbsp;</td>
+                      <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="129" align="right" valign="middle">ไซส์ XXL:</td>
+                      <td colspan="2"><label for="p_size_xxl"></label>
+                        <input name="p_size_xxl" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "3"  required id="p_size_xxl" value="0" />
+                      </td>
+                      </tr>
+
                       <tr>
                         <td align="right" valign="middle">&nbsp;</td>
                         <td colspan="2">&nbsp;</td>

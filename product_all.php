@@ -111,7 +111,7 @@
                                     </a>
                                 </div>
 
-                                <div class="product__hover__info">
+               <!--                  <div class="product__hover__info">
                                     <ul >
 
                                         <li>
@@ -121,7 +121,7 @@
 
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
 
                                 <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />

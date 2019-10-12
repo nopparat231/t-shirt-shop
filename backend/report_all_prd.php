@@ -90,7 +90,7 @@ $totalRows_prd = mysql_num_rows($prd);
       <th>จำนวน</th>
       <th>ไซส์</th>
       <th>ค่าจัดส่ง</th>
-      <th>การเข้าชม</th>
+      <!-- <th>การเข้าชม</th> -->
       <th>ราคา</th>
 
     </tr>
@@ -119,10 +119,10 @@ $totalRows_prd = mysql_num_rows($prd);
         <td align="center" valign="top">
           <?php echo $row_prd['p_ems'];?>
         </td>
-        <td align="center" valign="top">
-          <?php echo $row_prd['p_view'];?>
+        <!-- <td align="center" valign="top">
+          <?php //echo $row_prd['p_view'];?>
         </td>
-
+ -->
         <td align="right" valign="top"><?php echo number_format($row_prd['p_price'],2); ?></td>
       </tr>
       <?php
