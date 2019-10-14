@@ -19,7 +19,8 @@ if (isset($_GET['order_id'])) {
   $row_cartdone = mysql_fetch_assoc($cartdone);
   $totalRows_cartdone = mysql_num_rows($cartdone);
   $status = $row_cartdone['order_status'];
-
+  $totalsum = $row_cartdone['pay_amount'];
+  $ems = $row_cartdone['pos_ems'];
   $query_rb = "SELECT * FROM tbl_bank";
   $rb = mysql_query($query_rb, $condb) or die(mysql_error());
   $row_rb = mysql_fetch_assoc($rb);
@@ -95,7 +96,7 @@ if (isset($_GET['order_id'])) {
                         <tr>
                           <td colspan="4">จำนวนเงิน</td>
                           <td colspan="5" align="left"><label for="pay_amount"></label>
-                            <input type="number" step="0.01" name="pay_amount" pattern="([0-9]{1,3}).([0-9]{1,3})" value="<?php echo $row_cartdone['total'] ?>" required="required" value="" /></td>
+                            <input type="number" step="0.01" name="pay_amount" pattern="([0-9]{1,3}).([0-9]{1,3})" value="<?php echo $row_cartdone['total']; ?>" required="required" value="" /></td>
                           </tr>
 
 
@@ -179,9 +180,9 @@ if (isset($_GET['order_id'])) {
                               </a>
                             </div>
                             <div class="shp__pro__details">
-                              <h2><a href="product-details.html">
+                              <h2><a href="#">
                                 <?php echo $row_cartdone['p_name']; ?></a></h2>
-                                <span class="quantity">QTY: 
+                                <span class="quantity">จำนวน: 
                                   <?php echo $row_cartdone['p_c_qty']; ?>
                                 </span>
                                 <input type="hidden" name="p_qty" value="<?php echo $product_qty; ?>">
@@ -197,10 +198,10 @@ if (isset($_GET['order_id'])) {
                           <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); ?>
 
                           <ul class="shoping__total">
-                            <li class="subtotal">Subtotal:</li>
+                            <li class="subtotal">ราคารวมทั้งหมด:</li>
                             <li class="total__price">
                               <strong style="font-size: 30px">
-                                <?php echo $total; ?> บาท
+                                <?php echo $total += $ems; ?> บาท
                               </strong>
                             </li>
                             <input type="hidden" name="total" value="<?php echo $total; ?>">
@@ -375,8 +376,8 @@ if (isset($_GET['order_id'])) {
             <ul class="important-note">
              <?php
              do {
-               $subtotal = ($row_cartdone['p_price'] * $row_cartdone['p_c_qty']);
-               $total = ($total + $subtotal);
+               // $subtotal = ($row_cartdone['p_price'] * $row_cartdone['p_c_qty']);
+               // $total = ($total + $subtotal);
                ?>
 
                <div class="shp__single__product">
@@ -388,7 +389,7 @@ if (isset($_GET['order_id'])) {
                 <div class="shp__pro__details">
                   <h2><a href="product-details.html">
                     <?php echo $row_cartdone['p_name']; ?></a></h2>
-                    <span class="quantity">QTY: 
+                    <span class="quantity">จำนวณ: 
                       <?php echo $row_cartdone['p_c_qty']; ?>
                     </span>
                     <input type="hidden" name="p_qty" value="<?php echo $product_qty; ?>">
@@ -404,10 +405,10 @@ if (isset($_GET['order_id'])) {
               <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); ?>
 
               <ul class="shoping__total">
-                <li class="subtotal">Subtotal:</li>
+                <li class="subtotal">ราคารวม:</li>
                 <li class="total__price">
                   <strong style="font-size: 30px">
-                    <?php echo $total; ?> บาท
+                    <?php echo $totalsum; ?> บาท
                   </strong>
                 </li>
                 <input type="hidden" name="total" value="<?php echo $total; ?>">
@@ -432,7 +433,7 @@ if (isset($_GET['order_id'])) {
 <?php }else{ 
   $mem_id = $_SESSION['User_id'];
   $query_cartdone = "
-  SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.p_id , d.p_c_qty, d.order_id , count(d.order_id) as coid , SUM(d.total) as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.mem_id = '$mem_id' AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC";
+  SELECT o.order_id as oid, o.mem_id, o.order_status, o.order_date, d.p_id , d.p_c_qty, d.order_id , count(d.order_id) as coid , o.pay_amount as ctotal FROM tbl_order as o, tbl_order_detail as d WHERE o.mem_id = '$mem_id' AND o.order_id = d.order_id GROUP BY o.order_id ORDER BY o.order_id DESC";
 
   mysql_select_db($database_condb);
   $cartdone = mysql_query($query_cartdone, $condb) or die(mysql_error());

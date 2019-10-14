@@ -17,19 +17,19 @@
 if (isset($_GET['product'])) {
 
 
- $p_id = $_GET['product'];
+   $p_id = $_GET['product'];
 
- mysql_select_db($database_condb);
- $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
- $prd = mysql_query($query_prd,$condb) or die(mysql_error());
- $row_prd = mysql_fetch_assoc($prd);
- $totalRows_prd = mysql_num_rows($prd);
- ?>
+   mysql_select_db($database_condb);
+   $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+   $prd = mysql_query($query_prd,$condb) or die(mysql_error());
+   $row_prd = mysql_fetch_assoc($prd);
+   $totalRows_prd = mysql_num_rows($prd);
+   ?>
 
- <!-- Start Product Details -->
- <form class="product-form">
+   <!-- Start Product Details -->
+   <form class="product-form">
 
-     <section class="htc__product__details pt--120 pb--100 bg__white">
+       <section class="htc__product__details pt--120 pb--100 bg__white">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-sm-12">
@@ -51,7 +51,7 @@ if (isset($_GET['product'])) {
                             <?php endif ?>
 
                             <?php if ($row_prd['p_img3'] <> ""): ?>
-                               <li role="presentation" class="pot-small-img hidden-xs">
+                             <li role="presentation" class="pot-small-img hidden-xs">
                                 <a href="pimg/<?php echo $row_prd['p_img3'];?>" target="_blank">
                                     <img src="pimg/<?php echo $row_prd['p_img3'];?>" alt="small-image" style="height: 131px;width: 100px">
                                 </a>
@@ -99,51 +99,39 @@ if (isset($_GET['product'])) {
                             <h2 class="title__5">ไซส์</h2>
                             <ul class="pro__choose__size">
 
-                                <li>
-                                    <input type="radio" name="size" value="p_size_s" required >&nbsp;S<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_m">&nbsp;M<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_l">&nbsp;L<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_xl">&nbsp;XL<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size"  value="p_size_xxl">&nbsp;XL
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-action-wrap">
-                            <div class="prodict-statas"><span>Quantity :</span></div>
+                               <li><a href="#"><?php echo $row_prd['p_size']; ?></a></li>
+                              
+
+                           </ul>
+                       </div>
+                       <div class="product-action-wrap">
+                        <div class="prodict-statas"><span>Quantity :</span></div>
+                        <div class="product-quantity">
+
                             <div class="product-quantity">
-
-                                <div class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="product_qty" value="1">
-                                    </div>
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="text" name="product_qty" value="1">
                                 </div>
-
                             </div>
+
                         </div>
-                    </form>
-                    <ul class="pro__dtl__btn">
-                        <li class="buy__now__btn">
-                            <button type="submit" class="shoping-cart"  title="Add TO Cart"  >
-                                <span class="ti-shopping-cart" ></span>
-                            </button>
-                        </li>
+                    </div>
+                </form>
+                <ul class="pro__dtl__btn">
+                    <li class="buy__now__btn">
+                        <button type="submit" class="shoping-cart"  title="Add TO Cart"  >
+                            <span class="ti-shopping-cart" ></span>
+                        </button>
+                    </li>
 
-                    </ul>
+                </ul>
 
-                    <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
+                <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 </section>
 
 </form>

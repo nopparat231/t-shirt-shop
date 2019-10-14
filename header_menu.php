@@ -16,12 +16,12 @@
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.php">Home</a>
+                                    <li class="drop"><a href="index.php">หน้าหลัก</a>
                                     </li>
                                     <!-- <li><a href="Tee-Designer/desing.php">Desing</a></li> -->
-                                    <li><a href="index.php?about">About</a></li>
+                                    <li><a href="index.php?about">เกี่ยวกับ</a></li>
                                     
-                                    <li class="drop"><a href="index.php?Shop">Shop</a>
+                                    <li class="drop"><a href="index.php?Shop">สิ้นค้าทั้งหมด</a>
 
                                         <ul class="dropdown">
                                             <?php
@@ -48,7 +48,7 @@
 
 
 
-                                <li><a href="index.php?contact">contact</a></li>
+                               <!--  <li><a href="index.php?contact">contact</a></li> -->
                             </ul>
                         </nav>
 

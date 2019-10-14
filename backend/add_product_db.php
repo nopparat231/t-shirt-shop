@@ -16,16 +16,8 @@ $t_id = $_POST['t_id'];
 $p_detial = $_POST['p_detial'];
 $p_price = $_POST['p_price'];
 $promo = "";
-
-$p_size_s = $_POST['p_size_s'];
-$p_size_m = $_POST['p_size_m'];
-$p_size_l = $_POST['p_size_l'];
-$p_size_xl = $_POST['p_size_xl'];
-$p_size_xxl = $_POST['p_size_xxl'];
-
-
-$p_qty = $p_size_s+$p_size_m+$p_size_l+$p_size_xl+$p_size_xxl;
-
+$p_qty = $_POST['p_qty'];
+$p_size = $_POST['p_size'];
 $p_ems = $_POST['p_ems'];
 $p_unit = $_POST['p_unit'];
 $p_sell = $_POST['p_sell'];
@@ -152,11 +144,7 @@ $sql ="INSERT INTO tbl_product
 	p_price,
 	promo,
 	p_qty,
-	p_size_s,
-	p_size_m,
-	p_size_l,
-	p_size_xl,
-	p_size_xxl,
+	p_size,
 	p_ems,
 	p_unit,
 	p_sell,
@@ -176,11 +164,7 @@ $sql ="INSERT INTO tbl_product
 	'$p_price',
 	'$promo',
 	'$p_qty',
-	'$p_size_s',
-	'$p_size_m',
-	'$p_size_l',
-	'$p_size_xl',
-	'$p_size_xxl',
+	'$p_size',
 	'$p_ems',
 	'$p_unit',
 	'$p_sell',

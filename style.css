@@ -2638,9 +2638,11 @@ select.select-color {
 }
 .pro__choose__size li + li {
     padding-left: 20px;
+     font-size: 50px;
 }
-.pro__choose__size li input {
+.pro__choose__size li a {
     width: 3500px;
+    font-size: 50px;
 }
 .prodict-statas span {
   color: #666666;
