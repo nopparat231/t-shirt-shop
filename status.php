@@ -5,7 +5,7 @@ if ($status == 1) {
 	echo "</font>";
 }elseif ($status == 2) {
 	echo "<font color='#92E8C6'>";
-	echo "รอตรวจสอบการชำระเงิน";
+	echo "รอตรวจสอบและจัดส่ง";
 	echo "</font>";
 }elseif ($status == 3) {
 	echo "<font color='#4E70EB'>";

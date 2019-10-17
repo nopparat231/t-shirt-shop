@@ -8,160 +8,56 @@
                             <h2 class="title__line">ยินดีต้อนรับสู่ ร้านUp2screen</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore gScreenna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
                         </div>
-                        <div class="store__btn">
-                            <a href="#">contact us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Our Store Area -->
-        <!-- Start Choose Us Area -->
-        <section class="htc__choose__us__ares bg__white">
+                           <!-- Start Choose Us Area -->
+        <section class="htc__contact__area ptb--120 bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="video__wrap bg--3" data--black__overlay="5">
-                            <div class="video__inner">
-                                <a class="video__trigger video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                    <i class="zmdi zmdi-play"></i>
-                                </a>
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="htc__contact__container">
+                            <div class="htc__contact__address">
+                                <h2 class="contact__title">ติดต่อ</h2>
+                               
+                                <div class="contact__address__inner">
+                                    <!-- Start Single Adress -->
+                                    <div class="single__contact__address">
+                                        <div class="contact__icon">
+                                            <span class="ti-mobile"></span>
+                                        </div>
+                                        <div class="contact__details">
+                                            <p> โทร : <br><a href="#">062-6237888</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Adress -->
+                                    <!-- Start Single Adress -->
+                                    <div class="single__contact__address">
+                                        <div class="contact__icon">
+                                            <span class="ti-email"></span>
+                                        </div>
+                                        <div class="contact__details">
+                                            <p> เมล์ :<br><a href="#">chaymomo@gmail.com</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Adress -->
+                                </div>
+                            </div>
+
+                            <div class="form-output">
+                                <p class="form-messege"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="htc__choose__wrap bg__cat--4">
-                            <h2 class="choose__title">Why Choose Us?</h2>
-                            <div class="choose__container">
-                                <div class="single__chooose">
-                                    <div class="choose__us">
-                                        <div class="choose__icon">
-                                            <span class="ti-heart"></span>
-                                        </div>
-                                        <div class="choose__details">
-                                            <h4>Free Gift Box</h4>
-                                            <p>Lorem ipsum dolor sit amet consect adipisic elit sed do. </p>
-                                        </div>
-                                    </div>
-                                    <div class="choose__us">
-                                        <div class="choose__icon">
-                                            <span class="ti-truck"></span>
-                                        </div>
-                                        <div class="choose__details">
-                                            <h4>Free Delivery</h4>
-                                            <p>Lorem ipsum dolor sit amet consect adipisic elit sed do. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single__chooose">
-                                    <div class="choose__us">
-                                        <div class="choose__icon">
-                                            <span class="ti-reload"></span>
-                                        </div>
-                                        <div class="choose__details">
-                                            <h4>Money Back</h4>
-                                            <p>Lorem ipsum dolor sit amet consect adipisic elit sed do. </p>
-                                        </div>
-                                    </div>
-                                    <div class="choose__us">
-                                        <div class="choose__icon">
-                                            <span class="ti-time"></span>
-                                        </div>
-                                        <div class="choose__details">
-                                            <h4>Support 24/7</h4>
-                                            <p>Lorem ipsum dolor sit amet consect adipisic elit sed do. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30">
+                        <div class="map-contacts">
+                            <div id="googleMap"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Choose Us Area -->
-        <!-- Start Our Team Area -->
-        <section class="htc__team__area bg__white ptb--120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Our Staff</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labo.</p>
-                        </div>
                     </div>
-                </div>
-                <div class="row team__wrap clearfix mt--60">
-                    <!-- Start Single Team -->
-                    <div class="col-md-4 col-lg-4 col-sm-12">
-                        <div class="team foo">
-                            <div class="team__thumb">
-                                <a href="#">
-                                    <img src="images/team/1.jpg" alt="team images">
-                                </a>
-                            </div>
-                            <div class="team__bg__color"></div>
-                            <div class="team__hover__info">
-                                <div class="team__hover__action">
-                                    <h2><a href="#">Robiul siddikee</a></h2>
-                                    <ul class="social__icon">
-                                        <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
-                                        <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
-                                        <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Team -->
-                    <!-- Start Single Team -->
-                    <div class="col-md-4 col-lg-4 col-sm-12 xmt-30">
-                        <div class="team foo">
-                            <div class="team__thumb">
-                                <a href="#">
-                                    <img src="images/team/2.jpg" alt="team images">
-                                </a>
-                            </div>
-                            <div class="team__bg__color"></div>
-                            <div class="team__hover__info">
-                                <div class="team__hover__action">
-                                    <h2><a href="#">Robiul siddikee</a></h2>
-                                    <ul class="social__icon">
-                                        <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
-                                        <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
-                                        <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Team -->
-                    <!-- Start Single Team -->
-                    <div class="col-md-4 col-lg-4 hidden-sm col-xs-12 xmt-30">
-                        <div class="team foo">
-                            <div class="team__thumb">
-                                <a href="#">
-                                    <img src="images/team/4.jpg" alt="team images">
-                                </a>
-                            </div>
-                            <div class="team__bg__color"></div>
-                            <div class="team__hover__info">
-                                <div class="team__hover__action">
-                                    <h2><a href="#">Robiul siddikee</a></h2>
-                                    <ul class="social__icon">
-                                        <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
-                                        <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
-                                        <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Team -->
                 </div>
             </div>
         </section>
-        <!-- End Our Team Area -->
+        <!-- End Our Store Area -->
+

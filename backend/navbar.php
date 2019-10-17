@@ -9,7 +9,7 @@
 
 
 				<?php include('mm.php');?> 
-				<span class="category-header"><a href="index.php"><font color="#FFFFFF" >T-shirt-shop </font> </a><i class="fa fa-list"></i></span>
+				<span class="category-header"><a href="index.php"><font color="#FFFFFF" >Up2you </font> </a><i class="fa fa-list"></i></span>
 
 				<ul class="category-list">
 					<li  class="dropdown side-dropdown">

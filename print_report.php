@@ -1,4 +1,4 @@
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 
@@ -45,12 +45,12 @@ date_default_timezone_set('Asia/Bangkok');
     <tr>
 
       <th width="21" height="298" scope="row" >&nbsp;</th>
-      <th width="493" scope="row" ><img src="images/logo/uniqlo-large.png" /></th>
+      <th width="493" scope="row" ><img src="https://scontent.fbkk4-1.fna.fbcdn.net/v/t1.15752-9/72839742_396255554655162_7405830469477990400_n.png?_nc_cat=111&_nc_eui2=AeEdX5cTf9jNd2gEptR_T7yDlZwadtO4rXO8qae72ZuKTyXuf99Ca6gppdJpGZ4oAftDdppTGUs5j4Mlga4rw-JyNNHDuCDYAryIuyr6P_gCZA&_nc_oc=AQkcnLFjjVeyInrhds_LdX54E7ngCQNFvFYddR0Iuvi3pXC-5B35H4-zkre_ZGPVLCo&_nc_ht=scontent.fbkk4-1.fna&oh=11bdb9f13ac1ece20e3a493c6dee60d2&oe=5DEF0605" /></th>
 
-      <th width="553" align="center" nowrap="nowrap">
-        <align="left"><h3><strong>ร้าน จันผา</strong></h3>
-        <p> ชั้น 3 ห้อง B362 MEGAPLAZA สะพานเหล็ก </p>
-        <p> โทร. 080-419-4419 / 095-826-5356 LINE ID. 080-419-4419</p>
+      <th width="553" align="left" nowrap="nowrap">
+        <div ><h3 style="text-align: left;"><strong>ร้าน Up2youscreen</strong></h3></div>
+        <p> นิคมไฮเทค อ.บางประอิน จ.อยุธยา 13160 </p>
+        <p> โทร. 062-6237888</p>
         <p>&nbsp;</p>
         <table width="416" border="0" cellpadding="0" cellspacing="0">
           <?php 
@@ -157,7 +157,7 @@ date_default_timezone_set('Asia/Bangkok');
                         $total  += $sum;
                         // $ems = $row_cartdone['p_ems'] * $row_cartdone['p_c_qty'];
                         // $total += $ems;
-                        // $sumems +=$ems;
+                        $sumems = $row_cartdone['pos_ems'];
                         ?>
 
                         <tr>
