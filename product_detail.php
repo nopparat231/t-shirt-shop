@@ -160,7 +160,7 @@ if (isset($_GET['product'])) {
                     </ul>
 
 
-                    <form id='myform' method='POST' action='#'>
+                    <form id='myform' name="myform" method='POST' action='#'>
                         <div class="pro__dtl__size">
                             <h2 class="title__5">ไซส์</h2>
 
@@ -168,16 +168,25 @@ if (isset($_GET['product'])) {
                             <?php  do{  ?> 
 
                                <label for="opt1" class="radio">
-                                <input type="radio" name="size" value="<?php echo $row_prd['p_size']; ?>" required class="hidden"/>
+                                <input type="radio" name="size" value="<?php echo $row_prd['p_size']; ?>" required id="<?php echo $row_prd['p_size']; ?>" class="hidden"/>
                                 <span class="label"></span><?php echo $row_prd['p_size']; ?>&nbsp;&nbsp;
                             </label>
                             
                             <label for="opt1" class="radio">
-                                <input type="radio" name="p_id" value="<?php echo $row_prd['p_id']; ?>" required class="hidden"/>
+                                <input type="radio" name="p_id" value="<?php echo $row_prd['p_id']; ?>" id="<?php echo $row_prd['p_id']; ?>" class="hidden"/>
                                 <span class="label"></span><?php echo $row_prd['p_id']; ?>&nbsp;&nbsp;
                             </label>
-                            
-                            <?php  } while ($row_prd = mysql_fetch_assoc($prd)); ?><br>
+
+                            <script>
+                                document.myform.onclick = function(){
+
+                                    if(document.getElementById("<?php echo $row_prd['p_size']; ?>").checked){
+                                        document.getElementById("<?php echo $row_prd['p_id']; ?>").checked = true;
+                                    }
+                                }
+                                </script>
+
+                                <?php  } while ($row_prd = mysql_fetch_assoc($prd)); ?><br>
 
  <!--                            <label for="opt2" class="radio">
                                 <input type="radio" name="size" value="p_size_m" id="opt2" class="hidden"/>
