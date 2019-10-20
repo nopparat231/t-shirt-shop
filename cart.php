@@ -24,81 +24,83 @@ if (!isset($_SESSION)) {
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <?php 
-                                //print_r($_SESSION["products"]);
+                                echo "<pre>";
+                                print_r($_SESSION["products"]);
+                                echo "</pre>";
                                 $total = 0;
                                 foreach($_SESSION["products"] as $product)
                                 {
                                     $p_id = $product["p_id"];
                                     $product_qty = $product["product_qty"];
                                     $product_price = $product["p_price"];
+                                    $product_size = $product["size"];
 
-                                    if ($product_size == $product["p_size_s"]) {
-                                         $product_size = "S";
-                                    }elseif ($product_size == $product["p_size_m"]) {
-                                         $product_size = "M";
-                                    }elseif ($product_size == $product["p_size_l"]) {
-                                         $product_size = "L";
-                                    }elseif ($product_size == $product["p_size_xl"]) {
-                                         $product_size = "XL";
-                                    }elseif ($product_size == $product["p_size_xxl"]) {
-                                         $product_size = "XXL";
-                                    }
-                                    $product_size = "XXL";
+                                    if ($product_size == "p_size_s" ) {
+                                       $product_size = "S";
+                                   }elseif ($product_size == "p_size_m" ) {
+                                       $product_size = "M";
+                                   }elseif ($product_size == "p_size_l" ) {
+                                       $product_size = "L";
+                                   }elseif ($product_size == "p_size_xl" ) {
+                                       $product_size = "XL";
+                                   }elseif ($product_size == "p_size_xxl" ) {
+                                       $product_size = "XXL";
+                                   }
+                                   //$product_size = "XXL";
                                    
 
-                                    mysql_select_db($database_condb);
-                                    $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
-                                    $query = mysql_query($sql, $condb );
-                                    $row = mysql_fetch_array($query);
+                                   mysql_select_db($database_condb);
+                                   $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+                                   $query = mysql_query($sql, $condb );
+                                   $row = mysql_fetch_array($query);
 
-                                    $subtotal = ($product_price * $product_qty);
-                                    $total = ($total + $subtotal);
-                                    ?>
+                                   $subtotal = ($product_price * $product_qty);
+                                   $total = ($total + $subtotal);
+                                   ?>
 
-                                    <tr>
-                                        <td class="product-thumbnail"><a href="#">
-                                            <img src="pimg/<?php echo $row['p_img1'];?>" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="index.php?product=<?php echo $row['p_id']; ?>&product_detail"><?php echo $row['p_name']; ?></a></td>
-                                             <td class="product-price"><span class="amount"><?php echo $product_size; ?></span></td>
-                                            <td class="product-price"><span class="amount"><?php echo $product_price; ?></span></td>
-                                            <td class="product-quantity">
-                                                <input type="number" value="<?php echo $product_qty; ?>" class="text-center quantity" data-code="<?php echo $p_id; ?>" value="<?php echo $product_qty; ?>" min='1' max='5' /></td>
-                                                <td class="product-subtotal"><?php echo $subtotal; ?></td>
-                                                <td class="product-remove">
+                                   <tr>
+                                    <td class="product-thumbnail"><a href="#">
+                                        <img src="pimg/<?php echo $row['p_img1'];?>" alt="product img" /></a></td>
+                                        <td class="product-name"><a href="index.php?product=<?php echo $row['p_id']; ?>&product_detail"><?php echo $row['p_name']; ?></a></td>
+                                        <td class="product-price"><span class="amount"><?php echo $product_size; ?></span></td>
+                                        <td class="product-price"><span class="amount"><?php echo $product_price; ?></span></td>
+                                        <td class="product-quantity">
+                                            <input type="number" value="<?php echo $product_qty; ?>" class="text-center quantity" data-code="<?php echo $p_id; ?>" value="<?php echo $product_qty; ?>" min='1' max='5' /></td>
+                                            <td class="product-subtotal"><?php echo $subtotal; ?></td>
+                                            <td class="product-remove">
 
-                                                    <a href="#" class="remove-item" data-code="<?php echo $row['p_id']; ?>">X</a>
+                                                <a href="#" class="remove-item" data-code="<?php echo $row['p_id']; ?>">X</a>
 
-                                                </td>
-                                            </tr>
+                                            </td>
+                                        </tr>
 
-                                        <?php } ?>
+                                    <?php } ?>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-sm-12">
-                                    <div class="buttons-cart">
-                                        
-                                        <a href="index.php">สั่งซื้อสินค้าเพิ่ม</a>
-                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+                                <div class="buttons-cart">
 
+                                    <a href="index.php">สั่งซื้อสินค้าเพิ่ม</a>
                                 </div>
-                                <div class="col-md-4 col-sm-12 ">
-                                    <div class="cart_totals">
-                                        <h2>Cart Totals</h2>
-                                        <table>
-                                            <tbody>
-                                                <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
-                                                    <td><span class="amount"><?php echo $total; ?></span></td>
-                                                </tr>
-                                                <tr class="shipping">
-                                                    <th>Shipping</th>
-                                                    <td>
-                                                        <ul id="shipping_method">
+
+                            </div>
+                            <div class="col-md-4 col-sm-12 ">
+                                <div class="cart_totals">
+                                    <h2>Cart Totals</h2>
+                                    <table>
+                                        <tbody>
+                                            <tr class="cart-subtotal">
+                                                <th>Subtotal</th>
+                                                <td><span class="amount"><?php echo $total; ?></span></td>
+                                            </tr>
+                                            <tr class="shipping">
+                                                <th>Shipping</th>
+                                                <td>
+                                                    <ul id="shipping_method">
 <!--                                                             <li>
                                                                 <input type="radio" /> 
                                                                 <label>
@@ -106,14 +108,14 @@ if (!isset($_SESSION)) {
                                                                 </label>
                                                             </li> -->
                                                             <li>
-                                                                
+
                                                                 <label>
                                                                     Free Shipping
                                                                 </label>
                                                             </li>
                                                             <li></li>
                                                         </ul>
-                                                     
+
                                                     </td>
                                                 </tr>
                                                 <tr class="order-total">

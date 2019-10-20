@@ -9,27 +9,90 @@
         margin: 5px 0;
         font-weight: bold;
         cursor: pointer;
-    }
 
+    }
+   /* .radio {
+      position: relative;
+      cursor: pointer;
+      line-height: 20px;
+      font-size: 14px;
+      margin: 15px;
+  }
+  .radio .label {
+      position: relative;
+      display: block;
+      float: left;
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #c8ccd4;
+      border-radius: 100%;
+      -webkit-tap-highlight-color: transparent;
+  }
+  .radio .label:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: #225cff;
+      transform: scale(0);
+      transition: all 0.2s ease;
+      opacity: 0.08;
+      pointer-events: none;
+  }
+  .radio:hover .label:after {
+      transform: scale(3.6);
+  }
+  input[type="radio"]:checked + .label {
+      border-color: #225cff;
+  }
+  input[type="radio"]:checked + .label:after {
+      transform: scale(1);
+      transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+      opacity: 1;
+  }
+
+  .hidden {
+      display: contents;
+  }
+  .credit {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      transition: all 0.2s ease;
+      -webkit-user-select: none;
+      user-select: none;
+      opacity: 0.6;
+  }
+  .credit img {
+      width: 72px;
+  }
+  .credit:hover {
+      transform: scale(0.95);
+  }
+*/
 </style>
 <?php 
 
 if (isset($_GET['product'])) {
 
 
- $p_id = $_GET['product'];
+   $p_id = $_GET['product'];
 
- mysql_select_db($database_condb);
- $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
- $prd = mysql_query($query_prd,$condb) or die(mysql_error());
- $row_prd = mysql_fetch_assoc($prd);
- $totalRows_prd = mysql_num_rows($prd);
- ?>
+   mysql_select_db($database_condb);
+   $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+   $prd = mysql_query($query_prd,$condb) or die(mysql_error());
+   $row_prd = mysql_fetch_assoc($prd);
+   $totalRows_prd = mysql_num_rows($prd);
+   ?>
 
- <!-- Start Product Details -->
- <form class="product-form">
+   <!-- Start Product Details -->
+   <form class="product-form">
 
-     <section class="htc__product__details pt--120 pb--100 bg__white">
+       <section class="htc__product__details pt--120 pb--100 bg__white">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-sm-12">
@@ -51,7 +114,7 @@ if (isset($_GET['product'])) {
                             <?php endif ?>
 
                             <?php if ($row_prd['p_img3'] <> ""): ?>
-                               <li role="presentation" class="pot-small-img hidden-xs">
+                             <li role="presentation" class="pot-small-img hidden-xs">
                                 <a href="pimg/<?php echo $row_prd['p_img3'];?>" target="_blank">
                                     <img src="pimg/<?php echo $row_prd['p_img3'];?>" alt="small-image" style="height: 131px;width: 100px">
                                 </a>
@@ -94,27 +157,48 @@ if (isset($_GET['product'])) {
                         <li><?php echo $row_prd['p_price']; ?></li>
                     </ul>
 
+
                     <form id='myform' method='POST' action='#'>
                         <div class="pro__dtl__size">
                             <h2 class="title__5">ไซส์</h2>
-                            <ul class="pro__choose__size">
 
-                                <li>
-                                    <input type="radio" name="size" value="p_size_s" required >&nbsp;S<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_m">&nbsp;M<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_l">&nbsp;L<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size" value="p_size_xl">&nbsp;XL<br>
-                                </li>
-                                <li>
-                                    <input type="radio" name="size"  value="p_size_xxl">&nbsp;XL
-                                </li>
-                            </ul>
+
+
+                            <label for="opt1" class="radio">
+                                <input type="radio" name="size" value="p_size_s" required id="opt1" class="hidden"/>
+                                <span class="label"></span>S&nbsp;&nbsp;
+                            </label>
+
+
+
+                            <label for="opt2" class="radio">
+                                <input type="radio" name="size" value="p_size_m" id="opt2" class="hidden"/>
+                                <span class="label"></span>M&nbsp;&nbsp;
+                            </label>
+
+
+
+                            <label for="opt3" class="radio">
+                                <input type="radio" name="size" value="p_size_l" id="opt3" class="hidden"/>
+                                <span class="label"></span>L&nbsp;&nbsp;
+                            </label>
+
+
+
+                            <label for="opt4" class="radio">
+                                <input type="radio" name="size" value="p_size_xl" id="opt4" class="hidden"/>
+                                <span class="label"></span>XL&nbsp;&nbsp;
+                            </label>
+
+
+
+                            <label for="opt5" class="radio">
+                                <input type="radio" name="size" value="p_size_xxl" id="opt5" class="hidden"/>
+                                <span class="label"></span>XXL&nbsp;&nbsp;
+                            </label>
+
+
+
                         </div>
                         <div class="product-action-wrap">
                             <div class="prodict-statas"><span>Quantity :</span></div>
@@ -122,7 +206,7 @@ if (isset($_GET['product'])) {
 
                                 <div class="product-quantity">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="product_qty" value="1">
+                                        <input class="cart-plus-minus-box" type="text" min='1' max='5' name="product_qty" value="1">
                                     </div>
                                 </div>
 
