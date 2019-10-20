@@ -73,22 +73,24 @@
   .credit:hover {
       transform: scale(0.95);
   }
-*/
+  */
 </style>
 <?php 
 
 if (isset($_GET['product'])) {
 
 
-   $p_id = $_GET['product'];
+   $t_id = $_GET['product'];
 
    mysql_select_db($database_condb);
-   $query_prd = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
+   $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' ";
    $prd = mysql_query($query_prd,$condb) or die(mysql_error());
    $row_prd = mysql_fetch_assoc($prd);
    $totalRows_prd = mysql_num_rows($prd);
    ?>
 
+   <?php
+   ?>
    <!-- Start Product Details -->
    <form class="product-form">
 
@@ -163,15 +165,21 @@ if (isset($_GET['product'])) {
                             <h2 class="title__5">ไซส์</h2>
 
 
+                            <?php  do{  ?> 
 
-                            <label for="opt1" class="radio">
-                                <input type="radio" name="size" value="p_size_s" required id="opt1" class="hidden"/>
-                                <span class="label"></span>S&nbsp;&nbsp;
+                               <label for="opt1" class="radio">
+                                <input type="radio" name="size" value="<?php echo $row_prd['p_size']; ?>" required class="hidden"/>
+                                <span class="label"></span><?php echo $row_prd['p_size']; ?>&nbsp;&nbsp;
                             </label>
+                            
+                            <label for="opt1" class="radio">
+                                <input type="radio" name="p_id" value="<?php echo $row_prd['p_id']; ?>" required class="hidden"/>
+                                <span class="label"></span><?php echo $row_prd['p_id']; ?>&nbsp;&nbsp;
+                            </label>
+                            
+                            <?php  } while ($row_prd = mysql_fetch_assoc($prd)); ?><br>
 
-
-
-                            <label for="opt2" class="radio">
+ <!--                            <label for="opt2" class="radio">
                                 <input type="radio" name="size" value="p_size_m" id="opt2" class="hidden"/>
                                 <span class="label"></span>M&nbsp;&nbsp;
                             </label>
@@ -196,40 +204,42 @@ if (isset($_GET['product'])) {
                                 <input type="radio" name="size" value="p_size_xxl" id="opt5" class="hidden"/>
                                 <span class="label"></span>XXL&nbsp;&nbsp;
                             </label>
+                        -->
 
 
+                    </div>
+                    <div class="product-action-wrap">
+                        <div class="prodict-statas"><span>Quantity :</span></div>
+                        <div class="product-quantity">
 
-                        </div>
-                        <div class="product-action-wrap">
-                            <div class="prodict-statas"><span>Quantity :</span></div>
                             <div class="product-quantity">
-
-                                <div class="product-quantity">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" min='1' max='5' name="product_qty" value="1">
-                                    </div>
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="text" min='1' max='5' name="product_qty" value="1">
                                 </div>
-
                             </div>
+
                         </div>
-                    </form>
-                    <ul class="pro__dtl__btn">
-                        <li class="buy__now__btn">
-                            <button type="submit" class="shoping-cart"  title="Add TO Cart"  >
-                                <span class="ti-shopping-cart" ></span>
-                            </button>
-                        </li>
+                    </div>
+                </form>
+                <ul class="pro__dtl__btn">
+                    <li class="buy__now__btn">
+                        <button type="submit" class="shoping-cart"  title="Add TO Cart"  >
+                            <span class="ti-shopping-cart" ></span>
+                        </button>
+                    </li>
 
-                    </ul>
+                </ul>
 
-                    <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
 
-                </div>
+
             </div>
         </div>
     </div>
+</div>
 </section>
 
 </form>
-<?php } ?>
+<?php 
+
+} ?>
         <!-- End Product Details -->

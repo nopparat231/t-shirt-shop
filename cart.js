@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var button_content = $(this).find('button[type=submit]');
 		//button_content.html('Error'); 
 		$.ajax({
-			url: "manage_cart.php",
+			url: "manage_cart_test.php",
 			type: "POST",
 			dataType:"json",
 			data: form_data
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		var pcode = $(this).attr("data-code");
 		var quantity = $(this).val(); 
 		$(this).parent().parent().fadeOut(); 
-		$.getJSON( "manage_cart.php", {"update_quantity":pcode, "quantity":quantity} , function(data){		
+		$.getJSON( "manage_cart_test.php", {"update_quantity":pcode, "quantity":quantity} , function(data){		
 			window.location.reload();			
 		});
 	}	
@@ -33,7 +33,7 @@ $(document).ready(function(){
 		e.preventDefault(); 
 		var pcode = $(this).attr("data-code"); 
 		$(this).parent().parent().fadeOut();
-		$.getJSON( "manage_cart.php", {"remove_code":pcode} , function(data){
+		$.getJSON( "manage_cart_test.php", {"remove_code":pcode} , function(data){
 			$("#cart-container").html(data.products); 	
 			window.location.reload();			
 		});

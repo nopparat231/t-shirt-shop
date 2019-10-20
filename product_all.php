@@ -104,7 +104,7 @@
                             <div class="product__inner" >
 
                                 <div class="pro__thumb img-class">
-                                    <a href="index.php?product=<?php echo $row_prd['p_id']; ?>&product_detail">
+                                    <a href="index.php?product=<?php echo $row_prd['t_id']; ?>&product_detail">
 
                                         <img src="pimg/<?php echo $row_prd['p_img1'];?>"alt="product images" style="height: 300px">
 
