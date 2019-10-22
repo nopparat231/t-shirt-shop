@@ -68,9 +68,9 @@
 
         if (isset($_GET['t_id'])) {
             $t_id = $_GET['t_id'];
-            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' GROUP BY t_id  ORDER BY p_id DESC ";
         }else{
-            $query_prd = "SELECT * FROM tbl_product  ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product GROUP BY t_id ORDER BY p_id DESC ";
         }
         
         $prd = mysql_query($query_prd,$condb) or die(mysql_error());
