@@ -11,69 +11,49 @@
     cursor: pointer;
 
   }
-   /* .radio {
-      position: relative;
-      cursor: pointer;
-      line-height: 20px;
-      font-size: 14px;
-      margin: 15px;
-  }
-  .radio .label {
-      position: relative;
-      display: block;
-      float: left;
-      margin-right: 10px;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #c8ccd4;
-      border-radius: 100%;
-      -webkit-tap-highlight-color: transparent;
-  }
-  .radio .label:after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 10px;
-      height: 10px;
-      border-radius: 100%;
-      background: #225cff;
-      transform: scale(0);
-      transition: all 0.2s ease;
-      opacity: 0.08;
-      pointer-events: none;
-  }
-  .radio:hover .label:after {
-      transform: scale(3.6);
-  }
-  input[type="radio"]:checked + .label {
-      border-color: #225cff;
-  }
-  input[type="radio"]:checked + .label:after {
-      transform: scale(1);
-      transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
-      opacity: 1;
-  }
-
-  .hidden {
-      display: contents;
-  }
-  .credit {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      transition: all 0.2s ease;
-      -webkit-user-select: none;
-      user-select: none;
-      opacity: 0.6;
-  }
-  .credit img {
-      width: 72px;
-  }
-  .credit:hover {
-      transform: scale(0.95);
-  }
-  */
+  .form-radio
+  {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   display: inline-block;
+   position: relative;
+   background-color: #f1f1f1;
+   color: #666;
+   top: 10px;
+   height: 30px;
+   width: 30px;
+   border: 0;
+   border-radius: 50px;
+   cursor: pointer;     
+   margin-right: 7px;
+   outline: none;
+ }
+ .form-radio:checked::before
+ {
+   position: absolute;
+   font: 13px/1 'Open Sans', sans-serif;
+   left: 11px;
+   top: 7px;
+   content: '\02143';
+   transform: rotate(40deg);
+ }
+ .form-radio:hover
+ {
+   background-color: #f7f7f7;
+ }
+ .form-radio:checked
+ {
+   background-color: #f1f1f1;
+ }
+ label
+ {
+   font: 15px/1.7 'Open Sans', sans-serif;
+   color: #333;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   cursor: pointer;
+ } 
 </style>
 <?php 
 
@@ -167,16 +147,11 @@ if (isset($_GET['product'])) {
 
               <?php  do{  ?> 
 
-
-                <label for="opt1" class="radio" >
-                  <input type="radio" name="p_id" value="<?php echo $row_prd['p_id']; ?>"  class="hidden"/>
-
-                  <span class="label"></span><?php echo $row_prd['p_size']; ?>&nbsp;&nbsp;
-                </label>
-
+                <input type="radio" name="p_id" value="<?php echo $row_prd['p_id']; ?>" id="radio-one" class="form-radio" checked>
+                <label for="radio-one"><?php echo $row_prd['p_size']; ?>&nbsp;&nbsp;</label>
 
               <?php  } while ($row_prd = mysql_fetch_assoc($prd)); ?>
-  
+
  <!--                            <label for="opt2" class="radio">
                                 <input type="radio" name="size" value="p_size_m" id="opt2" class="hidden"/>
                                 <span class="label"></span>M&nbsp;&nbsp;
