@@ -7,7 +7,7 @@
                     <div class="ft__widget contact__us">
                         <h2 class="ft__title">ติดต่อ</h2>
                         <div class="footer__inner">
-                            <p> ที่อยู่ Up2yoscteen <br> นิคมไฮเทค อ.บางปะอิน <br> จ.อยุธยา 13160 </p>
+                            <p> ที่อยู่ Up2youscreen <br> นิคมอุตสาหกรรมไฮเทค ต.บ้านเลน  <br> อ.บางปะอิน จ.อยุธยา 13160 </p>
                         </div>
                     </div>
                 </div>
@@ -18,9 +18,9 @@
                         <h2 class="ft__title">ติดตาม</h2>
                         <ul class="social__icon">
                             
-                            <li><a href="https://www.instagram.com/up2screen/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/up2youscreen/?fbclid=IwAR2vNV8rUXnk3-rUuSZLnJd-7lVb-skSnJjQF9rst1Ycbxe2ZsNVzi7yWU8" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
 
-                            <li><a href="https://www.facebook.com/up2screen/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="https://www.facebook.com/up2youscreen/" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
                            
                         </ul>
                     </div>

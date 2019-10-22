@@ -114,7 +114,7 @@ if (isset($_POST['register'])) {
 		$mem_id = mysql_insert_id($condb);
 
 		$strTo = $mem_email;
-		$strSubject = "ยืนยันการสมัครสมาชิก เว็บจำหน่ายหนังสือออนไลน์ BOOKSHOP";
+		$strSubject = "ยืนยันการสมัครสมาชิก ร้านขายเสื้อออนไลน์ up2youscreen";
 		$strHeader = "Content-type: text/html; charset=UTF-8\n"; // or UTF-8 //
 
 		$strMessage = "";

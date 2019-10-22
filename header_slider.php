@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-4 col-sm-12 col-xs-12">
                             <div class="slider__inner">
-                                <h1><span class="text--theme">UP2YOUSCREEN</span></h1>
+                                <h1><span class="text--theme">up2youscreen</span></h1>
 
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                         <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
                             <div class="slider__inner">
                              <div class="slider__inner">
-                                <h1><span class="text--theme">UP2YOUSCREEN</span></h1>
+                                <h1><span class="text--theme">up2youscreen</span></h1>
 
                             </div>
                         </div>
