@@ -25,30 +25,16 @@ if (!isset($_SESSION)) {
                             </thead>
                             <tbody>
                                 <?php 
-                                echo "<pre>";
-                                print_r($_SESSION["products"]);
-                                echo "</pre>";
+                                // echo "<pre>";
+                                // print_r($_SESSION["products"]);
+                                // echo "</pre>";
                                 $total = 0;
                                 foreach($_SESSION["products"] as $product)
                                 {
                                     $p_id = $product["p_id"];
                                     $product_qty = $product["product_qty"];
                                     $product_price = $product["p_price"];
-                                    $product_size = $product["size"];
-
-                                    if ($product_size == "p_size_s" ) {
-                                       $product_size = "S";
-                                   }elseif ($product_size == "p_size_m" ) {
-                                       $product_size = "M";
-                                   }elseif ($product_size == "p_size_l" ) {
-                                       $product_size = "L";
-                                   }elseif ($product_size == "p_size_xl" ) {
-                                       $product_size = "XL";
-                                   }elseif ($product_size == "p_size_xxl" ) {
-                                       $product_size = "XXL";
-                                   }
-                                   //$product_size = "XXL";
-                                   
+                                                                       
 
                                    mysql_select_db($database_condb);
                                    $sql = "SELECT * FROM tbl_product WHERE p_id = '$p_id' ";
@@ -63,7 +49,7 @@ if (!isset($_SESSION)) {
                                     <td class="product-thumbnail"><a href="#">
                                         <img src="pimg/<?php echo $row['p_img1'];?>" alt="product img" /></a></td>
                                         <td class="product-name"><a href="index.php?product=<?php echo $row['p_id']; ?>&product_detail"><?php echo $row['p_name']; ?></a></td>
-                                        <td class="product-price"><span class="amount"><?php echo $product_size; ?></span></td>
+                                        <td class="product-price"><span class="amount"><?php echo $row['p_size']; ?></span></td>
                                         <td class="product-price"><span class="amount"><?php echo $product_price; ?></span></td>
                                         <td class="product-quantity">
                                             <input type="number" value="<?php echo $product_qty; ?>" class="text-center quantity" data-code="<?php echo $p_id; ?>" value="<?php echo $product_qty; ?>" min='1' max='5' /></td>

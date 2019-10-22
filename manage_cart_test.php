@@ -14,9 +14,7 @@ if(isset($_POST["p_id"])) {
 	$statement->bind_result($product_name, $product_price);
 	while($statement->fetch()){ 
 		$product["p_name"] = $product_name;
-		$product["p_price"] = $product_price;
-		$product["p_size_s"] = $p_size_s;
-		$product["p_size_m"] = $p_size_m;		
+		$product["p_price"] = $product_price;		
 		if(isset($_SESSION["products"])){ 
 			if(isset($_SESSION["products"][$product['p_id']])) {				
 				$_SESSION["products"][$product['p_id']]["product_qty"] = $_SESSION["products"][$product['p_id']]["product_qty"] + $_POST["product_qty"];				
