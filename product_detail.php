@@ -63,7 +63,7 @@ if (isset($_GET['product'])) {
  $t_id = $_GET['product'];
 
  mysql_select_db($database_condb);
- $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' ";
+ $query_prd = "SELECT * FROM tbl_product WHERE p_qty > 0 AND t_id = '$t_id' ";
  $prd = mysql_query($query_prd,$condb) or die(mysql_error());
  $row_prd = mysql_fetch_assoc($prd);
  $totalRows_prd = mysql_num_rows($prd);
