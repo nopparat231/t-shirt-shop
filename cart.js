@@ -11,7 +11,9 @@ $(document).ready(function(){
 			data: form_data
 		}).done(function(data){		    
 			$("#cart-container").html(data.products);
-			button_content.html('เพิ่มสินค้าแล้ว'); 			
+		
+button_content.html('เพิ่มสินค้าแล้ว...');
+				setTimeout(function(){button_content.html('เพิ่มสินค้า')}, 1500); 			
 		})
 		e.preventDefault();
 	});	

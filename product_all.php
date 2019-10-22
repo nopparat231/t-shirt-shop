@@ -1,18 +1,4 @@
 
-<style type="text/css">
-    button {
-        border: 1px solid #722A1B;
-        padding: 8px 14px;
-        background-color: #fff;
-        color: #722A1B;
-        text-transform: uppercase;
-        float: center;
-        margin: 5px 0;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-</style>
 <section class="htc__product__area ptb--130 bg__white">
     <div class="container">
         <div class="htc__product__container">
@@ -82,9 +68,9 @@
 
         if (isset($_GET['t_id'])) {
             $t_id = $_GET['t_id'];
-            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' GROUP BY t_id  ORDER BY p_id DESC ";
         }else{
-            $query_prd = "SELECT * FROM tbl_product ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product GROUP BY t_id ORDER BY p_id DESC ";
         }
         
         $prd = mysql_query($query_prd,$condb) or die(mysql_error());
@@ -104,25 +90,12 @@
                             <div class="product__inner" >
 
                                 <div class="pro__thumb img-class">
-                                    <a href="index.php?product=<?php echo $row_prd['p_id']; ?>&product_detail">
+                                    <a href="index.php?product=<?php echo $row_prd['t_id']; ?>&product_detail">
 
                                         <img src="pimg/<?php echo $row_prd['p_img1'];?>"alt="product images" style="height: 300px">
 
                                     </a>
                                 </div>
-
-               <!--                  <div class="product__hover__info">
-                                    <ul >
-
-                                        <li>
-                                            <button type="submit" class="shoping-cart" id="shoping-cart" title="เพิ่มสินค้า" style="width: 50%" >
-                                                <span class="ti-shopping-cart" ></span>
-                                            </button>
-
-                                        </li>
-                                    </ul>
-                                </div> -->
-
 
                                 <input type="hidden" name="p_id" value="<?php echo $row_prd['p_id'];?>" />
                                 <input type="hidden" name="product_qty" value="1" />
