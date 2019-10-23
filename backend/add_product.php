@@ -37,6 +37,12 @@ $ptype = mysql_query($query_ptype, $condb) or die(mysql_error());
 $row_ptype = mysql_fetch_assoc($ptype);
 $totalRows_ptype = mysql_num_rows($ptype);
 
+$query_ts = "SELECT * FROM tbl_type_sub";
+$ts = mysql_query($query_ts, $condb) or die(mysql_error());
+$row_ts = mysql_fetch_assoc($ts);
+$totalRows_ts = mysql_num_rows($ts);
+
+
 mysql_select_db($database_condb);
 $query_prd = "
 SELECT * FROM tbl_product as p, tbl_type as t
@@ -143,7 +149,7 @@ $totalRows_prd = mysql_num_rows($prd);
                           <td colspan="2">
                             <label for=""></label>
                             <select  class="form-control" name="t_id" id="t_id" required="required">
-                             
+
                               <?php
                               do {
                                 ?>
@@ -154,6 +160,28 @@ $totalRows_prd = mysql_num_rows($prd);
                               if($rows > 0) {
                                 mysql_data_seek($ptype, 0);
                                 $row_ptype = mysql_fetch_assoc($ptype);
+                              }
+                              ?>
+                            </select>
+                          </td>
+                        </tr>
+                  
+                        <tr>
+                          <td align="right" valign="middle">ประเภทสินค้าย่อย :</td>
+                          <td colspan="2">
+                            <label for=""></label>
+                            <select  class="form-control" name="ts_id" id="ts_id" required="required">
+
+                              <?php
+                              do {
+                                ?>
+                                <option value="<?php echo $row_ts['ts_id']?>"><?php echo $row_ts['ts_name']?></option>
+                                <?php
+                              } while ($row_ts = mysql_fetch_assoc($ts));
+                              $rows = mysql_num_rows($ts);
+                              if($rows > 0) {
+                                mysql_data_seek($ts, 0);
+                                $row_ts = mysql_fetch_assoc($ts);
                               }
                               ?>
                             </select>

@@ -14,6 +14,7 @@ $numrand = (mt_rand());
 $p_id = $_POST['p_id'];
 $p_name = $_POST['p_name'];
 $t_id = $_POST['t_id'];
+$ts_id = $_POST['ts_id'];
 $p_detial = $_POST['p_detial'];
 $p_price = $_POST['p_price'];
 $promo = "";
@@ -152,6 +153,7 @@ mysql_select_db($database_condb);
 $sql ="UPDATE tbl_product SET
 p_name='$p_name',
 t_id='$t_id',
+ts_id='$ts_id',
 p_detial='$p_detial',
 p_price='$p_price',
 promo='$promo',

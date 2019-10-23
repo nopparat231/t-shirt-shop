@@ -33,8 +33,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_condb);
 $query_prd = "
-SELECT * FROM tbl_product as p, tbl_type as t
-WHERE p.t_id = t.t_id
+SELECT * FROM tbl_product as p, tbl_type as t , tbl_type_sub as ts
+WHERE p.t_id = t.t_id AND p.ts_id= ts.ts_id
 ORDER BY p.p_id desc";
 $prd = mysql_query($query_prd, $condb) or die(mysql_error());
 $row_prd = mysql_fetch_assoc($prd);
@@ -56,7 +56,12 @@ $totalRows_prd = mysql_num_rows($prd);
 
   <div class="container">
 
+<style type="text/css">
+  td a{
+    width: 40px;
 
+  }
+</style>
 
     <div class="row">
 
@@ -72,14 +77,15 @@ $totalRows_prd = mysql_num_rows($prd);
          <tr>
             <th width="5%">รหัสสินค้า</th>
             <th width="10%">ประเภท</th>
-            <th width="40%">รายละเอียด</th>
-            <th width="7%">ราคา</th>
-            <th width="7%">จำนวน</th>
+            <th width="10%">ประเภทย่อย</th>
+            <th width="20%">รายละเอียด</th>
+            <th width="5%">ราคา</th>
+            <th width="5%">จำนวน</th>
             <th width="5%">ไซส์</th>
             <th width="5%">จัดส่ง</th>
             <th width="10%">ภาพสินค้า</th>
             <th>แก้ไข</th>
-            <th>ลบ</th>
+            
           </tr>
           </thead>
           <?php if($totalRows_prd>0){?>
@@ -87,6 +93,7 @@ $totalRows_prd = mysql_num_rows($prd);
             <tr>
               <td align="center" valign="top">TS00<?php echo $row_prd['p_id']; ?></td>
               <td valign="top"><?php echo $row_prd['t_name']; ?></td>
+              <td valign="top"><?php echo $row_prd['ts_name']; ?></td>
               <td valign="top"><b> <?php echo $row_prd['p_name']; ?>
               <br>
               <a href="product_detail.php?p_id=<?php echo $row_prd['p_id'];?>&t_id=<?php echo $row_prd['t_id'];?>&act=edit" class="btn btn-info btn-xs" target="_blank"> รายละเอียด </a>
@@ -109,8 +116,7 @@ $totalRows_prd = mysql_num_rows($prd);
               <td><center>
               <a href="edit_product.php?p_id=<?php echo $row_prd['p_id'];?>&t_id=<?php echo $row_prd['t_id'];?>&act=edit" class="btn btn-warning btn-xs">
               แก้ไข </a>
-              </center></td>
-              <td><center> <a href="del_product.php?p_id=<?php echo $row_prd['p_id'];?>" class="btn btn-danger btn-xs" onClick="return confirm('ยืนยันการลบ');"> ลบ </a> </center></td>
+              </center><center> <a href="del_product.php?p_id=<?php echo $row_prd['p_id'];?>" class="btn btn-danger btn-xs" onClick="return confirm('ยืนยันการลบ');"> ลบ </a> </center></td>
             </tr>
             <?php } while ($row_prd = mysql_fetch_assoc($prd)); ?>
             <?php } ?>

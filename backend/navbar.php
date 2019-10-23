@@ -28,9 +28,9 @@
 						<li><a href="../logout_admin.php">-ออกจากระบบ</a></li>
 
 					<?php } elseif ($row_mm['status'] == 'staff') { ?>
-
-						<li><a href="list_product_type.php">-จัดการประเภทสินค้า</a></li>
 						<li><a href="list_product.php">-จัดการสินค้า</a></li>
+						<li><a href="list_product_type.php">-จัดการประเภทสินค้า</a></li>
+						<li><a href="list_product_type_sub.php">-จัดการประเภทสินค้าย่อย</a></li>
 						<!-- <li><a href="list_sell.php">-จัดการตรวจรับสินค้า</a></li> -->
 						<li><a href="list_bank.php">-จัดการข้อมูลธนาคาร</a></li>
 						<li><a href="../logout_admin.php">-ออกจากระบบ</a></li>

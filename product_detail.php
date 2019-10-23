@@ -57,20 +57,27 @@
 </style>
 <?php 
 
-if (isset($_GET['product'])) {
+if (isset($_GET['product_detail'])) {
 
+$ts_id = $_GET['ts_id'];
 
- $t_id = $_GET['product'];
+ $t_id = $_GET['t_id'];
+ $p_id = $_GET['p_id'];
 
  mysql_select_db($database_condb);
- $query_prd = "SELECT * FROM tbl_product WHERE p_qty > 0 AND t_id = '$t_id' ";
+ $query_prd = "SELECT * FROM tbl_product WHERE p_qty > 0 AND t_id = '$t_id' AND ts_id = '$ts_id' ";
  $prd = mysql_query($query_prd,$condb) or die(mysql_error());
  $row_prd = mysql_fetch_assoc($prd);
  $totalRows_prd = mysql_num_rows($prd);
+
+ $query_pid = "SELECT * FROM tbl_product WHERE p_id = '$p_id' AND p_qty > 0 ";
+ $pid = mysql_query($query_pid,$condb) or die(mysql_error());
+ $row_pid = mysql_fetch_assoc($pid);
+ $totalRows_pid = mysql_num_rows($pid);
+
+
  ?>
 
- <?php
- ?>
  <!-- Start Product Details -->
  <form class="product-form">
 
@@ -81,28 +88,30 @@ if (isset($_GET['product'])) {
           <div class="product__details__container">
             <!-- Start Small images -->
             <ul class="nav product__small__images" role="tablist">
-              <li role="presentation" class="pot-small-img active">
-                <a href="pimg/<?php echo $row_prd['p_img1'];?>" target="_blank">
-                  <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="small-image" style="height: 131px;width: 100px" >
-                </a>
-              </li>
 
-              <?php if ($row_prd['p_img2'] <> ""): ?>
+              <?php if ($row_pid['p_img2'] <> ""): ?>
                 <li role="presentation" class="pot-small-img">
-                  <a href="pimg/<?php echo $row_prd['p_img2'];?>" target="_blank" >
-                    <img src="pimg/<?php echo $row_prd['p_img2'];?>" alt="small-image" style="height: 131px;width: 100px">
+                  <a href="pimg/<?php echo $row_pid['p_img2'];?>" target="_blank" >
+                    <img src="pimg/<?php echo $row_pid['p_img2'];?>" alt="small-image" style="height: 131px;width: 100px">
                   </a>
                 </li>
               <?php endif ?>
 
-              <?php if ($row_prd['p_img3'] <> ""): ?>
+              <?php if ($row_pid['p_img3'] <> ""): ?>
                <li role="presentation" class="pot-small-img hidden-xs">
-                <a href="pimg/<?php echo $row_prd['p_img3'];?>" target="_blank">
-                  <img src="pimg/<?php echo $row_prd['p_img3'];?>" alt="small-image" style="height: 131px;width: 100px">
+                <a href="pimg/<?php echo $row_pid['p_img3'];?>" target="_blank">
+                  <img src="pimg/<?php echo $row_pid['p_img3'];?>" alt="small-image" style="height: 131px;width: 100px">
                 </a>
               </li>
             <?php endif ?>
 
+              <?php if ($row_pid['p_img4'] <> ""): ?>
+               <li role="presentation" class="pot-small-img hidden-xs">
+                <a href="pimg/<?php echo $row_pid['p_img4'];?>" target="_blank">
+                  <img src="pimg/<?php echo $row_pid['p_img4'];?>" alt="small-image" style="height: 131px;width: 100px">
+                </a>
+              </li>
+            <?php endif ?>
 
 
           </ul>
@@ -110,17 +119,9 @@ if (isset($_GET['product'])) {
           <div class="product__big__images">
             <div class="portfolio-full-image tab-content">
               <div role="tabpanel" class="tab-pane active" id="img-tab-1">
-                <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
+                <img src="pimg/<?php echo $row_pid['p_img1'];?>" alt="full-image">
               </div>
-              <div role="tabpanel" class="tab-pane" id="img-tab-2">
-                <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-              </div>
-              <div role="tabpanel" class="tab-pane" id="img-tab-3">
-                <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-              </div>
-              <div role="tabpanel" class="tab-pane" id="img-tab-4">
-                <img src="pimg/<?php echo $row_prd['p_img1'];?>" alt="full-image">
-              </div>
+   
             </div>
           </div>
         </div>
@@ -128,15 +129,15 @@ if (isset($_GET['product'])) {
       <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30">
         <div class="htc__product__details__inner">
           <div class="pro__detl__title">
-            <h2><?php echo $row_prd['p_name']; ?></h2>
+            <h2><?php echo $row_pid['p_name']; ?></h2>
           </div>
 
           <div class="pro__details">
-            <p><?php echo $row_prd['p_detial']; ?></p>
+            <p><?php echo $row_pid['p_detial']; ?></p>
           </div>
           <ul class="pro__dtl__prize">
             <!-- <li class="old__prize">$15.21</li> -->
-            <li><?php echo $row_prd['p_price']; ?></li>
+            <li><?php echo $row_pid['p_price']; ?></li>
           </ul>
 
 

@@ -68,9 +68,9 @@
 
         if (isset($_GET['t_id'])) {
             $t_id = $_GET['t_id'];
-            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' GROUP BY t_id  ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product WHERE t_id = '$t_id' AND p_qty > 0 GROUP BY t_id , ts_id ";
         }else{
-            $query_prd = "SELECT * FROM tbl_product GROUP BY t_id ORDER BY p_id DESC ";
+            $query_prd = "SELECT * FROM tbl_product WHERE p_qty > 0 GROUP BY t_id , ts_id ";
         }
         
         $prd = mysql_query($query_prd,$condb) or die(mysql_error());
@@ -90,7 +90,7 @@
                             <div class="product__inner" >
 
                                 <div class="pro__thumb img-class">
-                                    <a href="index.php?product=<?php echo $row_prd['t_id']; ?>&product_detail">
+                                    <a href="index.php?t_id=<?php echo $row_prd['t_id']; ?>&p_id=<?php echo $row_prd['p_id']; ?>&ts_id=<?php echo $row_prd['ts_id']; ?>&product_detail">
 
                                         <img src="pimg/<?php echo $row_prd['p_img1'];?>"alt="product images" style="height: 300px">
 

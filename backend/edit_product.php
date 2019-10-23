@@ -32,10 +32,9 @@ if (!function_exists("GetSQLValueString")) {
 }
 
 mysql_select_db($database_condb);
-$query_ptype = "SELECT * FROM tbl_type";
-$ptype = mysql_query($query_ptype, $condb) or die(mysql_error());
-$row_ptype = mysql_fetch_assoc($ptype);
-$totalRows_ptype = mysql_num_rows($ptype);
+
+
+
 
 $colname_eprd = "-1";
 if (isset($_GET['p_id'])) {
@@ -47,15 +46,33 @@ $eprd = mysql_query($query_eprd, $condb) or die(mysql_error());
 $row_eprd = mysql_fetch_assoc($eprd);
 $totalRows_eprd = mysql_num_rows($eprd);
 
+$ts_id = $row_eprd ['ts_id'];
 $t_id=$_GET['t_id'];
 
 mysql_select_db($database_condb);
 $query_prd = "
-SELECT * FROM  tbl_type as t
+SELECT * FROM  tbl_type as t , tbl_type_sub as ts
 WHERE t.t_id=$t_id";
 $prd = mysql_query($query_prd, $condb) or die(mysql_error());
 $row_prd = mysql_fetch_assoc($prd);
 $totalRows_prd = mysql_num_rows($prd);
+
+$query_tsshow = "SELECT * FROM tbl_type_sub WHERE ts_id = '$ts_id' ";
+$tsshow = mysql_query($query_tsshow, $condb) or die(mysql_error());
+$row_tsshow = mysql_fetch_assoc($tsshow);
+$totalRows_tsshow = mysql_num_rows($tsshow);
+
+$query_ptype = "SELECT * FROM tbl_type WHERE t_id <> '$t_id'";
+$ptype = mysql_query($query_ptype, $condb) or die(mysql_error());
+$row_ptype = mysql_fetch_assoc($ptype);
+$totalRows_ptype = mysql_num_rows($ptype);
+
+$query_ts = "SELECT * FROM tbl_type_sub WHERE ts_id <> '$ts_id'";
+$ts = mysql_query($query_ts, $condb) or die(mysql_error());
+$row_ts = mysql_fetch_assoc($ts);
+$totalRows_ts = mysql_num_rows($ts);
+
+
 ?>
 <?php include('access.php');?>
 <!DOCTYPE html>
@@ -74,12 +91,12 @@ $totalRows_prd = mysql_num_rows($prd);
   <div class="container">
 
    <div class="row">
-    
 
-     
-     
+
+
+
      <div class="col-md-3">
-      
+
      </div>
      <div class="col-md-9">
       <h3 align="center"> แก้ไขข้อมูลสินค้า
@@ -141,7 +158,7 @@ $totalRows_prd = mysql_num_rows($prd);
                 <td width="129" align="right" valign="middle">ไซส์ :</td>
                 <td colspan="2"><label for="p_size"></label>
                   <input name="p_size" value="<?php echo $row_eprd['p_size']; ?>" type = "text"
-                   maxlength = "100"   required id="p_size" /></td>
+                  maxlength = "100"   required id="p_size" /></td>
                 </tr>
                 <tr>
                   <td align="right" valign="middle">&nbsp;</td>
@@ -157,26 +174,47 @@ $totalRows_prd = mysql_num_rows($prd);
 
 
                   <tr>
-                    <td align="right" valign="middle">&nbsp;</td>
-                    <td colspan="2">&nbsp;</td>
-                  </tr>
-                  <tr>
                     <td align="right" valign="middle">ประเภทสินค้า :</td>
                     <td colspan="2">
                       <label for=""></label>
-                      <select name="t_id" id="t_id" required="required">
+                      <select class="form-control" name="t_id" id="t_id" required="required">
                        <option value="<?php echo $row_prd['t_id'];?>"><?php echo $row_prd['t_name'];?></option>
-                       <option value="">กรุณาเลือกประเภท</option>
+                       <option value="">----กรุณาเลือกประเภท----</option>
                        <?php
                        do {
                         ?>
-                        <option value="<?php echo $row_ptype['t_id']?>"><?php echo $row_ptype['t_name']?></option>
+                        <option <?php echo $sele; ?> value="<?php echo $row_ptype['t_id']?>"><?php echo $row_ptype['t_name']?></option>
                         <?php
                       } while ($row_ptype = mysql_fetch_assoc($ptype));
                       $rows = mysql_num_rows($ptype);
                       if($rows > 0) {
                         mysql_data_seek($ptype, 0);
                         $row_ptype = mysql_fetch_assoc($ptype);
+                      }
+                      ?>
+                    </select>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td align="right" valign="middle">ประเภทสินค้าย่อย :</td>
+                  <td colspan="2">
+                    <label for=""></label>
+                    <select  class="form-control" name="ts_id" id="ts_id" required="required">
+                      <option value="<?php echo $row_tsshow['ts_id'];?>"><?php echo $row_tsshow['ts_name'];?></option>
+                        <option value="">----กรุณาเลือกประเภทย่อย----</option>
+                      <?php
+                      do {
+
+                        ?>
+                        <option value="<?php echo $row_ts['ts_id']?>"><?php echo $row_ts['ts_name']?></option>
+                        <?php
+                      } while ($row_ts = mysql_fetch_assoc($ts));
+                      $rowsts = mysql_num_rows($ts);
+                      if($rowsts > 0) {
+                        mysql_data_seek($ts, 0);
+                        $row_ts = mysql_fetch_assoc($ts);
                       }
                       ?>
                     </select>
