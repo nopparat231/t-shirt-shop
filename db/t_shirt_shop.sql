@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 09:25 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Oct 23, 2019 at 02:20 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -50,24 +50,7 @@ INSERT INTO `tbl_admin` (`admin_id`, `admin_user`, `admin_pass`, `admin_name`, `
 (10, '3', '3', 'ผู้บริหาร', 'test staff', '0222222222', '23superadmin@superadmin.com', 'superadmin', '2018-10-19 17:00:00'),
 (18, 'root', '123123123', 'หกดกหด', 'หกดหกด', '0222222222', '23supedfn@superadmin.com', 'ex', '2018-11-27 13:22:11'),
 (17, 'rootrdfg', '123123123', 'sdfsdfsa', 'asdasd', '0222222222', '23ssdfn@superadmin.com', 'ex', '2018-11-27 12:22:47'),
-(19, 'asdad', '123123123', 'asdasd', 'asdasd', '0222222222', '23superadssmin@superyyadmin.com', 'ex', '2018-11-26 17:39:12'),
-(20, 'sucha', '123456789', 'สุชา ชาติ', '1600 ถ.เพชรบุรีตัดใหม่\r\nแขวงมักกะสัน\r\nเขตราชเทวี\r\nกรุงเทพฯ\r\n10400', '0896454231', 'sucha@hotmail.com', 'admin', '2018-12-02 07:38:35'),
-(21, 'thai', '123456789', 'ไทย สะสม', '1600 ถ.เพชรบุรีตัดใหม่\r\nแขวงมักกะสัน\r\nเขตราชเทวี\r\nกรุงเทพฯ\r\n10401', '0864546216', 'thai@hotmail.com', 'admin', '2018-12-02 07:41:19'),
-(22, 'stam', '123456789', 'แสตม นาม', '1600 ถ.เพชรบุรีตัดใหม่\r\nแขวงมักกะสัน\r\nเขตราชเทวี\r\nกรุงเทพฯ\r\n10400', '0836324154', 'stam@hotmail.com', 'admin', '2018-12-02 07:49:04'),
-(23, 'fam', '123456789', 'แฟม ชาติ', '1600 ถ.เพชรบุรีตัดใหม่\r\nแขวงมักกะสัน\r\nเขตราชเทวี\r\nกรุงเทพฯ\r\n10400', '0985465451', 'fam@hotmail.com', 'admin', '2018-12-02 07:53:12'),
-(24, 'top', '123456789', 'ท็อป นาม', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0916548668', 'top@hotmail.com', 'staff', '2018-12-02 07:59:15'),
-(25, 'namsai', '123456789', 'น้ำ ใส', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0864321345', 'nam@hotmail.com', 'staff', '2018-12-02 08:03:39'),
-(26, 'sai', '123456789', 'ไทร สา', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0816645889', 'sai@hotmail.com', 'staff', '2018-12-02 08:05:39'),
-(27, 'pun', '123456789', 'ปัญ ติยะ', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0816465789', 'pun@hotmail.com', 'staff', '2018-12-02 08:14:52'),
-(28, 'orn', '123456789', 'อร เจีย', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0841645478', 'orn@hotmail.com', 'staff', '2018-12-02 08:14:55'),
-(29, 'noey', '123456789', 'เนย วัชรทัศ', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0816454897', 'noey@hotmail.com', 'superadmin', '2018-12-02 08:31:18'),
-(30, 'music', '123456789', 'มิวสิก สุธรรม', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0816545648', 'music@hotmail.com', 'superadmin', '2018-12-02 08:36:25'),
-(31, 'kaew', '123456789', 'แก้ว วรรณ', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0914567894', 'kaew@hotmail.com', 'superadmin', '2018-12-02 08:38:59'),
-(32, 'pu', '123456789', 'ปู จิรดา', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0915467895', 'pu@hotmail.com', 'superadmin', '2018-12-02 08:41:25'),
-(33, 'jane', '123456789', 'เจน', 'ซอยลาดพร้าว 110 ถนนลาดพร้าว\r\n\r\nแขวงคลองจั่น เขตบางกะปิ\r\n\r\nกรุงเทพมหานคร\r\n\r\n10240', '0915468798', 'jane@hotmail.com', 'superadmin', '2018-12-02 08:43:03'),
-(34, 'ad', 'ad123456', 'นาจิง จัดการ', '42 หมู่ 1 บ้านสังแก  ตำบลสะเดา  อำเภอบัวเชด  จังหวัดสุรินทร์  32230', '0818915917', '12dd@ff.cc', 'admin', '2019-06-03 07:35:29'),
-(35, '12', '123456', 'พรเทพ นารักกา', '42 หมู่ 1 บ้านสังแกตำบลสะเดาอำเภอบัวเชดจังหวัดสุรินทร์322', '0816181810', 'ponn@hotmail.com', 'admin', '2019-06-03 07:49:31'),
-(36, 'chai', '123456', 'ชัยวัด มีการใจ', '93/1952 แขวงหนองค้างพลู เขตบางใหญ่ แชวง', '0891951900', 'chai01@hotmail.com', 'superadmin', '2019-06-03 09:42:36');
+(19, 'asdad', '123123123', 'asdasd', 'asdasd', '0222222222', '23superadssmin@superyyadmin.com', 'ex', '2018-11-26 17:39:12');
 
 -- --------------------------------------------------------
 
@@ -198,7 +181,6 @@ INSERT INTO `tbl_order_detail` (`d_id`, `order_id`, `p_id`, `p_name`, `p_c_qty`,
 CREATE TABLE `tbl_product` (
   `p_id` int(11) NOT NULL,
   `t_id` int(11) NOT NULL,
-  `ts_id` int(11) NOT NULL,
   `p_name` varchar(200) NOT NULL,
   `p_detial` text NOT NULL,
   `p_price` float(10,2) NOT NULL,
@@ -221,11 +203,11 @@ CREATE TABLE `tbl_product` (
 -- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`p_id`, `t_id`, `ts_id`, `p_name`, `p_detial`, `p_price`, `p_unit`, `p_img1`, `p_img2`, `p_img3`, `p_img4`, `p_img5`, `p_view`, `p_qty`, `p_size`, `p_ems`, `promo`, `p_sell`, `date_save`) VALUES
-(113, 28, 1, 'สีขาว/ม่วง', '', 150.00, 'ตัว', 'img132736269420191022_101254.png', 'img29662147220191023_145041.png', '', '', '', 0, 99, 'M', 70, 0.00, '', '2019-10-23 09:24:24'),
-(116, 28, 1, 'สีขาว/ม่วง', '', 150.00, 'ตัว', 'img132736269420191022_101254.png', 'img29662147220191023_145041.png', '', '', '', 0, 77, 'L', 70, 0.00, '', '2019-10-23 08:55:30'),
-(114, 28, 2, 'สีดำ/ขาว', '', 150.00, 'ตัว', 'img1182767315920191022_101158.png', '', '', '', '', 0, 12, 'M', 70, 0.00, '', '2019-10-23 08:42:49'),
-(115, 28, 2, 'สีดำ/ขาว', '', 150.00, 'ตัว', 'img1182767315920191022_101158.png', '', '', '', '', 0, 16, 'L', 70, 0.00, '', '2019-10-23 08:55:40');
+INSERT INTO `tbl_product` (`p_id`, `t_id`, `p_name`, `p_detial`, `p_price`, `p_unit`, `p_img1`, `p_img2`, `p_img3`, `p_img4`, `p_img5`, `p_view`, `p_qty`, `p_size`, `p_ems`, `promo`, `p_sell`, `date_save`) VALUES
+(112, 28, 'สีดำ/ขาว', '', 150.00, 'ตัว', 'img1182767315920191022_101158.png', '', '', '', '', 0, 1, 'S', 70, 0.00, '', '2019-10-22 03:11:58'),
+(113, 28, 'สีขาว/ม่วง', '', 150.00, 'ตัว', 'img132736269420191022_101254.png', '', '', '', '', 0, 1, 'M', 70, 0.00, '', '2019-10-22 16:10:19'),
+(114, 30, 'สีกะปิ', '', 180.00, 'ตัว', 'img161512192620191022_230803.png', '', '', '', '', 0, 5, 'S', 70, 0.00, '', '2019-10-22 16:08:03'),
+(115, 30, 'สีขี้ม้า', '', 150.00, 'ตัว', 'img145056868620191022_230945.png', '', '', '', '', 0, 5, 'M', 70, 0.00, '', '2019-10-22 16:11:12');
 
 -- --------------------------------------------------------
 
@@ -270,25 +252,6 @@ INSERT INTO `tbl_type` (`t_id`, `t_type`, `t_name`) VALUES
 (30, '', 'เสื้อคอตตอน ผ้าลองสลูป'),
 (28, '', 'เสื้อคอตตอน ลายทาง'),
 (31, '', 'เสื้อคอตตอน สีพื้น');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_type_sub`
---
-
-CREATE TABLE `tbl_type_sub` (
-  `ts_id` int(11) NOT NULL,
-  `ts_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_type_sub`
---
-
-INSERT INTO `tbl_type_sub` (`ts_id`, `ts_name`) VALUES
-(1, 'สีขาว/ม่วง'),
-(2, 'สีดำ/ขาว');
 
 --
 -- Indexes for dumped tables
@@ -349,12 +312,6 @@ ALTER TABLE `tbl_type`
   ADD PRIMARY KEY (`t_id`);
 
 --
--- Indexes for table `tbl_type_sub`
---
-ALTER TABLE `tbl_type_sub`
-  ADD PRIMARY KEY (`ts_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -362,7 +319,7 @@ ALTER TABLE `tbl_type_sub`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_bank`
@@ -386,7 +343,7 @@ ALTER TABLE `tbl_member`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_detail`
@@ -398,7 +355,7 @@ ALTER TABLE `tbl_order_detail`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `tbl_sell`
@@ -410,13 +367,7 @@ ALTER TABLE `tbl_sell`
 -- AUTO_INCREMENT for table `tbl_type`
 --
 ALTER TABLE `tbl_type`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `tbl_type_sub`
---
-ALTER TABLE `tbl_type_sub`
-  MODIFY `ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
