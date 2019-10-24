@@ -7,7 +7,7 @@
                     <div class="ft__widget contact__us">
                         <h2 class="ft__title">ติดต่อ</h2>
                         <div class="footer__inner">
-                            <p> ที่อยู่ Up2youscreen <br> นิคมอุตสาหกรรมไฮเทค ต.บ้านเลน  <br> อ.บางปะอิน จ.อยุธยา 13160 </p>
+                            <p> ที่อยู่ ร้านUp2youscreen <br> นิคมอุตสาหกรรมไฮเทค ต.บ้านเลน  <br> อ.บางปะอิน จ.อยุธยา 13160 </p>
                         </div>
                     </div>
                 </div>

@@ -17,18 +17,18 @@
           <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
 
             <form class="login" method="post" action="login_db.php">
-              <input type="text" name="mem_username" placeholder="User Name*" required="required">
-              <input type="password" name="mem_password" placeholder="Password*" required="required">
+              <input type="text" name="mem_username" placeholder="ชื่อผู้ใช้*" required="required">
+              <input type="password" name="mem_password" placeholder="รหัสผ่าน*" required="required">
               <input type="hidden" name="login" value="login">
 
               <div class="tabs__checkbox">
 
                 <span class="forget">
-                  <a href="#">Forget Pasword?</a>
+                  <a href="#">ลืมรหัสผ่าน?</a>
                 </span>
               </div>
               <div class="htc__login__btn mt--30">
-                <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                <button type="submit" class="btn btn-warning btn-lg">เข้าสู่ระบบ</button>
               </div>
             </form>
 
@@ -38,10 +38,10 @@
           <div id="register" role="tabpanel" class="single__tabs__panel tab-pane">
             <form class="login" method="post" action="login_db.php">
 
-              <input type="text" name="mem_username" placeholder="Username*" required="required">
+              <input type="text" name="mem_username" placeholder="ชื่อผู้ใช้*" required="required">
 
-              <input type="password" name="mem_password" placeholder="Password*" required="required">
-              <input type="email" name="mem_email" placeholder="Email*" required="required">
+              <input type="password" name="mem_password" placeholder="รหัสผ่าน*" required="required">
+              <input type="email" name="mem_email" placeholder="อีเมล*" required="required">
 
               <input type="text" name="mem_fname" placeholder="ชื่อ*" required="required">
               <input type="text" name="mem_lname" placeholder="นามสกุล*" required="required">
@@ -60,7 +60,7 @@
 
               <br>
               <div class="htc__login__btn">
-                <button type="submit" class="btn btn-warning btn-lg">register</button>
+                <button type="submit" class="btn btn-warning btn-lg">ยืนยัน</button>
               </div>
             </form>
 

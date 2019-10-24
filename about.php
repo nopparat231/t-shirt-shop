@@ -6,7 +6,7 @@
                     <div class="col-md-12">
                         <div class="section__title section__title--2 text-center">
                             <h2 class="title__line">ยินดีต้อนรับสู่...ร้านUp2youscreen</h2>
-                            <p>เป็นร้านขายเสื้อเปล่า เสื้อยืดต่างๆ ใส่สบาย</p>
+                            <p>เป็นร้านขายเสื้อเปล่า เสื้อยืดต่างๆ ใส่สบาย และเสื้อสกรีน ลูกค้าสารถติดตามเพจได้ตามลิ้งด้านล่าง</p>
                         </div>
                            <!-- Start Choose Us Area -->
         <section class="htc__contact__area ptb--120 bg__white">
