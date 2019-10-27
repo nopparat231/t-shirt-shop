@@ -1,4 +1,8 @@
-<?php require_once('../Connections/condb.php'); ?>
+<?php 
+require_once('../Connections/condb.php');
+include 'sent.php';
+
+ ?>
 
 <?php
 // *** Validate request to login to this site.
