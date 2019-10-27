@@ -34,7 +34,7 @@
                                             <span class="ti-email"></span>
                                         </div>
                                         <div class="contact__details">
-                                            <p> เมล์ :<br><a href="#">chaymomo@gmail.com</a></p>
+                                            <p> เมล์ :<br><a href="#">ituptoyou2@gmail.com</a></p>
                                         </div>
                                     </div>
                                     <!-- End Single Adress -->
