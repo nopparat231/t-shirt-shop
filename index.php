@@ -41,6 +41,9 @@
 	}elseif (isset($_GET['login'])) {
 		//เข้าสู่ระบบ
 		include 'login.php';
+	}elseif (isset($_GET['forget'])) {
+		//ลืมรหัสผ่าน
+		include 'forget_password.php';
 	}elseif (isset($_GET['my_profile'])) {
 		//ข้อมูลผู้ใช้
 		include 'my_profile.php';

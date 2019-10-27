@@ -49,7 +49,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
 <h3 align="center">ชำระเงินแล้ว</h3>
 <table id="example" class="display" cellspacing="0" border="1">
 	<thead>
-		<tr>
+		<tr >
 			<th>รหัสสั่งซื้อ</th>
 			<th>ลูกค้า</th>
 			<th>จำนวนรายการ</th>
@@ -57,7 +57,7 @@ $totalRows_mycart = mysql_num_rows($mycart);
 			<th>สถานะ</th>
 			<th>วันที่ทำรายการ</th>
 			<th>รายละเอียด</th>
-			<th> <center> ลบ </center></th>
+		
 		</tr>
 	</thead>
 	<?php if ($totalRows_mycart > 0) { ?>
@@ -89,16 +89,13 @@ $totalRows_mycart = mysql_num_rows($mycart);
 					</font>
 				</td>
 				<td> <?php echo $row_mycart['order_date'];?></td>
-				<td>
+				<td align="center">
 						<a href="index.php?order_id=<?php echo $row_mycart['oid'];?>&act=show-order">
 							ดูรายละเอีด
 						</a>
 					
 				</td>
-				<td><center>
-					<a href="del_order.php?order_id=<?php echo $row_mycart['oid'];?>&order_status=4" class="btn btn-danger btn-xs" onClick="return confirm('ยืนยันการยกเลิกคำสั่งซื้อ');">
-					ยกเลิก </a></center>
-				</td>
+
 			</tr>
 		<?php } while ($row_mycart = mysql_fetch_assoc($mycart)); ?>
 	</table>

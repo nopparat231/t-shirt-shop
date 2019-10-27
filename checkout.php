@@ -109,12 +109,12 @@ if($_SESSION['MM_Username'] <> ""){
                       <?php echo $total += $ems; ?> บาท</strong>
                     </li>
                     <input type="hidden" name="total" value="<?php echo $total; ?>">
-
+                    <input type="hidden" name="pos_ems" value="<?php echo $ems; ?>">
 
 
                   </ul>
                   <ul class="shopping__btn">
-                    <li><a href="index.php?cart">View Cart</a></li>
+                    <li><a href="index.php?cart">แก้ไขสินค้า</a></li>
                     <li class="shp__checkout"> <button type="submit" class="btn btn-warning btn-lg" style="width: 100%" >ยืนยันการสั่งซื้อ</button></li>
                   </ul>
 

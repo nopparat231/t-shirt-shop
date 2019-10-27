@@ -24,7 +24,7 @@
               <div class="tabs__checkbox">
 
                 <span class="forget">
-                  <a href="#">ลืมรหัสผ่าน?</a>
+                  <a href="index.php?forget">ลืมรหัสผ่าน?</a>
                 </span>
               </div>
               <div class="htc__login__btn mt--30">
