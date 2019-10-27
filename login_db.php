@@ -24,11 +24,18 @@ if (isset($_POST['login'])) {
 	$MM_redirecttoReferrer = false;
 
 	mysql_select_db($database_condb);
-//user
-	$LoginRS__query = "SELECT * FROM tbl_member WHERE mem_username='$loginUsername' AND mem_password='$password'  ";
-	$LoginRS_user = mysql_query($LoginRS__query, $condb) or die(mysql_error());
-	$objResult_user = mysql_fetch_array($LoginRS_user);
-	$loginFoundUser = mysql_num_rows($LoginRS_user);
+
+	$LoginRS__cc = "SELECT * FROM tbl_member WHERE mem_username='$loginUsername' AND mem_password='$password' AND active='yes' ";
+	$LoginRS_cc = mysql_query($LoginRS__cc, $condb) or die(mysql_error());
+	$objResult_cc = mysql_fetch_array($LoginRS_cc);
+	$loginFoundcc = mysql_num_rows($LoginRS_cc);
+
+	if ($objResult_cc) {
+		//user
+		$LoginRS__query = "SELECT * FROM tbl_member WHERE mem_username='$loginUsername' AND mem_password='$password'";
+		$LoginRS_user = mysql_query($LoginRS__query, $condb) or die(mysql_error());
+		$objResult_user = mysql_fetch_array($LoginRS_user);
+		$loginFoundUser = mysql_num_rows($LoginRS_user);
 //admin
 	// $LoginRS__admin = "SELECT * FROM tbl_admin WHERE admin_user='$loginUsername' AND admin_pass='$password' ";
 	// $LoginRS_admin = mysql_query($LoginRS__admin, $condb) or die(mysql_error());
@@ -36,112 +43,42 @@ if (isset($_POST['login'])) {
 
 
 
-	if ($loginFoundUser > 0) {
+		if ($loginFoundUser > 0) {
 
-		echo $class_action->show_message('เข้าสู่ระบบสำเร็จ');
-		
+			echo $class_action->show_message('เข้าสู่ระบบสำเร็จ');
+
 
 		//$loginStrGroup = "";
 
 	    //declare two session variables and assign them
-		$_SESSION['MM_Username'] = $loginUsername;
+			$_SESSION['MM_Username'] = $loginUsername;
 		//$_SESSION['MM_UserGroup'] = $loginStrGroup;
-		$_SESSION['User_id'] = $objResult_user['mem_id'];
-		$_SESSION['User'] = $objResult_user['mem_fname'];
+			$_SESSION['User_id'] = $objResult_user['mem_id'];
+			$_SESSION['User'] = $objResult_user['mem_fname'];
 
 
-		if (isset($_SESSION['PrevUrl']) && false) {
-			$MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
+			if (isset($_SESSION['PrevUrl']) && false) {
+				$MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
+			}
+
+			echo $class_action->goto_page(1,'index.php');
+
+		}else {
+
+			echo $class_action->show_message('Username หรือ Password ไม่ถูกต้อง');
+			echo $class_action->goto_page(1,'index.php?login');
+
 		}
 
-		echo $class_action->goto_page(1,'index.php');
 
-	}else {
-
-		echo"<script>";
-		echo"alert('Username หรือ Password ไม่ถูกต้อง');";
-		echo"window.location = 'index.php?login';";
-		echo"</script>";
-
+	}else{
+		echo $class_action->show_message('กรุณายืนยัน User ที่ Email');
+		echo $class_action->goto_page(1,'index.php?login');
 	}
+
+
 
 
 }
-
-//สมัครสมาชิก
-if (isset($_POST['register'])) {
-
-
-	$mem_username = $_POST['mem_username'];
-	$mem_password = $_POST['mem_password'];
-	$mem_fname = $_POST['mem_fname'];
-	$mem_lname = $_POST['mem_lname'];
-	$mem_email = $_POST['mem_email'];
-	$mem_tel = $_POST['mem_tel'];
-	$mem_address = $_POST['mem_address'];
-	$user = "user";
-	$session_id = session_id();
-	$no = "no";
-
-	mysql_select_db($database_condb);
-	$check = "SELECT * FROM tbl_member WHERE '$mem_username' = mem_username ";
-	$result = mysql_query($check,$condb);
-	$num = mysql_num_rows($result);
-
-	$checkemail = "SELECT * FROM tbl_member WHERE mem_email = '$mem_email'";
-	$resultemail = mysql_query($checkemail,$condb);
-	$numemail = mysql_num_rows($resultemail);
-
-	if ($numemail > 0 ){
-		echo"<script>";
-		echo"alert('E-mail นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
-		echo"window.location = 'index.php';";
-		echo"</script>";
-
-	}elseif ($num > 0 ){
-		echo"<script>";
-		echo"alert('Username นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง');";
-		echo"window.location = 'index.php';";
-		echo"</script>";
-
-	}else{
-
-		$sql ="INSERT INTO tbl_member (mem_username , mem_password , mem_fname , mem_lname , mem_email ,  mem_tel , mem_address , status ,sid , active ) VALUES ('$mem_username' , '$mem_password' ,'$mem_fname' ,'$mem_lname','$mem_email','$mem_tel','$mem_address' ,'$user' ,'$session_id','$no' )";
-
-		$result1 = mysql_query($sql,$condb) or die ("Error in query : $sql" .mysql_error());
-
-
-		$mem_id = mysql_insert_id($condb);
-
-		$strTo = $mem_email;
-		$strSubject = "ยืนยันการสมัครสมาชิก ร้านขายเสื้อสกรีนออนไลน์ up2youscreen";
-		$strHeader = "Content-type: text/html; charset=UTF-8\n"; // or UTF-8 //
-
-		$strMessage = "";
-		$strMessage .= "ยินดีต้อนรับ : คุณ".$mem_name."<br>";
-		$strMessage .= "________________________________________<br>";
-		$strMessage .= "ยืนยันการสมัครสมาชิกโดยการคลิกที่ลิ้งค์ด้านล่าง<br>";
-		$strMessage .= "http://localhost/t-shirt-shop/activate.php?sid=".$session_id."&mem_id=".$mem_id."<br>";
-		$strMessage .= "________________________________________<br>";
-		$strMessage .= "<br>";
-
-		$flgSend = mail($strTo,$strSubject,$strMessage,$strHeader);
-
-	}
-
-	mysql_close();
-	if($result1){
-		echo"<script>";
-		echo"alert('สมัครสมาชิกเรียบร้อยแล้ว กรุณายืนยันที่ E-mail !');";
-		echo"window.location = 'index.php';";
-		echo"</script>";
-	}else{
-		echo"<script>";
-		echo"alert('สมัครสมาชิกไม่สำเร็จ!');";
-		echo"window.location = 'index.php';";
-		echo"</script>";
-	}
-}
-
 
 ?>

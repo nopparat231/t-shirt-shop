@@ -36,7 +36,7 @@
           <!-- End Single Content -->
           <!-- Start Single Content -->
           <div id="register" role="tabpanel" class="single__tabs__panel tab-pane">
-            <form class="login" method="post" action="login_db.php">
+            <form class="login" method="post" action="phpmailer/login_db.php">
 
               <input type="text" name="mem_username" placeholder="ชื่อผู้ใช้*" required="required">
 

@@ -16,7 +16,7 @@
           <!-- Start Single Content -->
           <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
 
-            <form class="login" method="post" action="forget_password_db.php">
+            <form class="login" method="post" action="phpmailer/forget_password_db.php">
               <input type="email" name="mem_email" placeholder="email*" required="required">
 
               <div class="htc__login__btn mt--30">
