@@ -10,7 +10,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-if (isset($_POST['resetpassword'])) {
+if (isset($_POST['mem_email'])) {
   $loginUsername=$_POST['mem_username'];
   $email=$_POST['mem_email'];
   $MM_fldUserAuthorization = "";
@@ -27,8 +27,8 @@ if (isset($_POST['resetpassword'])) {
   if (!$objResult) {
 
     echo "<script>";
-    echo "alert(' ไม่พบ Email หรือ Email ไม่ถูกต้อง !');";
-    echo "window.location ='../index.php?login';";
+    echo "alert(' ยังไม่ได้ยืนยัง Email หรือ Email ไม่ถูกต้อง !');";
+    echo "window.location ='../index.php?forget';";
     echo "</script>";
   }else {
 

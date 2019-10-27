@@ -90,5 +90,7 @@ if (isset($_POST['register'])) {
 	}
 }
 mysql_close();
+}
+
 
 ?>
