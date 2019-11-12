@@ -17,7 +17,7 @@
 	if ($row_mm['status'] == 'admin') { ?>
 		<li><a href="adduser_admin.php" class="list-group-item">เพิ่มผู้ใช้งานระบบ</a></li>
 		<li><a href="list_admin.php" class="list-group-item">รายงานผู้ดูแลระบบ</a></li>
-		<li><a href="list_member.php" class="list-group-item">รายงานข้อมูลสมาชิก</a></li>
+		<li><a href="list_member.php" class="list-group-item">รายงานข้อมูลผู้ใช้ระบบ</a></li>
 		<li><a href="report_all_prd.php" class="list-group-item">รายงานข้อมูลสินค้า</a></li>
 		<li><a href="report_all_order.php" class="list-group-item">รายงานการสั่งซื้อ</a></li>
 		<li><a href="report_all_type.php" class="list-group-item">รายงานประเภทสินค้า</a></li>

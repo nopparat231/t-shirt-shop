@@ -23,7 +23,7 @@
 					if ($row_mm['status'] == 'admin') { ?>
 						<li><a href="adduser_admin.php">เพิ่มผู้ใช้งานระบบ</a></li>
 						<li><a href="list_admin.php">รายงานผู้ดูแลระบบ</a></li>
-						<li><a href="list_member.php">รายงานข้อมูลสมาชิก</a></li>
+						<li><a href="list_member.php">รายงานข้อมูลผู้ใช้ระบบ</a></li>
 						
 						<li><a href="../logout_admin.php">-ออกจากระบบ</a></li>
 
@@ -36,13 +36,14 @@
 						<li><a href="../logout_admin.php">-ออกจากระบบ</a></li>
 					<?php } elseif ($row_mm['status'] == 'superadmin') { ?>
 
-						<li><a href="list_admin.php">รายงานผู้ดูแลระบบ</a></li>
+						<li><a href="list_admin.php">รายงานข้อมูลผู้ใช้ระบบ</a></li>
 						<li><a href="list_member.php">รายงานข้อมูลสมาชิก</a></li>
-						<li><a href="report_all_prd.php">รายงานข้อมูลสินค้า</a></li>
-						<li><a href="report_all_order.php">รายงานข้อมูลการสั่งซื้อ</a></li>
-						<li><a href="report_all_type.php">รายงานข้อมูลประเภทสินค้า</a></li>
+						<li><a href="report_all_prd.php">รายงานข้อมูลการจำหน่ายสินค้า</a></li>
+						<li><a href="report_all_order.php">รายงานข้อมูลการชำระเงิน</a></li>
+						<li><a href="report_all_post.php">รายงานข้อมูลการจัดส่งสินค้า</a></li>
+						<!-- <li><a href="report_all_type.php">รายงานข้อมูลประเภทสินค้า</a></li> -->
 						<!-- <li><a href="report_all_sell.php">รายงานตรวจรับสินค้า</a></li> -->
-						<li><a href="report_all_bank.php">รายงานข้อมูลธนาคาร</a></li>
+						<!-- <li><a href="report_all_bank.php">รายงานข้อมูลธนาคาร</a></li> -->
 						<li><a href="../logout_admin.php">-ออกจากระบบ</a></li>
 					<?php } ?>
 				</ul>

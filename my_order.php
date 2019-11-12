@@ -96,7 +96,7 @@ if (isset($_GET['order_id'])) {
                         <tr>
                           <td colspan="4">จำนวนเงิน</td>
                           <td colspan="5" align="left"><label for="pay_amount"></label>
-                            <input type="number" step="0.01" name="pay_amount" pattern="([0-9]{1,3}).([0-9]{1,3})" value="<?php echo $row_cartdone['total']; ?>" required="required" value="" /></td>
+                            <input type="number" step="0.01" disabled name="pay_amount" pattern="([0-9]{1,3}).([0-9]{1,3})" value="<?php echo $row_cartdone['total']; ?>" required="required" value="" /></td>
                           </tr>
 
 
@@ -197,7 +197,12 @@ if (isset($_GET['order_id'])) {
 
                           <?php } while ($row_cartdone = mysql_fetch_assoc($cartdone)); ?>
 
+                          <div style="text-align: right; color: white">
+                            <a href="print_report.php?order_id=<?php echo $order_id; ?>" class="btn btn-info" target="_blank" >พิมพ์ใบแจ้งหนี้</a>
+                          </div>
+
                           <ul class="shoping__total">
+
                             <li class="subtotal">ราคารวมทั้งหมด:</li>
                             <li class="total__price">
                               <strong style="font-size: 30px">

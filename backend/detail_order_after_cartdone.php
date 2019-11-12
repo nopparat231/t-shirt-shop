@@ -70,10 +70,21 @@ $ems = $row_cartdone['pos_ems'];
 $totalsum = $row_cartdone['pay_amount'];
 ?>
 
+        <?php
+        $status =  $row_cartdone['order_status'];
+        
 
+        ?>
 <table width="700" border="0" align="center" class="table">
   <tr>
     <a href="../print_report.php?order_id=<?php echo $colname_cartdone;?>" class="btn btn-primary btn-sm pull-right" target="_blank" id="hp" >  <span class="icon icon-print"></span> พิมพ์ใบเสร็จ </a> 
+
+&nbsp;&nbsp;
+
+<?php if ($status == 2): ?>
+    <a href="../print_report_post.php?order_id=<?php echo $colname_cartdone;?>" class="btn btn-info btn-sm pull-left" target="_blank" id="hp" >  <span class="icon icon-print"></span> พิมพ์ใบส่งสินค้า </a> 
+<?php endif ?>
+  
 
   </tr>
   <td width="1558" colspan="5" align="center">
