@@ -8,7 +8,7 @@
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
                                 <a href="index.php">
-                                    <img src="https://www.picz.in.th/image/flow.iJGNBQ">
+                                    <img src="https://uppic.cc/d/5dvx">
                                 </a>
                             </div>
                         </div>
